@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  CategoryViewController.h
 //  sticky note
 //
 //  Created by Nguyen Minh Tu on 5/17/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
-
+@interface CategoryViewController : UIViewController
 
 @end
-

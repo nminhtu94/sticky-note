@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		BE9146131B0893C70084D0FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146121B0893C70084D0FA /* main.m */; };
 		BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146151B0893C70084D0FA /* AppDelegate.m */; };
-		BE9146191B0893C70084D0FA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146181B0893C70084D0FA /* FirstViewController.m */; };
-		BE91461C1B0893C70084D0FA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91461B1B0893C70084D0FA /* SecondViewController.m */; };
 		BE91461F1B0893C70084D0FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE91461D1B0893C70084D0FA /* Main.storyboard */; };
 		BE9146211B0893C70084D0FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9146201B0893C70084D0FA /* Images.xcassets */; };
 		BE9146241B0893C70084D0FA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE9146221B0893C70084D0FA /* LaunchScreen.xib */; };
 		BE9146301B0893C70084D0FA /* sticky_noteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91462F1B0893C70084D0FA /* sticky_noteTests.m */; };
+		BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463A1B08A2F40084D0FA /* CategoryViewController.m */; };
+		BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463E1B08A3100084D0FA /* SearchViewController.m */; };
+		BE9146441B08A3BE0084D0FA /* ExpandableSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146421B08A3BE0084D0FA /* ExpandableSearchBar.m */; };
+		BE9146451B08A3BE0084D0FA /* ExpandableSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE9146431B08A3BE0084D0FA /* ExpandableSearchBar.xib */; };
+		BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,16 +36,21 @@
 		BE9146121B0893C70084D0FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE9146141B0893C70084D0FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BE9146151B0893C70084D0FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BE9146171B0893C70084D0FA /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		BE9146181B0893C70084D0FA /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		BE91461A1B0893C70084D0FA /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		BE91461B1B0893C70084D0FA /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		BE91461E1B0893C70084D0FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE9146201B0893C70084D0FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BE9146231B0893C70084D0FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BE9146291B0893C70084D0FA /* sticky noteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sticky noteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE91462E1B0893C70084D0FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE91462F1B0893C70084D0FA /* sticky_noteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sticky_noteTests.m; sourceTree = "<group>"; };
+		BE9146391B08A2F40084D0FA /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryViewController.h; path = ViewControllers/CategoryViewController.h; sourceTree = "<group>"; };
+		BE91463A1B08A2F40084D0FA /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = ViewControllers/CategoryViewController.m; sourceTree = "<group>"; };
+		BE91463D1B08A3100084D0FA /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ViewControllers/SearchViewController.h; sourceTree = "<group>"; };
+		BE91463E1B08A3100084D0FA /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/SearchViewController.m; sourceTree = "<group>"; };
+		BE9146411B08A3BE0084D0FA /* ExpandableSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandableSearchBar.h; path = CustomViews/ExpandableSearchBar.h; sourceTree = "<group>"; };
+		BE9146421B08A3BE0084D0FA /* ExpandableSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandableSearchBar.m; path = CustomViews/ExpandableSearchBar.m; sourceTree = "<group>"; };
+		BE9146431B08A3BE0084D0FA /* ExpandableSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpandableSearchBar.xib; path = CustomViews/ExpandableSearchBar.xib; sourceTree = "<group>"; };
+		BE9146461B08A6E80084D0FA /* QuickNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickNoteViewController.h; path = ViewControllers/QuickNoteViewController.h; sourceTree = "<group>"; };
+		BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickNoteViewController.m; path = ViewControllers/QuickNoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +92,10 @@
 		BE91460F1B0893C70084D0FA /* sticky note */ = {
 			isa = PBXGroup;
 			children = (
+				BE9146401B08A3530084D0FA /* CustomViews */,
+				BE91463C1B08A2FB0084D0FA /* ViewControllers */,
 				BE9146141B0893C70084D0FA /* AppDelegate.h */,
 				BE9146151B0893C70084D0FA /* AppDelegate.m */,
-				BE9146171B0893C70084D0FA /* FirstViewController.h */,
-				BE9146181B0893C70084D0FA /* FirstViewController.m */,
-				BE91461A1B0893C70084D0FA /* SecondViewController.h */,
-				BE91461B1B0893C70084D0FA /* SecondViewController.m */,
 				BE91461D1B0893C70084D0FA /* Main.storyboard */,
 				BE9146201B0893C70084D0FA /* Images.xcassets */,
 				BE9146221B0893C70084D0FA /* LaunchScreen.xib */,
@@ -122,6 +128,29 @@
 				BE91462E1B0893C70084D0FA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE91463C1B08A2FB0084D0FA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BE9146391B08A2F40084D0FA /* CategoryViewController.h */,
+				BE91463A1B08A2F40084D0FA /* CategoryViewController.m */,
+				BE91463D1B08A3100084D0FA /* SearchViewController.h */,
+				BE91463E1B08A3100084D0FA /* SearchViewController.m */,
+				BE9146461B08A6E80084D0FA /* QuickNoteViewController.h */,
+				BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BE9146401B08A3530084D0FA /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				BE9146411B08A3BE0084D0FA /* ExpandableSearchBar.h */,
+				BE9146421B08A3BE0084D0FA /* ExpandableSearchBar.m */,
+				BE9146431B08A3BE0084D0FA /* ExpandableSearchBar.xib */,
+			);
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +236,7 @@
 				BE91461F1B0893C70084D0FA /* Main.storyboard in Resources */,
 				BE9146241B0893C70084D0FA /* LaunchScreen.xib in Resources */,
 				BE9146211B0893C70084D0FA /* Images.xcassets in Resources */,
+				BE9146451B08A3BE0084D0FA /* ExpandableSearchBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,9 +254,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE91461C1B0893C70084D0FA /* SecondViewController.m in Sources */,
+				BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */,
 				BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */,
-				BE9146191B0893C70084D0FA /* FirstViewController.m in Sources */,
+				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
+				BE9146441B08A3BE0084D0FA /* ExpandableSearchBar.m in Sources */,
+				BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */,
 				BE9146131B0893C70084D0FA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
