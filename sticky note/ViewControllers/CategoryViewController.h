@@ -10,4 +10,6 @@
 
 @interface CategoryViewController : UIViewController
 
+- (IBAction)onAddCategory:(id)sender;
+
 @end

@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFB71B1B48AC0049010E /* AppCoreModel.m */; };
+		BE2CBFBC1B1B4A2F0049010E /* CoreDataCommonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFBB1B1B4A2F0049010E /* CoreDataCommonHelper.m */; };
+		BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFBD1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld */; };
+		BE2CBFCB1B1B52BC0049010E /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */; };
+		BE2CBFCE1B1B58150049010E /* NoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFCD1B1B58150049010E /* NoteModel.m */; };
+		BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFD01B1B73980049010E /* NoteHelper.m */; };
+		BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3551B1B8A1C00BA7794 /* CategoryHelper.m */; };
+		BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3581B1B8F5C00BA7794 /* EditCategoryViewController.m */; };
+		BE43D35C1B1B950000BA7794 /* ImagePickerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D35B1B1B950000BA7794 /* ImagePickerHelper.m */; };
+		BE43D3631B1B98B600BA7794 /* ExpandableSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3611B1B98B600BA7794 /* ExpandableSearchBar.m */; };
+		BE43D3641B1B98B600BA7794 /* ExpandableSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE43D3621B1B98B600BA7794 /* ExpandableSearchBar.xib */; };
+		BE43D36B1B1B98FB00BA7794 /* CategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D36A1B1B98FB00BA7794 /* CategoryCollectionView.m */; };
+		BE43D36D1B1B991200BA7794 /* CategoryCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE43D36C1B1B991200BA7794 /* CategoryCollectionView.xib */; };
+		BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */; };
+		BE43D3771B1BA62400BA7794 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */; };
+		BE43D3781B1BA62400BA7794 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */; };
 		BE9146131B0893C70084D0FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146121B0893C70084D0FA /* main.m */; };
 		BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146151B0893C70084D0FA /* AppDelegate.m */; };
 		BE91461F1B0893C70084D0FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE91461D1B0893C70084D0FA /* Main.storyboard */; };
@@ -15,8 +31,6 @@
 		BE9146301B0893C70084D0FA /* sticky_noteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91462F1B0893C70084D0FA /* sticky_noteTests.m */; };
 		BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463A1B08A2F40084D0FA /* CategoryViewController.m */; };
 		BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463E1B08A3100084D0FA /* SearchViewController.m */; };
-		BE9146441B08A3BE0084D0FA /* ExpandableSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146421B08A3BE0084D0FA /* ExpandableSearchBar.m */; };
-		BE9146451B08A3BE0084D0FA /* ExpandableSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE9146431B08A3BE0084D0FA /* ExpandableSearchBar.xib */; };
 		BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +45,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE2CBFB61B1B48AC0049010E /* AppCoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppCoreModel.h; path = "Model Classes/AppCoreModel.h"; sourceTree = "<group>"; };
+		BE2CBFB71B1B48AC0049010E /* AppCoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppCoreModel.m; path = "Model Classes/AppCoreModel.m"; sourceTree = "<group>"; };
+		BE2CBFBA1B1B4A2F0049010E /* CoreDataCommonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCommonHelper.h; path = "Helper Classes/CoreDataCommonHelper.h"; sourceTree = "<group>"; };
+		BE2CBFBB1B1B4A2F0049010E /* CoreDataCommonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataCommonHelper.m; path = "Helper Classes/CoreDataCommonHelper.m"; sourceTree = "<group>"; };
+		BE2CBFBE1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		BE2CBFC91B1B52BC0049010E /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryModel.h; path = "Model Classes/CategoryModel.h"; sourceTree = "<group>"; };
+		BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryModel.m; path = "Model Classes/CategoryModel.m"; sourceTree = "<group>"; };
+		BE2CBFCC1B1B58150049010E /* NoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteModel.h; path = "Model Classes/NoteModel.h"; sourceTree = "<group>"; };
+		BE2CBFCD1B1B58150049010E /* NoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteModel.m; path = "Model Classes/NoteModel.m"; sourceTree = "<group>"; };
+		BE2CBFCF1B1B73980049010E /* NoteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteHelper.h; path = "Helper Classes/NoteHelper.h"; sourceTree = "<group>"; };
+		BE2CBFD01B1B73980049010E /* NoteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteHelper.m; path = "Helper Classes/NoteHelper.m"; sourceTree = "<group>"; };
+		BE43D3541B1B8A1C00BA7794 /* CategoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryHelper.h; path = "Helper Classes/CategoryHelper.h"; sourceTree = "<group>"; };
+		BE43D3551B1B8A1C00BA7794 /* CategoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryHelper.m; path = "Helper Classes/CategoryHelper.m"; sourceTree = "<group>"; };
+		BE43D3571B1B8F5C00BA7794 /* EditCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCategoryViewController.h; path = ViewControllers/EditCategoryViewController.h; sourceTree = "<group>"; };
+		BE43D3581B1B8F5C00BA7794 /* EditCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCategoryViewController.m; path = ViewControllers/EditCategoryViewController.m; sourceTree = "<group>"; };
+		BE43D35A1B1B950000BA7794 /* ImagePickerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePickerHelper.h; path = "Helper Classes/ImagePickerHelper.h"; sourceTree = "<group>"; };
+		BE43D35B1B1B950000BA7794 /* ImagePickerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePickerHelper.m; path = "Helper Classes/ImagePickerHelper.m"; sourceTree = "<group>"; };
+		BE43D3601B1B98B600BA7794 /* ExpandableSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandableSearchBar.h; path = CustomViews/ExpandableSearchBar/ExpandableSearchBar.h; sourceTree = "<group>"; };
+		BE43D3611B1B98B600BA7794 /* ExpandableSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandableSearchBar.m; path = CustomViews/ExpandableSearchBar/ExpandableSearchBar.m; sourceTree = "<group>"; };
+		BE43D3621B1B98B600BA7794 /* ExpandableSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpandableSearchBar.xib; path = CustomViews/ExpandableSearchBar/ExpandableSearchBar.xib; sourceTree = "<group>"; };
+		BE43D3691B1B98FB00BA7794 /* CategoryCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCollectionView.h; path = CustomViews/CategoryCollectionView/CategoryCollectionView.h; sourceTree = "<group>"; };
+		BE43D36A1B1B98FB00BA7794 /* CategoryCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryCollectionView.m; path = CustomViews/CategoryCollectionView/CategoryCollectionView.m; sourceTree = "<group>"; };
+		BE43D36C1B1B991200BA7794 /* CategoryCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCollectionView.xib; path = CustomViews/CategoryCollectionView/CategoryCollectionView.xib; sourceTree = "<group>"; };
+		BE43D36E1B1B9A0500BA7794 /* CAImageCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAImageCollectionLayout.h; path = CustomViews/CategoryCollectionView/CAImageCollectionLayout.h; sourceTree = "<group>"; };
+		BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAImageCollectionLayout.m; path = CustomViews/CategoryCollectionView/CAImageCollectionLayout.m; sourceTree = "<group>"; };
+		BE43D3741B1BA62400BA7794 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCollectionViewCell.h; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryCollectionViewCell.m; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.m; sourceTree = "<group>"; };
+		BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCollectionViewCell.xib; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		BE91460D1B0893C70084D0FA /* sticky note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sticky note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9146111B0893C70084D0FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE9146121B0893C70084D0FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,9 +88,6 @@
 		BE91463A1B08A2F40084D0FA /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryViewController.m; path = ViewControllers/CategoryViewController.m; sourceTree = "<group>"; };
 		BE91463D1B08A3100084D0FA /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ViewControllers/SearchViewController.h; sourceTree = "<group>"; };
 		BE91463E1B08A3100084D0FA /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/SearchViewController.m; sourceTree = "<group>"; };
-		BE9146411B08A3BE0084D0FA /* ExpandableSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandableSearchBar.h; path = CustomViews/ExpandableSearchBar.h; sourceTree = "<group>"; };
-		BE9146421B08A3BE0084D0FA /* ExpandableSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandableSearchBar.m; path = CustomViews/ExpandableSearchBar.m; sourceTree = "<group>"; };
-		BE9146431B08A3BE0084D0FA /* ExpandableSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpandableSearchBar.xib; path = CustomViews/ExpandableSearchBar.xib; sourceTree = "<group>"; };
 		BE9146461B08A6E80084D0FA /* QuickNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickNoteViewController.h; path = ViewControllers/QuickNoteViewController.h; sourceTree = "<group>"; };
 		BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickNoteViewController.m; path = ViewControllers/QuickNoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +110,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE2CBFB51B1B48A20049010E /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BE2CBFCC1B1B58150049010E /* NoteModel.h */,
+				BE2CBFCD1B1B58150049010E /* NoteModel.m */,
+				BE2CBFC91B1B52BC0049010E /* CategoryModel.h */,
+				BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */,
+				BE2CBFB61B1B48AC0049010E /* AppCoreModel.h */,
+				BE2CBFB71B1B48AC0049010E /* AppCoreModel.m */,
+				BE2CBFBD1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld */,
+			);
+			name = "Model Classes";
+			sourceTree = "<group>";
+		};
+		BE2CBFB91B1B49EF0049010E /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BE43D35A1B1B950000BA7794 /* ImagePickerHelper.h */,
+				BE43D35B1B1B950000BA7794 /* ImagePickerHelper.m */,
+				BE2CBFBA1B1B4A2F0049010E /* CoreDataCommonHelper.h */,
+				BE2CBFBB1B1B4A2F0049010E /* CoreDataCommonHelper.m */,
+				BE2CBFCF1B1B73980049010E /* NoteHelper.h */,
+				BE2CBFD01B1B73980049010E /* NoteHelper.m */,
+				BE43D3541B1B8A1C00BA7794 /* CategoryHelper.h */,
+				BE43D3551B1B8A1C00BA7794 /* CategoryHelper.m */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		BE43D35F1B1B988800BA7794 /* ExpandableSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				BE43D3601B1B98B600BA7794 /* ExpandableSearchBar.h */,
+				BE43D3611B1B98B600BA7794 /* ExpandableSearchBar.m */,
+				BE43D3621B1B98B600BA7794 /* ExpandableSearchBar.xib */,
+			);
+			name = ExpandableSearchBar;
+			sourceTree = "<group>";
+		};
+		BE43D3651B1B98BC00BA7794 /* CategoryCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				BE43D36E1B1B9A0500BA7794 /* CAImageCollectionLayout.h */,
+				BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */,
+				BE43D3691B1B98FB00BA7794 /* CategoryCollectionView.h */,
+				BE43D36A1B1B98FB00BA7794 /* CategoryCollectionView.m */,
+				BE43D36C1B1B991200BA7794 /* CategoryCollectionView.xib */,
+				BE43D3741B1BA62400BA7794 /* CategoryCollectionViewCell.h */,
+				BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */,
+				BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */,
+			);
+			name = CategoryCollectionView;
+			sourceTree = "<group>";
+		};
 		BE9146041B0893C70084D0FA = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +185,8 @@
 		BE91460F1B0893C70084D0FA /* sticky note */ = {
 			isa = PBXGroup;
 			children = (
+				BE2CBFB91B1B49EF0049010E /* Helper Classes */,
+				BE2CBFB51B1B48A20049010E /* Model Classes */,
 				BE9146401B08A3530084D0FA /* CustomViews */,
 				BE91463C1B08A2FB0084D0FA /* ViewControllers */,
 				BE9146141B0893C70084D0FA /* AppDelegate.h */,
@@ -139,6 +234,8 @@
 				BE91463E1B08A3100084D0FA /* SearchViewController.m */,
 				BE9146461B08A6E80084D0FA /* QuickNoteViewController.h */,
 				BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */,
+				BE43D3571B1B8F5C00BA7794 /* EditCategoryViewController.h */,
+				BE43D3581B1B8F5C00BA7794 /* EditCategoryViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -146,9 +243,8 @@
 		BE9146401B08A3530084D0FA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				BE9146411B08A3BE0084D0FA /* ExpandableSearchBar.h */,
-				BE9146421B08A3BE0084D0FA /* ExpandableSearchBar.m */,
-				BE9146431B08A3BE0084D0FA /* ExpandableSearchBar.xib */,
+				BE43D3651B1B98BC00BA7794 /* CategoryCollectionView */,
+				BE43D35F1B1B988800BA7794 /* ExpandableSearchBar */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -233,10 +329,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE43D3781B1BA62400BA7794 /* CategoryCollectionViewCell.xib in Resources */,
+				BE43D36D1B1B991200BA7794 /* CategoryCollectionView.xib in Resources */,
 				BE91461F1B0893C70084D0FA /* Main.storyboard in Resources */,
 				BE9146241B0893C70084D0FA /* LaunchScreen.xib in Resources */,
 				BE9146211B0893C70084D0FA /* Images.xcassets in Resources */,
-				BE9146451B08A3BE0084D0FA /* ExpandableSearchBar.xib in Resources */,
+				BE43D3641B1B98B600BA7794 /* ExpandableSearchBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,11 +352,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE43D3771B1BA62400BA7794 /* CategoryCollectionViewCell.m in Sources */,
 				BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */,
+				BE2CBFCB1B1B52BC0049010E /* CategoryModel.m in Sources */,
+				BE2CBFCE1B1B58150049010E /* NoteModel.m in Sources */,
 				BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */,
+				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
-				BE9146441B08A3BE0084D0FA /* ExpandableSearchBar.m in Sources */,
+				BE43D35C1B1B950000BA7794 /* ImagePickerHelper.m in Sources */,
+				BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */,
+				BE43D3631B1B98B600BA7794 /* ExpandableSearchBar.m in Sources */,
+				BE43D36B1B1B98FB00BA7794 /* CategoryCollectionView.m in Sources */,
+				BE2CBFBC1B1B4A2F0049010E /* CoreDataCommonHelper.m in Sources */,
+				BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */,
 				BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */,
+				BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */,
+				BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */,
+				BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */,
 				BE9146131B0893C70084D0FA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +566,7 @@
 				BE9146351B0893C70084D0FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE9146361B0893C70084D0FA /* Build configuration list for PBXNativeTarget "sticky noteTests" */ = {
 			isa = XCConfigurationList;
@@ -464,8 +575,23 @@
 				BE9146381B0893C70084D0FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BE2CBFBD1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE2CBFBE1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = BE2CBFBE1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodel */;
+			name = AppCoreDataModel.xcdatamodeld;
+			path = "Model Classes/AppCoreDataModel.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BE9146051B0893C70084D0FA /* Project object */;
 }

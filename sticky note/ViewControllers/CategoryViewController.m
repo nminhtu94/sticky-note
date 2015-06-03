@@ -34,4 +34,7 @@
 }
 */
 
+- (IBAction)onAddCategory:(id)sender {
+    
+}
 @end
