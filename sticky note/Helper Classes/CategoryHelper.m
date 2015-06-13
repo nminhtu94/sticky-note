@@ -70,4 +70,22 @@
     return NO;
 }
 
+- (NSArray *)getAllCategory {
+    NSMutableArray *categories = [NSMutableArray new];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CategoryModel"
+                                              inManagedObjectContext:[self managedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (!error) {
+        [categories addObjectsFromArray:results];
+    }
+    
+    return categories;
+}
+
 @end

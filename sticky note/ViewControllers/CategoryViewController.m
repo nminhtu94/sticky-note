@@ -7,8 +7,12 @@
 //
 
 #import "CategoryViewController.h"
+#import "CategoryCollectionView.h"
+#import "CategoryHelper.h"
 
 @interface CategoryViewController ()
+
+@property (nonatomic, strong) CategoryCollectionView *tblCategory;
 
 @end
 
@@ -17,6 +21,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.tblCategory == nil) {
+        UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        flowLayout.itemSize = CGSizeMake(100, 100);
+        self.tblCategory = [[CategoryCollectionView alloc] initWithFrame:self.viewCategoryTblHolder.bounds
+                                                    collectionViewLayout:flowLayout];
+        [self.viewCategoryTblHolder addSubview:self.tblCategory];
+    }
+    
+    [self.tblCategory setCategories:[[CategoryHelper sharedInstance] getAllCategory]];
+    [self.tblCategory reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

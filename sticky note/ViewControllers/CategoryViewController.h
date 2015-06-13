@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CategoryViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *viewCategoryTblHolder;
 
 - (IBAction)onAddCategory:(id)sender;
 

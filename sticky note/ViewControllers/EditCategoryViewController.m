@@ -100,8 +100,7 @@
         [[CategoryHelper sharedInstance] updateCategory:selectedCategory.objectID name:self.txfName.text icon:UIImagePNGRepresentation(self.imgIcon.image)];
     }
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        selectedCategory = nil;
-    }];
+    selectedCategory = nil;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

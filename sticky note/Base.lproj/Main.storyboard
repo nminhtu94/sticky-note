@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -162,7 +163,19 @@
                     <view key="view" contentMode="scaleToFill" id="LSC-CE-2KK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLu-z6-mGD" userLabel="Category Collection Holder">
+                                <rect key="frame" x="8" y="64" width="584" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="XLu-z6-mGD" secondAttribute="trailing" constant="-8" id="5ef-qV-Qy1"/>
+                            <constraint firstItem="XLu-z6-mGD" firstAttribute="top" secondItem="bFe-t0-nhh" secondAttribute="bottom" id="93A-6T-rWq"/>
+                            <constraint firstItem="XLu-z6-mGD" firstAttribute="leading" secondItem="LSC-CE-2KK" secondAttribute="leadingMargin" constant="-8" id="IdR-zc-50s"/>
+                            <constraint firstItem="cg2-eB-77b" firstAttribute="top" secondItem="XLu-z6-mGD" secondAttribute="bottom" id="ZqD-PJ-MCd"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sticky Notes" id="BLr-X1-i1b">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aEw-U6-Kmb">
@@ -172,6 +185,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="viewCategoryTblHolder" destination="XLu-z6-mGD" id="m2S-CP-pXa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aM1-cM-ESK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
