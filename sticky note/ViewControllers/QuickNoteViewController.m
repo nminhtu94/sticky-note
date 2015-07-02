@@ -126,6 +126,7 @@
     if ([[CategoryHelper sharedInstance] getAllCategory].count == 0) {
         [_alertView setMessage:@"You don't have any category, please create some"];
         [_alertView show];
+        return;
     }
     
     if (!_pickerViewTogged) {
