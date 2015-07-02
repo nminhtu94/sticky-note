@@ -23,6 +23,9 @@
 		BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */; };
 		BE43D3771B1BA62400BA7794 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */; };
 		BE43D3781B1BA62400BA7794 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */; };
+		BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20311B451BBE00BFCF49 /* UIViewController+CACategory.m */; };
+		BE7B20361B451C0600BFCF49 /* RFSwizzlingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20351B451C0600BFCF49 /* RFSwizzlingUtils.m */; };
+		BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20381B451E6200BFCF49 /* UITextView+ToolBar.m */; };
 		BE9146131B0893C70084D0FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146121B0893C70084D0FA /* main.m */; };
 		BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146151B0893C70084D0FA /* AppDelegate.m */; };
 		BE91461F1B0893C70084D0FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE91461D1B0893C70084D0FA /* Main.storyboard */; };
@@ -73,6 +76,12 @@
 		BE43D3741B1BA62400BA7794 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCollectionViewCell.h; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryCollectionViewCell.m; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCollectionViewCell.xib; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		BE7B20301B451BBE00BFCF49 /* UIViewController+CACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CACategory.h"; path = "Category Classes/UIViewController+CACategory.h"; sourceTree = "<group>"; };
+		BE7B20311B451BBE00BFCF49 /* UIViewController+CACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CACategory.m"; path = "Category Classes/UIViewController+CACategory.m"; sourceTree = "<group>"; };
+		BE7B20341B451C0600BFCF49 /* RFSwizzlingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSwizzlingUtils.h; path = Utils/RFSwizzlingUtils.h; sourceTree = "<group>"; };
+		BE7B20351B451C0600BFCF49 /* RFSwizzlingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSwizzlingUtils.m; path = Utils/RFSwizzlingUtils.m; sourceTree = "<group>"; };
+		BE7B20371B451E6200BFCF49 /* UITextView+ToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextView+ToolBar.h"; path = "Category Classes/UITextView+ToolBar.h"; sourceTree = "<group>"; };
+		BE7B20381B451E6200BFCF49 /* UITextView+ToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextView+ToolBar.m"; path = "Category Classes/UITextView+ToolBar.m"; sourceTree = "<group>"; };
 		BE91460D1B0893C70084D0FA /* sticky note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sticky note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9146111B0893C70084D0FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE9146121B0893C70084D0FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -164,6 +173,26 @@
 			name = CategoryCollectionView;
 			sourceTree = "<group>";
 		};
+		BE7B202F1B451B9600BFCF49 /* Category Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BE7B20301B451BBE00BFCF49 /* UIViewController+CACategory.h */,
+				BE7B20311B451BBE00BFCF49 /* UIViewController+CACategory.m */,
+				BE7B20371B451E6200BFCF49 /* UITextView+ToolBar.h */,
+				BE7B20381B451E6200BFCF49 /* UITextView+ToolBar.m */,
+			);
+			name = "Category Classes";
+			sourceTree = "<group>";
+		};
+		BE7B20331B451BFC00BFCF49 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BE7B20341B451C0600BFCF49 /* RFSwizzlingUtils.h */,
+				BE7B20351B451C0600BFCF49 /* RFSwizzlingUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		BE9146041B0893C70084D0FA = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +214,8 @@
 		BE91460F1B0893C70084D0FA /* sticky note */ = {
 			isa = PBXGroup;
 			children = (
+				BE7B20331B451BFC00BFCF49 /* Utils */,
+				BE7B202F1B451B9600BFCF49 /* Category Classes */,
 				BE2CBFB91B1B49EF0049010E /* Helper Classes */,
 				BE2CBFB51B1B48A20049010E /* Model Classes */,
 				BE9146401B08A3530084D0FA /* CustomViews */,
@@ -359,6 +390,7 @@
 				BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */,
 				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
+				BE7B20361B451C0600BFCF49 /* RFSwizzlingUtils.m in Sources */,
 				BE43D35C1B1B950000BA7794 /* ImagePickerHelper.m in Sources */,
 				BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */,
 				BE43D3631B1B98B600BA7794 /* ExpandableSearchBar.m in Sources */,
@@ -367,6 +399,8 @@
 				BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */,
 				BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */,
 				BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */,
+				BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */,
+				BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */,
 				BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */,
 				BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */,
 				BE9146131B0893C70084D0FA /* main.m in Sources */,

@@ -10,4 +10,10 @@
 
 @interface QuickNoteViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextView *txvNoteText;
+@property (weak, nonatomic) IBOutlet UIButton *btnChooseCategory;
+
+- (IBAction)onSaveNote:(id)sender;
+- (IBAction)onSelectCategory:(id)sender;
+
 @end

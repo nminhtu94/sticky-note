@@ -57,17 +57,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFi-OD-Tso">
-                                <rect key="frame" x="10" y="64" width="580" height="200"/>
+                                <rect key="frame" x="10" y="74" width="580" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz3-rY-FgW">
+                                <rect key="frame" x="10" y="282" width="110.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8J-Jj-axT" userLabel="Button Choose Category">
+                                <rect key="frame" x="10" y="304" width="44" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSelectCategory:" destination="GVX-vg-yE9" eventType="touchUpInside" id="TKS-EW-cEB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GFi-OD-Tso" firstAttribute="top" secondItem="e5H-pQ-8o1" secondAttribute="bottom" id="CL9-oa-isl"/>
+                            <constraint firstItem="GFi-OD-Tso" firstAttribute="top" secondItem="e5H-pQ-8o1" secondAttribute="bottom" constant="10" id="CL9-oa-isl"/>
+                            <constraint firstItem="I8J-Jj-axT" firstAttribute="leading" secondItem="Vz3-rY-FgW" secondAttribute="leading" id="GP3-4r-LGA"/>
+                            <constraint firstItem="I8J-Jj-axT" firstAttribute="top" secondItem="Vz3-rY-FgW" secondAttribute="bottom" constant="5" id="NLf-Zv-AXO"/>
+                            <constraint firstItem="GFi-OD-Tso" firstAttribute="leading" secondItem="Vz3-rY-FgW" secondAttribute="leading" id="PVd-Zo-3Gp"/>
                             <constraint firstItem="tTS-zM-54P" firstAttribute="top" secondItem="GFi-OD-Tso" secondAttribute="bottom" id="WZt-na-PW1"/>
                             <constraint firstAttribute="trailing" secondItem="GFi-OD-Tso" secondAttribute="trailing" constant="10" id="XgG-bV-KDi"/>
+                            <constraint firstItem="Vz3-rY-FgW" firstAttribute="top" secondItem="GFi-OD-Tso" secondAttribute="bottom" constant="8" id="lOA-vK-Bxy"/>
                             <constraint firstItem="GFi-OD-Tso" firstAttribute="leading" secondItem="DMu-mq-6ne" secondAttribute="leading" constant="10" id="r4o-Fu-jgr"/>
                             <constraint firstItem="GFi-OD-Tso" firstAttribute="height" secondItem="DMu-mq-6ne" secondAttribute="height" multiplier="1:3" id="wiM-rG-o33"/>
                         </constraints>
@@ -78,8 +98,16 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Quick Note" id="fKf-Zg-0nc">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5GU-c4-vI2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5GU-c4-vI2">
+                            <connections>
+                                <action selector="onSaveNote:" destination="GVX-vg-yE9" id="Ity-wn-81D"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnChooseCategory" destination="I8J-Jj-axT" id="UNm-zx-vV2"/>
+                        <outlet property="txvNoteText" destination="GFi-OD-Tso" id="wxi-xt-gfG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0SH-sb-TfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
