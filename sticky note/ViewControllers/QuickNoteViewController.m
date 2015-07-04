@@ -9,6 +9,7 @@
 #import "QuickNoteViewController.h"
 #import "NoteHelper.h"
 #import "CategoryHelper.h"
+#import "MainTabBarViewController.h"
 //#import "UITextView+ToolBar.h"
 //#import "UIViewController+CACategory.h"
 
@@ -19,6 +20,8 @@
 @property (nonatomic, assign) CGRect categoryPickerFrameOriginal;
 @property (nonatomic, assign) CGRect categoryPickerFrameMoved;
 @property (nonatomic) UIAlertView *alertView;
+
+@property (nonatomic) CategoryModel *selectedCategory;
 
 @end
 
@@ -54,6 +57,8 @@
     [self.txvNoteText.layer setBorderColor:[UIColor blackColor].CGColor];
     [self.txvNoteText.layer setBorderWidth:1.0f];
     [self.txvNoteText setInputAccessoryView:toolbar];
+    
+    _selectedCategory = nil;
 }
 
 - (void)textViewDone:(id)sender {
@@ -89,9 +94,9 @@
 #pragma mark <UIPickerViewDelegate>
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSArray *allCategory = [[CategoryHelper sharedInstance] getAllCategory];
-    CategoryModel *category = [allCategory objectAtIndex:row];
+    _selectedCategory = [allCategory objectAtIndex:row];
     
-    [_btnChooseCategory setTitle:category.name forState:UIControlStateNormal];
+    [_btnChooseCategory setTitle:_selectedCategory.name forState:UIControlStateNormal];
     
     _categoryPickerFrameOriginal = CGRectMake(0,
                                               self.view.frame.size.height,
@@ -120,6 +125,24 @@
 }
 
 - (IBAction)onSaveNote:(id)sender {
+    if ([_txfTitle.text isEqualToString:@""]) {
+        [_alertView setMessage:@"Please enter title!"];
+        [_alertView show];
+        return;
+    }
+    
+    if (_selectedCategory == nil) {
+        [_alertView setMessage:@"Please select category!"];
+        [_alertView show];
+        return;
+    }
+    [[NoteHelper sharedInstance] addNote:_txfTitle.text
+                                    text:_txvNoteText.text
+                                   image:nil
+                                  sketch:nil
+                                    date:[NSDate date]
+                                category:_selectedCategory];
+    //[MainTabBar setSelectedIndex:0];
 }
 
 - (IBAction)onSelectCategory:(id)sender {

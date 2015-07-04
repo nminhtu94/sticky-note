@@ -45,7 +45,7 @@ static NSString * const ContactLayoutCellKind = @"ContactCollectionCell";
     self.itemInsets = UIEdgeInsetsMake(10.0f, 10.0f, 5.0f, 10.0f);
     self.itemSize = CGSizeMake(120.0f, 160.0f);
     self.interItemSpacingY = 5.0f;
-    self.numberOfColumns = [UIScreen mainScreen].bounds.size.width / 120;
+    self.numberOfColumns = [UIScreen mainScreen].bounds.size.width / self.itemSize.width;
 }
 
 #pragma mark - Layout

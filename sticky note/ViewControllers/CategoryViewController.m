@@ -9,8 +9,9 @@
 #import "CategoryViewController.h"
 #import "CategoryCollectionView.h"
 #import "CategoryHelper.h"
+#import "NoteViewController.h"
 
-@interface CategoryViewController ()
+@interface CategoryViewController ()<CategoryCollectionDelegate>
 
 @property (nonatomic, strong) CategoryCollectionView *tblCategory;
 
@@ -35,6 +36,7 @@
         flowLayout.itemSize = CGSizeMake(100, 100);
         self.tblCategory = [[CategoryCollectionView alloc] initWithFrame:self.viewCategoryTblHolder.bounds
                                                     collectionViewLayout:flowLayout];
+        [self.tblCategory setCustomDelegate:self];
         [self.viewCategoryTblHolder addSubview:self.tblCategory];
     }
     
@@ -47,15 +49,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark <CategoryCollectionDelegate>
+- (void)CategoryCollection:(CategoryCollectionView *)collection onItemSelected:(CategoryModel *)categoryItem {
+    [NoteViewController setSelectedCategory:categoryItem];
+    [self performSegueWithIdentifier:@"toNoteViewController" sender:self];
 }
-*/
 
 - (IBAction)onAddCategory:(id)sender {
     

@@ -9,7 +9,7 @@
 #import "CategoryCollectionView.h"
 
 @implementation CategoryCollectionView
-@synthesize categories;
+@synthesize categories, customDelegate;
 
 static NSString* cellIdentifier = @"CategoryCollectionCell";
 
@@ -50,6 +50,7 @@ static NSString* cellIdentifier = @"CategoryCollectionCell";
     [self setBackgroundColor:[UIColor clearColor]];
     CAImageCollectionLayout* imageLayout = [[CAImageCollectionLayout alloc] init];
     [imageLayout setItemSize:CGSizeMake(120.0f, 160.0f)];
+    [imageLayout setNumberOfColumns:[UIScreen mainScreen].bounds.size.width / 120.0f];
     [self setCollectionViewLayout:imageLayout];
 }
 
@@ -59,7 +60,6 @@ static NSString* cellIdentifier = @"CategoryCollectionCell";
 }
 
 #pragma mark UICollectionViewDelegate
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CategoryCollectionViewCell *cell = (CategoryCollectionViewCell *)[self dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
@@ -68,6 +68,14 @@ static NSString* cellIdentifier = @"CategoryCollectionCell";
     
     [cell.imgIcon setImage:[UIImage imageWithData:category.icon]];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CategoryModel *category = [categories objectAtIndex:indexPath.row];
+    
+    if (customDelegate) {
+        [customDelegate CategoryCollection:self onItemSelected:category];
+    }
 }
 
 @end

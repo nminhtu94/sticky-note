@@ -42,10 +42,7 @@
     [note setImage:image];
     [note setSketch:sketch];
     [note setDate:date];
-    [note setCategory:category];
-    
-    [category addNotesObject:note];
-    
+    [note setValue:[self.managedObjectContext objectWithID:[category objectID]] forKey:@"category"];
     [self save];
     return YES;
 }
@@ -80,6 +77,14 @@
     }
     
     return NO;
+}
+
+- (NSArray *)getNoteOfCategory:(CategoryModel *)category {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category = %@", category];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"NoteModel"];
+    [fetchRequest setPredicate:predicate];
+    
+    return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
 }
 
 - (BOOL)deleteNote:(NSManagedObjectID *)objectID {

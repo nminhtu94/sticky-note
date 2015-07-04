@@ -23,6 +23,13 @@
 		BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */; };
 		BE43D3771B1BA62400BA7794 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */; };
 		BE43D3781B1BA62400BA7794 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */; };
+		BE6222E01B48640100DB7F13 /* NoteCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222DF1B48640100DB7F13 /* NoteCollectionView.m */; };
+		BE6222E21B48652000DB7F13 /* NoteCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6222E11B48652000DB7F13 /* NoteCollectionView.xib */; };
+		BE6222E61B48667200DB7F13 /* NoteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222E41B48667200DB7F13 /* NoteCollectionViewCell.m */; };
+		BE6222E71B48667200DB7F13 /* NoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6222E51B48667200DB7F13 /* NoteCollectionViewCell.xib */; };
+		BE6222EA1B4869A300DB7F13 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222E91B4869A300DB7F13 /* NoteViewController.m */; };
+		BE6222ED1B486FBD00DB7F13 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222EC1B486FBD00DB7F13 /* MainTabBarViewController.m */; };
+		BE6222F01B48824000DB7F13 /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222EF1B48824000DB7F13 /* UIImage+ColorImage.m */; };
 		BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20311B451BBE00BFCF49 /* UIViewController+CACategory.m */; };
 		BE7B20361B451C0600BFCF49 /* RFSwizzlingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20351B451C0600BFCF49 /* RFSwizzlingUtils.m */; };
 		BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20381B451E6200BFCF49 /* UITextView+ToolBar.m */; };
@@ -76,6 +83,18 @@
 		BE43D3741B1BA62400BA7794 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCollectionViewCell.h; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryCollectionViewCell.m; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCollectionViewCell.xib; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		BE6222DE1B48640100DB7F13 /* NoteCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteCollectionView.h; path = CustomViews/NoteCollectionView/NoteCollectionView.h; sourceTree = "<group>"; };
+		BE6222DF1B48640100DB7F13 /* NoteCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteCollectionView.m; path = CustomViews/NoteCollectionView/NoteCollectionView.m; sourceTree = "<group>"; };
+		BE6222E11B48652000DB7F13 /* NoteCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteCollectionView.xib; path = CustomViews/NoteCollectionView/NoteCollectionView.xib; sourceTree = "<group>"; };
+		BE6222E31B48667200DB7F13 /* NoteCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteCollectionViewCell.h; path = CustomViews/NoteCollectionView/NoteCollectionViewCell.h; sourceTree = "<group>"; };
+		BE6222E41B48667200DB7F13 /* NoteCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteCollectionViewCell.m; path = CustomViews/NoteCollectionView/NoteCollectionViewCell.m; sourceTree = "<group>"; };
+		BE6222E51B48667200DB7F13 /* NoteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteCollectionViewCell.xib; path = CustomViews/NoteCollectionView/NoteCollectionViewCell.xib; sourceTree = "<group>"; };
+		BE6222E81B4869A300DB7F13 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = ViewControllers/NoteViewController.h; sourceTree = "<group>"; };
+		BE6222E91B4869A300DB7F13 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewController.m; path = ViewControllers/NoteViewController.m; sourceTree = "<group>"; };
+		BE6222EB1B486FBD00DB7F13 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabBarViewController.h; path = ViewControllers/MainTabBarViewController.h; sourceTree = "<group>"; };
+		BE6222EC1B486FBD00DB7F13 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabBarViewController.m; path = ViewControllers/MainTabBarViewController.m; sourceTree = "<group>"; };
+		BE6222EE1B48824000DB7F13 /* UIImage+ColorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ColorImage.h"; path = "Category Classes/UIImage+ColorImage.h"; sourceTree = "<group>"; };
+		BE6222EF1B48824000DB7F13 /* UIImage+ColorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ColorImage.m"; path = "Category Classes/UIImage+ColorImage.m"; sourceTree = "<group>"; };
 		BE7B20301B451BBE00BFCF49 /* UIViewController+CACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CACategory.h"; path = "Category Classes/UIViewController+CACategory.h"; sourceTree = "<group>"; };
 		BE7B20311B451BBE00BFCF49 /* UIViewController+CACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CACategory.m"; path = "Category Classes/UIViewController+CACategory.m"; sourceTree = "<group>"; };
 		BE7B20341B451C0600BFCF49 /* RFSwizzlingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSwizzlingUtils.h; path = Utils/RFSwizzlingUtils.h; sourceTree = "<group>"; };
@@ -161,8 +180,6 @@
 		BE43D3651B1B98BC00BA7794 /* CategoryCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				BE43D36E1B1B9A0500BA7794 /* CAImageCollectionLayout.h */,
-				BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */,
 				BE43D3691B1B98FB00BA7794 /* CategoryCollectionView.h */,
 				BE43D36A1B1B98FB00BA7794 /* CategoryCollectionView.m */,
 				BE43D36C1B1B991200BA7794 /* CategoryCollectionView.xib */,
@@ -173,9 +190,24 @@
 			name = CategoryCollectionView;
 			sourceTree = "<group>";
 		};
+		BE6222DD1B4863B300DB7F13 /* NoteCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				BE6222DE1B48640100DB7F13 /* NoteCollectionView.h */,
+				BE6222DF1B48640100DB7F13 /* NoteCollectionView.m */,
+				BE6222E11B48652000DB7F13 /* NoteCollectionView.xib */,
+				BE6222E31B48667200DB7F13 /* NoteCollectionViewCell.h */,
+				BE6222E41B48667200DB7F13 /* NoteCollectionViewCell.m */,
+				BE6222E51B48667200DB7F13 /* NoteCollectionViewCell.xib */,
+			);
+			name = NoteCollectionView;
+			sourceTree = "<group>";
+		};
 		BE7B202F1B451B9600BFCF49 /* Category Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BE6222EE1B48824000DB7F13 /* UIImage+ColorImage.h */,
+				BE6222EF1B48824000DB7F13 /* UIImage+ColorImage.m */,
 				BE7B20301B451BBE00BFCF49 /* UIViewController+CACategory.h */,
 				BE7B20311B451BBE00BFCF49 /* UIViewController+CACategory.m */,
 				BE7B20371B451E6200BFCF49 /* UITextView+ToolBar.h */,
@@ -267,6 +299,10 @@
 				BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */,
 				BE43D3571B1B8F5C00BA7794 /* EditCategoryViewController.h */,
 				BE43D3581B1B8F5C00BA7794 /* EditCategoryViewController.m */,
+				BE6222E81B4869A300DB7F13 /* NoteViewController.h */,
+				BE6222E91B4869A300DB7F13 /* NoteViewController.m */,
+				BE6222EB1B486FBD00DB7F13 /* MainTabBarViewController.h */,
+				BE6222EC1B486FBD00DB7F13 /* MainTabBarViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -274,6 +310,9 @@
 		BE9146401B08A3530084D0FA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				BE43D36E1B1B9A0500BA7794 /* CAImageCollectionLayout.h */,
+				BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */,
+				BE6222DD1B4863B300DB7F13 /* NoteCollectionView */,
 				BE43D3651B1B98BC00BA7794 /* CategoryCollectionView */,
 				BE43D35F1B1B988800BA7794 /* ExpandableSearchBar */,
 			);
@@ -360,12 +399,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6222E71B48667200DB7F13 /* NoteCollectionViewCell.xib in Resources */,
 				BE43D3781B1BA62400BA7794 /* CategoryCollectionViewCell.xib in Resources */,
 				BE43D36D1B1B991200BA7794 /* CategoryCollectionView.xib in Resources */,
 				BE91461F1B0893C70084D0FA /* Main.storyboard in Resources */,
 				BE9146241B0893C70084D0FA /* LaunchScreen.xib in Resources */,
 				BE9146211B0893C70084D0FA /* Images.xcassets in Resources */,
 				BE43D3641B1B98B600BA7794 /* ExpandableSearchBar.xib in Resources */,
+				BE6222E21B48652000DB7F13 /* NoteCollectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +428,7 @@
 				BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */,
 				BE2CBFCB1B1B52BC0049010E /* CategoryModel.m in Sources */,
 				BE2CBFCE1B1B58150049010E /* NoteModel.m in Sources */,
+				BE6222EA1B4869A300DB7F13 /* NoteViewController.m in Sources */,
 				BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */,
 				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
@@ -394,15 +436,19 @@
 				BE43D35C1B1B950000BA7794 /* ImagePickerHelper.m in Sources */,
 				BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */,
 				BE43D3631B1B98B600BA7794 /* ExpandableSearchBar.m in Sources */,
+				BE6222ED1B486FBD00DB7F13 /* MainTabBarViewController.m in Sources */,
 				BE43D36B1B1B98FB00BA7794 /* CategoryCollectionView.m in Sources */,
 				BE2CBFBC1B1B4A2F0049010E /* CoreDataCommonHelper.m in Sources */,
 				BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */,
 				BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */,
+				BE6222F01B48824000DB7F13 /* UIImage+ColorImage.m in Sources */,
 				BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */,
+				BE6222E61B48667200DB7F13 /* NoteCollectionViewCell.m in Sources */,
 				BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */,
 				BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */,
 				BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */,
 				BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */,
+				BE6222E01B48640100DB7F13 /* NoteCollectionView.m in Sources */,
 				BE9146131B0893C70084D0FA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,5 +29,7 @@
               date:(NSDate *)date
           category:(CategoryModel *)category;
 
+- (NSArray *)getNoteOfCategory:(CategoryModel *)category;
+
 - (BOOL)deleteNote:(NSManagedObjectID *)objectID;
 @end

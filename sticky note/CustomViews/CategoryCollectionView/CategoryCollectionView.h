@@ -11,9 +11,15 @@
 #import "CategoryCollectionViewCell.h"
 #import "CategoryModel.h"
 
-IB_DESIGNABLE
+@class CategoryCollectionView;
+@protocol CategoryCollectionDelegate <NSObject>
+
+- (void)CategoryCollection:(CategoryCollectionView *)collection onItemSelected:(CategoryModel *)categoryItem;
+
+@end
 @interface CategoryCollectionView : UICollectionView <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, assign) id customDelegate;
 
 @end

@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *txvNoteText;
 @property (weak, nonatomic) IBOutlet UIButton *btnChooseCategory;
+@property (weak, nonatomic) IBOutlet UITextField *txfTitle;
 
 - (IBAction)onSaveNote:(id)sender;
 - (IBAction)onSelectCategory:(id)sender;

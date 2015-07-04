@@ -19,9 +19,10 @@
 
 -(NSManagedObjectContext *) managedObjectContext{
     if (!_managedObjectContext) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        //_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         // Setting parent of private managed object context
-        [_managedObjectContext setParentContext:[[AppCoreModel getInstance] managedObjectContext]];
+        //[_managedObjectContext setParentContext:[[AppCoreModel getInstance] managedObjectContext]];
+        _managedObjectContext = [[AppCoreModel getInstance] managedObjectContext];
     }
     return _managedObjectContext;
 }
