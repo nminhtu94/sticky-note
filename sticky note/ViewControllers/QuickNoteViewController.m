@@ -57,6 +57,10 @@
     [self.txvNoteText.layer setBorderColor:[UIColor blackColor].CGColor];
     [self.txvNoteText.layer setBorderWidth:1.0f];
     [self.txvNoteText setInputAccessoryView:toolbar];
+	
+	[_segment setSelectedSegmentIndex:0];
+	[_txvNoteText setHidden:NO];
+	[_viewDrawingPad setHidden:YES];
     
     _selectedCategory = nil;
 }
@@ -173,5 +177,17 @@
             _pickerViewTogged = NO;
         }];
     }
+}
+
+- (IBAction)onChangeInputMode:(id)sender {
+	UISegmentedControl *selector = (UISegmentedControl *)sender;
+	
+	if ([selector selectedSegmentIndex] == 0) {
+		[_txvNoteText setHidden:NO];
+		[_viewDrawingPad setHidden:YES];
+	} else {
+		[_txvNoteText setHidden:YES];
+		[_viewDrawingPad setHidden:NO];
+	}
 }
 @end

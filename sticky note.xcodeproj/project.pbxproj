@@ -30,6 +30,7 @@
 		BE6222EA1B4869A300DB7F13 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222E91B4869A300DB7F13 /* NoteViewController.m */; };
 		BE6222ED1B486FBD00DB7F13 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222EC1B486FBD00DB7F13 /* MainTabBarViewController.m */; };
 		BE6222F01B48824000DB7F13 /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222EF1B48824000DB7F13 /* UIImage+ColorImage.m */; };
+		BE6BCCA11B53164C008A151F /* DrawingPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6BCCA01B53164C008A151F /* DrawingPadView.m */; };
 		BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20311B451BBE00BFCF49 /* UIViewController+CACategory.m */; };
 		BE7B20361B451C0600BFCF49 /* RFSwizzlingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20351B451C0600BFCF49 /* RFSwizzlingUtils.m */; };
 		BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B20381B451E6200BFCF49 /* UITextView+ToolBar.m */; };
@@ -95,6 +96,8 @@
 		BE6222EC1B486FBD00DB7F13 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabBarViewController.m; path = ViewControllers/MainTabBarViewController.m; sourceTree = "<group>"; };
 		BE6222EE1B48824000DB7F13 /* UIImage+ColorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ColorImage.h"; path = "Category Classes/UIImage+ColorImage.h"; sourceTree = "<group>"; };
 		BE6222EF1B48824000DB7F13 /* UIImage+ColorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ColorImage.m"; path = "Category Classes/UIImage+ColorImage.m"; sourceTree = "<group>"; };
+		BE6BCC9F1B53164C008A151F /* DrawingPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingPadView.h; path = CustomViews/DrawingPadView/DrawingPadView.h; sourceTree = "<group>"; };
+		BE6BCCA01B53164C008A151F /* DrawingPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingPadView.m; path = CustomViews/DrawingPadView/DrawingPadView.m; sourceTree = "<group>"; };
 		BE7B20301B451BBE00BFCF49 /* UIViewController+CACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CACategory.h"; path = "Category Classes/UIViewController+CACategory.h"; sourceTree = "<group>"; };
 		BE7B20311B451BBE00BFCF49 /* UIViewController+CACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CACategory.m"; path = "Category Classes/UIViewController+CACategory.m"; sourceTree = "<group>"; };
 		BE7B20341B451C0600BFCF49 /* RFSwizzlingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSwizzlingUtils.h; path = Utils/RFSwizzlingUtils.h; sourceTree = "<group>"; };
@@ -201,6 +204,15 @@
 				BE6222E51B48667200DB7F13 /* NoteCollectionViewCell.xib */,
 			);
 			name = NoteCollectionView;
+			sourceTree = "<group>";
+		};
+		BE6BCC9E1B53162F008A151F /* DrawingPadView */ = {
+			isa = PBXGroup;
+			children = (
+				BE6BCC9F1B53164C008A151F /* DrawingPadView.h */,
+				BE6BCCA01B53164C008A151F /* DrawingPadView.m */,
+			);
+			name = DrawingPadView;
 			sourceTree = "<group>";
 		};
 		BE7B202F1B451B9600BFCF49 /* Category Classes */ = {
@@ -310,6 +322,7 @@
 		BE9146401B08A3530084D0FA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				BE6BCC9E1B53162F008A151F /* DrawingPadView */,
 				BE43D36E1B1B9A0500BA7794 /* CAImageCollectionLayout.h */,
 				BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */,
 				BE6222DD1B4863B300DB7F13 /* NoteCollectionView */,
@@ -424,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6BCCA11B53164C008A151F /* DrawingPadView.m in Sources */,
 				BE43D3771B1BA62400BA7794 /* CategoryCollectionViewCell.m in Sources */,
 				BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */,
 				BE2CBFCB1B1B52BC0049010E /* CategoryModel.m in Sources */,

@@ -13,8 +13,11 @@
 @property (weak, nonatomic) IBOutlet UITextView *txvNoteText;
 @property (weak, nonatomic) IBOutlet UIButton *btnChooseCategory;
 @property (weak, nonatomic) IBOutlet UITextField *txfTitle;
+@property (weak, nonatomic) IBOutlet UIView *viewDrawingPad;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 
 - (IBAction)onSaveNote:(id)sender;
 - (IBAction)onSelectCategory:(id)sender;
+- (IBAction)onChangeInputMode:(id)sender;
 
 @end
