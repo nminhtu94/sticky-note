@@ -11,11 +11,11 @@
 @interface DrawingPadView()
 
 @property (nonatomic) UIBezierPath *path;
-@property (nonatomic) UIImage *incrementalImage;
 
 @end
 
 @implementation DrawingPadView
+@synthesize incrementalImage = _incrementalImage;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -81,6 +81,10 @@
 	[_path stroke];
 	_incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
+}
+
+- (UIImage *)getDrawingImage {
+	return _incrementalImage;
 }
 
 @end

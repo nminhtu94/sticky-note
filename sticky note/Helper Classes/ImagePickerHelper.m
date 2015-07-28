@@ -8,35 +8,29 @@
 
 #import "ImagePickerHelper.h"
 
-static ImagePickerHelper* _sharedInstance;
 @implementation ImagePickerHelper
 @synthesize delegate;
 
 + (ImagePickerHelper*)sharedInstance {
-    if (_sharedInstance == nil) {
-        _sharedInstance = [[ImagePickerHelper alloc] init];
-    }
+	static dispatch_once_t onceToken;
+	static ImagePickerHelper* _sharedInstance = nil;
+	dispatch_once(&onceToken, ^{
+		if (_sharedInstance == nil) {
+			_sharedInstance = [[ImagePickerHelper alloc] init];
+		}
+	});
     return _sharedInstance;
 }
 
-+ (id) alloc {
-    @synchronized([ImagePickerHelper class]){
-        NSAssert(_sharedInstance == nil,
-                 @"[ImagePickerHelper] Attempted to allocate a second instance of a singleton");
-        _sharedInstance = [super alloc];
-        return _sharedInstance;
-    }
-    return nil;
-}
-
-- (UIImagePickerController*)pickerWithSourceType:(UIImagePickerControllerSourceType)sourceType {
+- (UIImagePickerController *)pickerWithSourceType:(UIImagePickerControllerSourceType)sourceType {
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
-        if (self.picker == nil) {
-            self.picker = [[UIImagePickerController alloc] init];
-            [self.picker setDelegate:self];
+        if ([[ImagePickerHelper sharedInstance] picker] == nil) {
+            [ImagePickerHelper sharedInstance].picker =
+				[[UIImagePickerController alloc] init];
+            [[ImagePickerHelper sharedInstance].picker setDelegate:self];
         }
         
-        [self.picker setSourceType:sourceType];
+        [[ImagePickerHelper sharedInstance].picker setSourceType:sourceType];
         return self.picker;
     }
     return nil;
@@ -44,6 +38,7 @@ static ImagePickerHelper* _sharedInstance;
 
 #pragma mark ImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self.delegate onPicker:picker didFinishPickingImageWithInfo:info];
+    [[ImagePickerHelper sharedInstance].delegate onPicker:picker
+							didFinishPickingImageWithInfo:info];
 }
 @end

@@ -12,11 +12,13 @@
 @class ImagePickerHelper;
 @protocol ImagePickerHelperDelegate
 
-- (void)onPicker: (UIImagePickerController*)picker didFinishPickingImageWithInfo:(NSDictionary*)info;
+- (void)onPicker: (UIImagePickerController*)picker
+	didFinishPickingImageWithInfo:(NSDictionary*)info;
 
 @end
 
-@interface ImagePickerHelper : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface ImagePickerHelper : NSObject <UINavigationControllerDelegate,
+										 UIImagePickerControllerDelegate>
 
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, strong) UIImagePickerController* picker;

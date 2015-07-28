@@ -43,6 +43,10 @@
 		BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463A1B08A2F40084D0FA /* CategoryViewController.m */; };
 		BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463E1B08A3100084D0FA /* SearchViewController.m */; };
 		BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */; };
+		BEF05F651B6735280040B57B /* ViewNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF05F631B6735280040B57B /* ViewNoteViewController.m */; };
+		BEF05F661B6735280040B57B /* ViewNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF05F641B6735280040B57B /* ViewNoteViewController.xib */; };
+		BEF05F6A1B6739B90040B57B /* ImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF05F691B6739B90040B57B /* ImagePickerView.m */; };
+		BEF05F6C1B6739CE0040B57B /* ImagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF05F6B1B6739CE0040B57B /* ImagePickerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +125,12 @@
 		BE91463E1B08A3100084D0FA /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/SearchViewController.m; sourceTree = "<group>"; };
 		BE9146461B08A6E80084D0FA /* QuickNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickNoteViewController.h; path = ViewControllers/QuickNoteViewController.h; sourceTree = "<group>"; };
 		BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickNoteViewController.m; path = ViewControllers/QuickNoteViewController.m; sourceTree = "<group>"; };
+		BEF05F621B6735280040B57B /* ViewNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewNoteViewController.h; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.h; sourceTree = "<group>"; };
+		BEF05F631B6735280040B57B /* ViewNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewNoteViewController.m; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.m; sourceTree = "<group>"; };
+		BEF05F641B6735280040B57B /* ViewNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewNoteViewController.xib; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.xib; sourceTree = "<group>"; };
+		BEF05F681B6739B90040B57B /* ImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePickerView.h; path = CustomViews/ImagePickerView/ImagePickerView.h; sourceTree = "<group>"; };
+		BEF05F691B6739B90040B57B /* ImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePickerView.m; path = CustomViews/ImagePickerView/ImagePickerView.m; sourceTree = "<group>"; };
+		BEF05F6B1B6739CE0040B57B /* ImagePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagePickerView.xib; path = CustomViews/ImagePickerView/ImagePickerView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +313,7 @@
 		BE91463C1B08A2FB0084D0FA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BEF05F611B6735010040B57B /* ViewNoteViewController */,
 				BE9146391B08A2F40084D0FA /* CategoryViewController.h */,
 				BE91463A1B08A2F40084D0FA /* CategoryViewController.m */,
 				BE91463D1B08A3100084D0FA /* SearchViewController.h */,
@@ -322,6 +333,7 @@
 		BE9146401B08A3530084D0FA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				BEF05F671B67393C0040B57B /* ImagePickerView */,
 				BE6BCC9E1B53162F008A151F /* DrawingPadView */,
 				BE43D36E1B1B9A0500BA7794 /* CAImageCollectionLayout.h */,
 				BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */,
@@ -330,6 +342,26 @@
 				BE43D35F1B1B988800BA7794 /* ExpandableSearchBar */,
 			);
 			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		BEF05F611B6735010040B57B /* ViewNoteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BEF05F621B6735280040B57B /* ViewNoteViewController.h */,
+				BEF05F631B6735280040B57B /* ViewNoteViewController.m */,
+				BEF05F641B6735280040B57B /* ViewNoteViewController.xib */,
+			);
+			name = ViewNoteViewController;
+			sourceTree = "<group>";
+		};
+		BEF05F671B67393C0040B57B /* ImagePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				BEF05F681B6739B90040B57B /* ImagePickerView.h */,
+				BEF05F691B6739B90040B57B /* ImagePickerView.m */,
+				BEF05F6B1B6739CE0040B57B /* ImagePickerView.xib */,
+			);
+			name = ImagePickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,7 +450,9 @@
 				BE91461F1B0893C70084D0FA /* Main.storyboard in Resources */,
 				BE9146241B0893C70084D0FA /* LaunchScreen.xib in Resources */,
 				BE9146211B0893C70084D0FA /* Images.xcassets in Resources */,
+				BEF05F661B6735280040B57B /* ViewNoteViewController.xib in Resources */,
 				BE43D3641B1B98B600BA7794 /* ExpandableSearchBar.xib in Resources */,
+				BEF05F6C1B6739CE0040B57B /* ImagePickerView.xib in Resources */,
 				BE6222E21B48652000DB7F13 /* NoteCollectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +490,7 @@
 				BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */,
 				BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */,
 				BE6222F01B48824000DB7F13 /* UIImage+ColorImage.m in Sources */,
+				BEF05F651B6735280040B57B /* ViewNoteViewController.m in Sources */,
 				BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */,
 				BE6222E61B48667200DB7F13 /* NoteCollectionViewCell.m in Sources */,
 				BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */,
@@ -464,6 +499,7 @@
 				BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */,
 				BE6222E01B48640100DB7F13 /* NoteCollectionView.m in Sources */,
 				BE9146131B0893C70084D0FA /* main.m in Sources */,
+				BEF05F6A1B6739B90040B57B /* ImagePickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,30 +10,47 @@
 #import "NoteHelper.h"
 #import "CategoryHelper.h"
 #import "MainTabBarViewController.h"
-//#import "UITextView+ToolBar.h"
-//#import "UIViewController+CACategory.h"
+#import "DrawingPadView.h"
 
-@interface QuickNoteViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface QuickNoteViewController () <UIPickerViewDelegate,
+									   UIPickerViewDataSource,
+									   UIActionSheetDelegate>
 
 @property (nonatomic) UIPickerView *pickerViewCategory;
 @property (nonatomic, assign, getter=isPickerViewTogged) BOOL pickerViewTogged;
 @property (nonatomic, assign) CGRect categoryPickerFrameOriginal;
 @property (nonatomic, assign) CGRect categoryPickerFrameMoved;
 @property (nonatomic) UIAlertView *alertView;
-
 @property (nonatomic) CategoryModel *selectedCategory;
+@property (nonatomic) UIActionSheet *actionSheet;
+@property (nonatomic, assign) BOOL willResetData;
 
 @end
 
 @implementation QuickNoteViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     if (_alertView == nil) {
-        _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Note" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Note"
+												message:@""
+											   delegate:nil
+									  cancelButtonTitle:@"OK"
+									  otherButtonTitles:nil, nil];
     }
+	
+	if (_actionSheet == nil) {
+		_actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Photo", nil)
+												   delegate:self
+										  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+									 destructiveButtonTitle:nil
+										  otherButtonTitles:NSLocalizedString(@"Camera", nil),
+															NSLocalizedString(@"Photo Library",
+																			  nil),
+						nil];
+	}
+	self.willResetData = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,8 +78,12 @@
 	[_segment setSelectedSegmentIndex:0];
 	[_txvNoteText setHidden:NO];
 	[_viewDrawingPad setHidden:YES];
-    
-    _selectedCategory = nil;
+	
+	[self.imagePicker setDelegate:self];
+	
+	if (self.willResetData) {
+		[self resetData];
+	}
 }
 
 - (void)textViewDone:(id)sender {
@@ -71,8 +92,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    
     
     if (_pickerViewCategory == nil) {
         _pickerViewCategory = [[UIPickerView alloc] init];
@@ -128,6 +147,32 @@
     return [[CategoryHelper sharedInstance] getAllCategory].count;
 }
 
+#pragma mark UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 0) {
+		self.willResetData = NO;
+		[self presentViewController:[[ImagePickerHelper sharedInstance]
+									 pickerWithSourceType:UIImagePickerControllerSourceTypeCamera]
+						   animated:YES
+						 completion:nil];
+	} else if (buttonIndex == 1) {
+		[self presentViewController:[[ImagePickerHelper sharedInstance]
+									 pickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary]
+						   animated:YES
+						 completion:nil];
+		self.willResetData = NO;
+	}
+}
+
+#pragma mark <ImagePickerViewDelegate>
+- (void)imagePickerView:(ImagePickerView *)pickerView onReplaceImage:(id)sender {
+	[_actionSheet showInView:self.view];
+}
+
+- (void)imagePickerView:(ImagePickerView *)pickerView onSelectImage:(id)sender {
+	[_actionSheet showInView:self.view];
+}
+
 - (IBAction)onSaveNote:(id)sender {
     if ([_txfTitle.text isEqualToString:@""]) {
         [_alertView setMessage:@"Please enter title!"];
@@ -140,13 +185,17 @@
         [_alertView show];
         return;
     }
+	
+	UIImage *sketch = [_viewDrawingPad sketchImage];
     [[NoteHelper sharedInstance] addNote:_txfTitle.text
                                     text:_txvNoteText.text
-                                   image:nil
-                                  sketch:nil
+								   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
+                                  sketch:UIImagePNGRepresentation(sketch)
                                     date:[NSDate date]
                                 category:_selectedCategory];
-    //[MainTabBar setSelectedIndex:0];
+	self.willResetData = YES;
+	[self resetData];
+    [MainTabBar setSelectedIndex:0];
 }
 
 - (IBAction)onSelectCategory:(id)sender {
@@ -181,7 +230,6 @@
 
 - (IBAction)onChangeInputMode:(id)sender {
 	UISegmentedControl *selector = (UISegmentedControl *)sender;
-	
 	if ([selector selectedSegmentIndex] == 0) {
 		[_txvNoteText setHidden:NO];
 		[_viewDrawingPad setHidden:YES];
@@ -190,4 +238,14 @@
 		[_viewDrawingPad setHidden:NO];
 	}
 }
+
+#pragma mark Private-Method
+- (void)resetData {
+	[_txfTitle setText:@""];
+	[_txvNoteText setText:@""];
+	[_btnChooseCategory setTitle:@"Select category" forState:UIControlStateNormal];
+	[self.imagePicker reset];
+	_selectedCategory = nil;
+}
+
 @end

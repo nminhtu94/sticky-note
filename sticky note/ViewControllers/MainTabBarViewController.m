@@ -12,6 +12,9 @@
 
 @end
 
+static NSString *storyboardName = @"Main";
+static NSString *tabName = @"mainTabBarController";
+
 @implementation MainTabBarViewController
 
 +(MainTabBarViewController *)sharedInstance
@@ -19,8 +22,12 @@
     static MainTabBarViewController *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[MainTabBarViewController alloc] init];
+        // sharedInstance = [[MainTabBarViewController alloc] init];
         // Do any other initialisation stuff here
+		UIStoryboard *storyBoard  = [UIStoryboard storyboardWithName:storyboardName
+															  bundle:[NSBundle mainBundle]];
+		sharedInstance =
+			(MainTabBarViewController*)[storyBoard instantiateViewControllerWithIdentifier:tabName];
     });
     return sharedInstance;
 }
@@ -29,8 +36,10 @@
 {
     if ((self = [super init])) {
         // Init
-        UIStoryboard *storyBoard  = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-        self = (MainTabBarViewController*)[storyBoard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
+        UIStoryboard *storyBoard  = [UIStoryboard storyboardWithName:storyboardName
+															  bundle:[NSBundle mainBundle]];
+        self =
+			(MainTabBarViewController*)[storyBoard instantiateViewControllerWithIdentifier:tabName];
     }
     return self;
 }

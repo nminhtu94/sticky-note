@@ -9,11 +9,13 @@
 #import "NoteViewController.h"
 #import "NoteCollectionView.h"
 #import "NoteHelper.h"
+#import "ViewNoteViewController.h"
 #import "CategoryModel.h"
 
-@interface NoteViewController ()
+@interface NoteViewController () <NoteCollectionViewDelegate>
 
 @property (nonatomic) NoteCollectionView *noteCollection;
+@property (nonatomic) ViewNoteViewController *viewNoteVC;
 
 @end
 
@@ -22,6 +24,10 @@ static CategoryModel *selectedCategory;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	if (_viewNoteVC == nil) {
+		_viewNoteVC = [[ViewNoteViewController alloc] init];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -40,6 +46,7 @@ static CategoryModel *selectedCategory;
         [_noteCollection setBackgroundColor:[UIColor clearColor]];
         [_viewNoteCollectionHolder addSubview:_noteCollection];
         [_viewNoteCollectionHolder bringSubviewToFront:_noteCollection];
+		[_noteCollection setCustomDelegate:self];
     }
     
     [self setup];
@@ -61,9 +68,13 @@ static CategoryModel *selectedCategory;
 - (void)setup {
     [_noteCollection setNotes:[[NoteHelper sharedInstance] getNoteOfCategory:selectedCategory]];
     [_noteCollection reloadData];
-    
     [_imgBackground setImage:[UIImage imageWithData:selectedCategory.icon]];
 }
 
+#pragma mar <NoteCollectionDelegate>
+- (void)noteCollectionView:(NoteCollectionView *)collectionView didSelectNote:(NoteModel *)note {
+	[_viewNoteVC setNote:note];
+	[self.navigationController pushViewController:_viewNoteVC animated:YES];
+}
 
 @end

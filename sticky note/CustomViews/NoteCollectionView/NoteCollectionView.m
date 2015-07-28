@@ -12,7 +12,7 @@
 #import "NoteCollectionViewCell.h"
 
 @implementation NoteCollectionView
-@synthesize notes;
+@synthesize notes, customDelegate;
 
 static NSString* cellIdentifier = @"NoteCollectionCell";
 
@@ -62,14 +62,25 @@ static NSString* cellIdentifier = @"NoteCollectionCell";
 }
 
 #pragma mark <UICollectionViewDelegate>
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NoteCollectionViewCell *cell = (NoteCollectionViewCell *)[self dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+				  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    NoteCollectionViewCell *cell =
+		(NoteCollectionViewCell *)[self dequeueReusableCellWithReuseIdentifier:cellIdentifier
+																  forIndexPath:indexPath];
     
     NoteModel *note = [notes objectAtIndex:indexPath.row];
     [cell.lblTitle setText:note.title];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+	didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	NoteModel *note = (NoteModel *)[notes objectAtIndex:indexPath.row];
+	
+	if (customDelegate) {
+		[customDelegate noteCollectionView:self didSelectNote:note];
+	}
 }
 
 @end

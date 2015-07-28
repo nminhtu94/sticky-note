@@ -10,4 +10,6 @@
 
 @interface DrawingPadView : UIView
 
+@property (nonatomic, setter=setSketchImage:, getter=sketchImage) UIImage *incrementalImage;
+
 @end
