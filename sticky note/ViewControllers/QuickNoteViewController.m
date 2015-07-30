@@ -56,7 +56,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 30)];
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:
+						  CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 30)];
     toolbar.barStyle = UIBarStyleDefault;
     [toolbar sizeToFit];
     
@@ -75,9 +76,13 @@
     [self.txvNoteText.layer setBorderWidth:1.0f];
     [self.txvNoteText setInputAccessoryView:toolbar];
 	
+	[self.viewDrawingPad.layer setBorderColor:[UIColor blackColor].CGColor];
+	[self.viewDrawingPad.layer setBorderWidth:1.0f];
+	
 	[_segment setSelectedSegmentIndex:0];
 	[_txvNoteText setHidden:NO];
 	[_viewDrawingPad setHidden:YES];
+	[_imagePicker setHidden:YES];
 	
 	[self.imagePicker setDelegate:self];
 	
@@ -233,9 +238,15 @@
 	if ([selector selectedSegmentIndex] == 0) {
 		[_txvNoteText setHidden:NO];
 		[_viewDrawingPad setHidden:YES];
-	} else {
+		[_imagePicker setHidden:YES];
+	} else if ([selector selectedSegmentIndex] == 1) {
 		[_txvNoteText setHidden:YES];
+		[_imagePicker setHidden:YES];
 		[_viewDrawingPad setHidden:NO];
+	} else if ([selector selectedSegmentIndex] == 2) {
+		[_txvNoteText setHidden:YES];
+		[_imagePicker setHidden:NO];
+		[_viewDrawingPad setHidden:YES];
 	}
 }
 
