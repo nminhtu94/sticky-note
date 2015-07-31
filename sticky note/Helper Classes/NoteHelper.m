@@ -99,4 +99,15 @@
     return NO;
 }
 
+- (NSArray *)searchNote:(NSString *)query{
+    NSArray *result = [[NSArray alloc] init];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@) OR (text CONTAINS[cd] %@)", query, query];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"NoteModel"];
+    [fetchRequest setPredicate:predicate];
+    
+    result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    // FILTER AFTER SHOW RESULT
+    return result;
+}
+
 @end
