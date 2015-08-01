@@ -67,7 +67,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mgc-XE-5xy" userLabel="Drawing Pad" customClass="DrawingPadView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mgc-XE-5xy" userLabel="Drawing Pad" customClass="DrawingControl">
                                 <rect key="frame" x="10" y="151" width="580" height="342"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDD-Ui-yZQ" customClass="ImagePickerView">
-                                <rect key="frame" x="155" y="151" width="290" height="290"/>
+                                <rect key="frame" x="16" y="151" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zDD-Ui-yZQ" secondAttribute="height" multiplier="1:1" id="ZP9-NV-WPq"/>
@@ -106,35 +106,27 @@
                             <constraint firstItem="AZj-Eq-UXc" firstAttribute="trailing" secondItem="GFi-OD-Tso" secondAttribute="trailing" id="0sd-Ow-vhO"/>
                             <constraint firstItem="Eb7-XK-5V5" firstAttribute="top" secondItem="e5H-pQ-8o1" secondAttribute="bottom" constant="8" id="5HB-a7-ziu"/>
                             <constraint firstItem="Eb7-XK-5V5" firstAttribute="trailing" secondItem="I8J-Jj-axT" secondAttribute="trailing" id="5nD-J1-uyi"/>
-                            <constraint firstItem="GFi-OD-Tso" firstAttribute="top" secondItem="Eb7-XK-5V5" secondAttribute="bottom" constant="10" id="6Gd-eV-Uem"/>
-                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="leading" secondItem="Mgc-XE-5xy" secondAttribute="leading" id="8It-j6-Kkq"/>
+                            <constraint firstAttribute="centerX" secondItem="zDD-Ui-yZQ" secondAttribute="centerX" id="Avm-FM-KUx"/>
                             <constraint firstItem="GFi-OD-Tso" firstAttribute="top" secondItem="I8J-Jj-axT" secondAttribute="bottom" constant="10" id="Dmn-Fn-jH3"/>
                             <constraint firstItem="tTS-zM-54P" firstAttribute="top" secondItem="AZj-Eq-UXc" secondAttribute="bottom" constant="10" id="IY4-k4-Kba"/>
+                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="top" secondItem="Mgc-XE-5xy" secondAttribute="top" id="M2P-EP-iH1"/>
                             <constraint firstItem="Mgc-XE-5xy" firstAttribute="top" secondItem="GFi-OD-Tso" secondAttribute="top" id="OA7-on-kgE"/>
-                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="width" secondItem="Mgc-XE-5xy" secondAttribute="width" multiplier="1:2" id="PPp-Fo-fw0"/>
+                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="leading" secondItem="DMu-mq-6ne" secondAttribute="leadingMargin" id="Oxf-KK-76h"/>
                             <constraint firstItem="Mgc-XE-5xy" firstAttribute="trailing" secondItem="GFi-OD-Tso" secondAttribute="trailing" id="PRs-61-6Ug"/>
                             <constraint firstItem="Mgc-XE-5xy" firstAttribute="bottom" secondItem="GFi-OD-Tso" secondAttribute="bottom" id="VNT-sM-dNq"/>
                             <constraint firstItem="I8J-Jj-axT" firstAttribute="top" secondItem="Eb7-XK-5V5" secondAttribute="bottom" constant="10" id="XQJ-Mz-Ba2"/>
                             <constraint firstAttribute="trailing" secondItem="GFi-OD-Tso" secondAttribute="trailing" constant="10" id="XgG-bV-KDi"/>
                             <constraint firstItem="Eb7-XK-5V5" firstAttribute="leading" secondItem="DMu-mq-6ne" secondAttribute="leading" constant="10" id="Xoe-P0-0z5"/>
-                            <constraint firstItem="AZj-Eq-UXc" firstAttribute="baseline" secondItem="I8J-Jj-axT" secondAttribute="baseline" id="c9x-FP-o4e"/>
-                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="top" secondItem="Mgc-XE-5xy" secondAttribute="top" id="dGH-wP-mLw"/>
+                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="width" secondItem="DMu-mq-6ne" secondAttribute="width" multiplier="1:2" id="aVd-EB-gVp"/>
                             <constraint firstItem="Eb7-XK-5V5" firstAttribute="leading" secondItem="I8J-Jj-axT" secondAttribute="leading" id="eEZ-yd-Yqz"/>
                             <constraint firstItem="Mgc-XE-5xy" firstAttribute="leading" secondItem="GFi-OD-Tso" secondAttribute="leading" id="ixl-iM-4me"/>
                             <constraint firstItem="AZj-Eq-UXc" firstAttribute="top" secondItem="GFi-OD-Tso" secondAttribute="bottom" constant="20" id="lyV-fB-Ypp"/>
-                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="centerX" secondItem="Mgc-XE-5xy" secondAttribute="centerX" id="mGw-dm-3iD"/>
                             <constraint firstItem="GFi-OD-Tso" firstAttribute="leading" secondItem="DMu-mq-6ne" secondAttribute="leading" constant="10" id="r4o-Fu-jgr"/>
                             <constraint firstAttribute="trailing" secondItem="Eb7-XK-5V5" secondAttribute="trailing" constant="10" id="thC-UQ-aOi"/>
-                            <constraint firstItem="I8J-Jj-axT" firstAttribute="leading" secondItem="AZj-Eq-UXc" secondAttribute="trailing" constant="10" id="wFm-fO-K2Y"/>
-                            <constraint firstItem="GFi-OD-Tso" firstAttribute="height" secondItem="DMu-mq-6ne" secondAttribute="height" multiplier="1:3" id="wiM-rG-o33"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="wFm-fO-K2Y"/>
-                                <exclude reference="6Gd-eV-Uem"/>
-                                <exclude reference="wiM-rG-o33"/>
-                                <exclude reference="8It-j6-Kkq"/>
-                                <exclude reference="c9x-FP-o4e"/>
+                                <exclude reference="Avm-FM-KUx"/>
                             </mask>
                         </variation>
                     </view>
@@ -147,11 +139,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnChooseCategory" destination="I8J-Jj-axT" id="UNm-zx-vV2"/>
+                        <outlet property="drawingControlView" destination="Mgc-XE-5xy" id="jqr-lD-kqO"/>
                         <outlet property="imagePicker" destination="zDD-Ui-yZQ" id="KhF-aq-aAM"/>
                         <outlet property="segment" destination="AZj-Eq-UXc" id="LSf-Tw-EP5"/>
                         <outlet property="txfTitle" destination="Eb7-XK-5V5" id="f90-zX-ypA"/>
                         <outlet property="txvNoteText" destination="GFi-OD-Tso" id="wxi-xt-gfG"/>
-                        <outlet property="viewDrawingPad" destination="Mgc-XE-5xy" id="SaO-fl-XZA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0SH-sb-TfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
