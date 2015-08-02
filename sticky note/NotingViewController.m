@@ -12,6 +12,8 @@
 {
     NSArray *arrFont;
     NSArray *arrSize;
+    NSString *font;
+    NSString *size;
 }
 
 @end
@@ -21,6 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.textView.text = @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+    
+
+    
+    
     arrFont = [UIFont familyNames];
     arrSize = [[NSArray alloc] initWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"18", @"24", @"36", @"48", @"64", @"72", @"96", @"144", @"288", nil];
     
@@ -73,10 +80,20 @@
         return [arrSize count];
     }
 }
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    NSLog(@"Row select: %ld",(long)row );
+    NSInteger fristRow = [self.pickerView selectedRowInComponent:0];
+    NSInteger secondRow = [self.pickerView selectedRowInComponent:1];
+
+    font = [arrFont objectAtIndex:fristRow];
+    size = [arrSize objectAtIndex:secondRow];
+    [self.textView setFont:[UIFont fontWithName:[NSString stringWithFormat:@"%@", font] size:[size floatValue]]];
+}
+
 -(void) clickPickerViewDone{
     self.viewOfPickerView.hidden = YES;
     /* TO-DO something */
-    
 }
 
 -(void) clickPickerViewCancel{
@@ -87,13 +104,14 @@
 -(void) clickDone{
     NSLog(@"Thanh Tan dep trai qua");
     [self.textView resignFirstResponder];
+    self.pickerView.hidden = YES;
 }
 
 - (IBAction)actionFont:(id)sender {
-    self.viewOfPickerView.hidden = NO;
+    self.viewOfPickerView.hidden = !self.viewOfPickerView.hidden;
 }
 - (IBAction)actionSize:(id)sender {
-    self.viewOfPickerView.hidden = NO;
+    self.viewOfPickerView.hidden = !self.viewOfPickerView.hidden;
 }
 
 - (IBAction)actionColor:(id)sender {
