@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NotingViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[NotingViewController alloc] initWithNibName:@"NotingViewController" bundle:nil]];
+    [self.window setRootViewController:nav];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

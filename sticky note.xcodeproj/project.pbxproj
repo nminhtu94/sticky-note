@@ -9,6 +9,20 @@
 /* Begin PBXBuildFile section */
 		A6BDD26E1B6E2CE800A7913E /* NotingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BDD26C1B6E2CE800A7913E /* NotingViewController.m */; };
 		A6BDD26F1B6E2CE800A7913E /* NotingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6BDD26D1B6E2CE800A7913E /* NotingViewController.xib */; };
+		BE29A9B61B69F13D00EC126A /* colorPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE29A9A31B69F13D00EC126A /* colorPicker.bundle */; };
+		BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9A51B69F13D00EC126A /* NEOColorPickerBaseViewController.m */; };
+		BE29A9B81B69F13D00EC126A /* NEOColorPickerFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9A71B69F13D00EC126A /* NEOColorPickerFavoritesViewController.m */; };
+		BE29A9B91B69F13D00EC126A /* NEOColorPickerFavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE29A9A81B69F13D00EC126A /* NEOColorPickerFavoritesViewController.xib */; };
+		BE29A9BA1B69F13D00EC126A /* NEOColorPickerGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9AA1B69F13D00EC126A /* NEOColorPickerGradientView.m */; };
+		BE29A9BB1B69F13D00EC126A /* NEOColorPickerHSLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9AC1B69F13D00EC126A /* NEOColorPickerHSLViewController.m */; };
+		BE29A9BC1B69F13D00EC126A /* NEOColorPickerHSLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE29A9AD1B69F13D00EC126A /* NEOColorPickerHSLViewController.xib */; };
+		BE29A9BD1B69F13D00EC126A /* NEOColorPickerHueGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9AF1B69F13D00EC126A /* NEOColorPickerHueGridViewController.m */; };
+		BE29A9BE1B69F13D00EC126A /* NEOColorPickerHueGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE29A9B01B69F13D00EC126A /* NEOColorPickerHueGridViewController.xib */; };
+		BE29A9BF1B69F13D00EC126A /* NEOColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9B21B69F13D00EC126A /* NEOColorPickerViewController.m */; };
+		BE29A9C01B69F13D00EC126A /* NEOColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE29A9B31B69F13D00EC126A /* NEOColorPickerViewController.xib */; };
+		BE29A9C11B69F13D00EC126A /* UIColor+NEOColor.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9B51B69F13D00EC126A /* UIColor+NEOColor.m */; };
+		BE29A9C61B69F37C00EC126A /* DrawingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9C51B69F37C00EC126A /* DrawingControl.m */; };
+		BE29A9C81B69F38E00EC126A /* DrawingControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE29A9C71B69F38E00EC126A /* DrawingControl.xib */; };
 		BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFB71B1B48AC0049010E /* AppCoreModel.m */; };
 		BE2CBFBC1B1B4A2F0049010E /* CoreDataCommonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFBB1B1B4A2F0049010E /* CoreDataCommonHelper.m */; };
 		BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFBD1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld */; };
@@ -65,6 +79,28 @@
 		A6BDD26B1B6E2CE800A7913E /* NotingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotingViewController.h; sourceTree = "<group>"; };
 		A6BDD26C1B6E2CE800A7913E /* NotingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotingViewController.m; sourceTree = "<group>"; };
 		A6BDD26D1B6E2CE800A7913E /* NotingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotingViewController.xib; sourceTree = "<group>"; };
+		BE29A9A31B69F13D00EC126A /* colorPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = colorPicker.bundle; path = CustomViews/ColorPickerView/colorPicker.bundle; sourceTree = "<group>"; };
+		BE29A9A41B69F13D00EC126A /* NEOColorPickerBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerBaseViewController.h; path = CustomViews/ColorPickerView/NEOColorPickerBaseViewController.h; sourceTree = "<group>"; };
+		BE29A9A51B69F13D00EC126A /* NEOColorPickerBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerBaseViewController.m; path = CustomViews/ColorPickerView/NEOColorPickerBaseViewController.m; sourceTree = "<group>"; };
+		BE29A9A61B69F13D00EC126A /* NEOColorPickerFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerFavoritesViewController.h; path = CustomViews/ColorPickerView/NEOColorPickerFavoritesViewController.h; sourceTree = "<group>"; };
+		BE29A9A71B69F13D00EC126A /* NEOColorPickerFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerFavoritesViewController.m; path = CustomViews/ColorPickerView/NEOColorPickerFavoritesViewController.m; sourceTree = "<group>"; };
+		BE29A9A81B69F13D00EC126A /* NEOColorPickerFavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NEOColorPickerFavoritesViewController.xib; path = CustomViews/ColorPickerView/NEOColorPickerFavoritesViewController.xib; sourceTree = "<group>"; };
+		BE29A9A91B69F13D00EC126A /* NEOColorPickerGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerGradientView.h; path = CustomViews/ColorPickerView/NEOColorPickerGradientView.h; sourceTree = "<group>"; };
+		BE29A9AA1B69F13D00EC126A /* NEOColorPickerGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerGradientView.m; path = CustomViews/ColorPickerView/NEOColorPickerGradientView.m; sourceTree = "<group>"; };
+		BE29A9AB1B69F13D00EC126A /* NEOColorPickerHSLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerHSLViewController.h; path = CustomViews/ColorPickerView/NEOColorPickerHSLViewController.h; sourceTree = "<group>"; };
+		BE29A9AC1B69F13D00EC126A /* NEOColorPickerHSLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerHSLViewController.m; path = CustomViews/ColorPickerView/NEOColorPickerHSLViewController.m; sourceTree = "<group>"; };
+		BE29A9AD1B69F13D00EC126A /* NEOColorPickerHSLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NEOColorPickerHSLViewController.xib; path = CustomViews/ColorPickerView/NEOColorPickerHSLViewController.xib; sourceTree = "<group>"; };
+		BE29A9AE1B69F13D00EC126A /* NEOColorPickerHueGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerHueGridViewController.h; path = CustomViews/ColorPickerView/NEOColorPickerHueGridViewController.h; sourceTree = "<group>"; };
+		BE29A9AF1B69F13D00EC126A /* NEOColorPickerHueGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerHueGridViewController.m; path = CustomViews/ColorPickerView/NEOColorPickerHueGridViewController.m; sourceTree = "<group>"; };
+		BE29A9B01B69F13D00EC126A /* NEOColorPickerHueGridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NEOColorPickerHueGridViewController.xib; path = CustomViews/ColorPickerView/NEOColorPickerHueGridViewController.xib; sourceTree = "<group>"; };
+		BE29A9B11B69F13D00EC126A /* NEOColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerViewController.h; path = CustomViews/ColorPickerView/NEOColorPickerViewController.h; sourceTree = "<group>"; };
+		BE29A9B21B69F13D00EC126A /* NEOColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerViewController.m; path = CustomViews/ColorPickerView/NEOColorPickerViewController.m; sourceTree = "<group>"; };
+		BE29A9B31B69F13D00EC126A /* NEOColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NEOColorPickerViewController.xib; path = CustomViews/ColorPickerView/NEOColorPickerViewController.xib; sourceTree = "<group>"; };
+		BE29A9B41B69F13D00EC126A /* UIColor+NEOColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+NEOColor.h"; path = "CustomViews/ColorPickerView/UIColor+NEOColor.h"; sourceTree = "<group>"; };
+		BE29A9B51B69F13D00EC126A /* UIColor+NEOColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+NEOColor.m"; path = "CustomViews/ColorPickerView/UIColor+NEOColor.m"; sourceTree = "<group>"; };
+		BE29A9C41B69F37C00EC126A /* DrawingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingControl.h; path = CustomViews/DrawingPadView/DrawingControl.h; sourceTree = "<group>"; };
+		BE29A9C51B69F37C00EC126A /* DrawingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingControl.m; path = CustomViews/DrawingPadView/DrawingControl.m; sourceTree = "<group>"; };
+		BE29A9C71B69F38E00EC126A /* DrawingControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrawingControl.xib; path = CustomViews/DrawingPadView/DrawingControl.xib; sourceTree = "<group>"; };
 		BE2CBFB61B1B48AC0049010E /* AppCoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppCoreModel.h; path = "Model Classes/AppCoreModel.h"; sourceTree = "<group>"; };
 		BE2CBFB71B1B48AC0049010E /* AppCoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppCoreModel.m; path = "Model Classes/AppCoreModel.m"; sourceTree = "<group>"; };
 		BE2CBFBA1B1B4A2F0049010E /* CoreDataCommonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataCommonHelper.h; path = "Helper Classes/CoreDataCommonHelper.h"; sourceTree = "<group>"; };
@@ -156,6 +192,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE29A9A21B69F13300EC126A /* ColorPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				BE29A9A31B69F13D00EC126A /* colorPicker.bundle */,
+				BE29A9A41B69F13D00EC126A /* NEOColorPickerBaseViewController.h */,
+				BE29A9A51B69F13D00EC126A /* NEOColorPickerBaseViewController.m */,
+				BE29A9A61B69F13D00EC126A /* NEOColorPickerFavoritesViewController.h */,
+				BE29A9A71B69F13D00EC126A /* NEOColorPickerFavoritesViewController.m */,
+				BE29A9A81B69F13D00EC126A /* NEOColorPickerFavoritesViewController.xib */,
+				BE29A9A91B69F13D00EC126A /* NEOColorPickerGradientView.h */,
+				BE29A9AA1B69F13D00EC126A /* NEOColorPickerGradientView.m */,
+				BE29A9AB1B69F13D00EC126A /* NEOColorPickerHSLViewController.h */,
+				BE29A9AC1B69F13D00EC126A /* NEOColorPickerHSLViewController.m */,
+				BE29A9AD1B69F13D00EC126A /* NEOColorPickerHSLViewController.xib */,
+				BE29A9AE1B69F13D00EC126A /* NEOColorPickerHueGridViewController.h */,
+				BE29A9AF1B69F13D00EC126A /* NEOColorPickerHueGridViewController.m */,
+				BE29A9B01B69F13D00EC126A /* NEOColorPickerHueGridViewController.xib */,
+				BE29A9B11B69F13D00EC126A /* NEOColorPickerViewController.h */,
+				BE29A9B21B69F13D00EC126A /* NEOColorPickerViewController.m */,
+				BE29A9B31B69F13D00EC126A /* NEOColorPickerViewController.xib */,
+				BE29A9B41B69F13D00EC126A /* UIColor+NEOColor.h */,
+				BE29A9B51B69F13D00EC126A /* UIColor+NEOColor.m */,
+			);
+			name = ColorPickerView;
+			sourceTree = "<group>";
+		};
 		BE2CBFB51B1B48A20049010E /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +291,9 @@
 			children = (
 				BE6BCC9F1B53164C008A151F /* DrawingPadView.h */,
 				BE6BCCA01B53164C008A151F /* DrawingPadView.m */,
+				BE29A9C41B69F37C00EC126A /* DrawingControl.h */,
+				BE29A9C51B69F37C00EC126A /* DrawingControl.m */,
+				BE29A9C71B69F38E00EC126A /* DrawingControl.xib */,
 			);
 			name = DrawingPadView;
 			sourceTree = "<group>";
@@ -341,6 +406,7 @@
 		BE9146401B08A3530084D0FA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				BE29A9A21B69F13300EC126A /* ColorPickerView */,
 				BEF05F671B67393C0040B57B /* ImagePickerView */,
 				BE6BCC9E1B53162F008A151F /* DrawingPadView */,
 				BE43D36E1B1B9A0500BA7794 /* CAImageCollectionLayout.h */,
@@ -460,9 +526,15 @@
 				BE9146241B0893C70084D0FA /* LaunchScreen.xib in Resources */,
 				BE9146211B0893C70084D0FA /* Images.xcassets in Resources */,
 				BEF05F661B6735280040B57B /* ViewNoteViewController.xib in Resources */,
+				BE29A9C01B69F13D00EC126A /* NEOColorPickerViewController.xib in Resources */,
 				BE43D3641B1B98B600BA7794 /* ExpandableSearchBar.xib in Resources */,
+				BE29A9BE1B69F13D00EC126A /* NEOColorPickerHueGridViewController.xib in Resources */,
 				BEF05F6C1B6739CE0040B57B /* ImagePickerView.xib in Resources */,
 				BE6222E21B48652000DB7F13 /* NoteCollectionView.xib in Resources */,
+				BE29A9B61B69F13D00EC126A /* colorPicker.bundle in Resources */,
+				BE29A9B91B69F13D00EC126A /* NEOColorPickerFavoritesViewController.xib in Resources */,
+				BE29A9BC1B69F13D00EC126A /* NEOColorPickerHSLViewController.xib in Resources */,
+				BE29A9C81B69F38E00EC126A /* DrawingControl.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,15 +560,21 @@
 				BE6222EA1B4869A300DB7F13 /* NoteViewController.m in Sources */,
 				BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */,
 				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
+				BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
+				BE29A9C11B69F13D00EC126A /* UIColor+NEOColor.m in Sources */,
+				BE29A9BB1B69F13D00EC126A /* NEOColorPickerHSLViewController.m in Sources */,
 				BE7B20361B451C0600BFCF49 /* RFSwizzlingUtils.m in Sources */,
 				BE43D35C1B1B950000BA7794 /* ImagePickerHelper.m in Sources */,
 				BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */,
 				BE43D3631B1B98B600BA7794 /* ExpandableSearchBar.m in Sources */,
 				BE6222ED1B486FBD00DB7F13 /* MainTabBarViewController.m in Sources */,
 				BE43D36B1B1B98FB00BA7794 /* CategoryCollectionView.m in Sources */,
+				BE29A9BF1B69F13D00EC126A /* NEOColorPickerViewController.m in Sources */,
 				BE2CBFBC1B1B4A2F0049010E /* CoreDataCommonHelper.m in Sources */,
+				BE29A9BD1B69F13D00EC126A /* NEOColorPickerHueGridViewController.m in Sources */,
 				BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */,
+				BE29A9B81B69F13D00EC126A /* NEOColorPickerFavoritesViewController.m in Sources */,
 				BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */,
 				BE6222F01B48824000DB7F13 /* UIImage+ColorImage.m in Sources */,
 				A6BDD26E1B6E2CE800A7913E /* NotingViewController.m in Sources */,
@@ -507,9 +585,11 @@
 				BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */,
 				BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */,
 				BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */,
+				BE29A9C61B69F37C00EC126A /* DrawingControl.m in Sources */,
 				BE6222E01B48640100DB7F13 /* NoteCollectionView.m in Sources */,
 				BE9146131B0893C70084D0FA /* main.m in Sources */,
 				BEF05F6A1B6739B90040B57B /* ImagePickerView.m in Sources */,
+				BE29A9BA1B69F13D00EC126A /* NEOColorPickerGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

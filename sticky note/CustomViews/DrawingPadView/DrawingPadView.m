@@ -1,30 +1,21 @@
-//
-//  DrawingPadView.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 7/12/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "DrawingPadView.h"
 
 @interface DrawingPadView()
-
-@property (nonatomic) UIBezierPath *path;
 
 @end
 
 @implementation DrawingPadView
 @synthesize incrementalImage = _incrementalImage;
+@synthesize brushColor = _brushColor;
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
 	if (self = [super initWithCoder:aDecoder])
 	{
 		[self setMultipleTouchEnabled:NO];
 		[self setBackgroundColor:[UIColor whiteColor]];
+		_brushColor = [UIColor blackColor];
 		_path = [UIBezierPath bezierPath];
-		[_path setLineWidth:2.0];
+		[_path setLineWidth:1.0f];
 	}
 	return self;
 }
@@ -69,7 +60,7 @@
 - (void)drawBitmap // (3)
 {
 	UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, 0.0);
-	[[UIColor blackColor] setStroke];
+	[_brushColor setStroke];
 	if (!_incrementalImage) // first draw; paint background white by ...
 	{
 		// enclosing bitmap by a rectangle defined by another UIBezierPath object.
