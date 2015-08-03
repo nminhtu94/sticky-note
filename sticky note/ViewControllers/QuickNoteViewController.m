@@ -1,20 +1,15 @@
-//
-//  QuickNoteViewController.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 5/17/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "QuickNoteViewController.h"
 #import "NoteHelper.h"
 #import "CategoryHelper.h"
 #import "MainTabBarViewController.h"
-#import "DrawingPadView.h"
+#import "DrawingControl.h"
+#import "NEOColorPickerViewController.h"
 
 @interface QuickNoteViewController () <UIPickerViewDelegate,
 									   UIPickerViewDataSource,
-									   UIActionSheetDelegate>
+									   UIActionSheetDelegate,
+									   DrawingControlDelegate,
+									   NEOColorPickerViewControllerDelegate>
 
 @property (nonatomic) UIPickerView *pickerViewCategory;
 @property (nonatomic, assign, getter=isPickerViewTogged) BOOL pickerViewTogged;
@@ -56,17 +51,20 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 30)];
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:
+						  CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 30)];
     toolbar.barStyle = UIBarStyleDefault;
     [toolbar sizeToFit];
     
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                                   target:nil
-                                                                                   action:nil];
-    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                             target:self
-                                                                             action:@selector(textViewDone:)];
+    UIBarButtonItem *flexibleSpace =
+		[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+													  target:nil
+													  action:nil];
+    UIBarButtonItem *doneBtn =
+		[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+													  target:self
+													  action:@selector(textViewDone:)];
     [barItems addObject:flexibleSpace];
     [barItems addObject:doneBtn];
     [toolbar setItems:barItems animated:YES];
@@ -75,9 +73,9 @@
     [self.txvNoteText.layer setBorderWidth:1.0f];
     [self.txvNoteText setInputAccessoryView:toolbar];
 	
-	[_segment setSelectedSegmentIndex:0];
-	[_txvNoteText setHidden:NO];
-	[_viewDrawingPad setHidden:YES];
+	[self.drawingControlView.layer setBorderColor:[UIColor blackColor].CGColor];
+	[self.drawingControlView.layer setBorderWidth:1.0f];
+	[self.drawingControlView setDelegate:self];
 	
 	[self.imagePicker setDelegate:self];
 	
@@ -107,6 +105,7 @@
                                               _pickerViewCategory.frame.size.width,
                                               _pickerViewCategory.frame.size.height);
     [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
+	[self.view layoutSubviews];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,7 +114,9 @@
 }
 
 #pragma mark <UIPickerViewDelegate>
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+- (void)pickerView:(UIPickerView *)pickerView
+	  didSelectRow:(NSInteger)row
+	   inComponent:(NSInteger)component {
     NSArray *allCategory = [[CategoryHelper sharedInstance] getAllCategory];
     _selectedCategory = [allCategory objectAtIndex:row];
     
@@ -133,7 +134,9 @@
 }
 
 #pragma mark <UIPickerViewDataSource>
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSString *)pickerView:(UIPickerView *)pickerView
+			 titleForRow:(NSInteger)row
+			forComponent:(NSInteger)component {
     NSArray *allCategory = [[CategoryHelper sharedInstance] getAllCategory];
     CategoryModel *category = [allCategory objectAtIndex:row];
     return category.name;
@@ -157,7 +160,7 @@
 						 completion:nil];
 	} else if (buttonIndex == 1) {
 		[self presentViewController:[[ImagePickerHelper sharedInstance]
-									 pickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary]
+			pickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary]
 						   animated:YES
 						 completion:nil];
 		self.willResetData = NO;
@@ -173,6 +176,37 @@
 	[_actionSheet showInView:self.view];
 }
 
+#pragma mark <DrawingControlDelegate>
+- (void)colorPickerTapped:(id)sender {
+	NEOColorPickerViewController *controller = [[NEOColorPickerViewController alloc] init];
+	controller.delegate = self;
+	[controller setSelectedColor:[UIColor blackColor]];
+	controller.title = @"Select brush color";
+	UINavigationController* navVC =
+		[[UINavigationController alloc] initWithRootViewController:controller];
+	self.willResetData = NO;
+	[self presentViewController:navVC animated:YES completion:nil];
+}
+
+#pragma mark <NEOColorPickerViewControllerDelegate>
+- (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller
+				   didChangeColor:(UIColor *)color {
+	[self.drawingControlView.drawingView setBrushColor:color];
+	[self.drawingControlView.colorPickerButton setBackgroundColor:color];
+	[controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller
+				   didSelectColor:(UIColor *)color {
+	[self.drawingControlView.drawingView setBrushColor:color];
+	[self.drawingControlView.colorPickerButton setBackgroundColor:color];
+	[controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)colorPickerViewControllerDidCancel:(NEOColorPickerBaseViewController *)controller {
+	[controller dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)onSaveNote:(id)sender {
     if ([_txfTitle.text isEqualToString:@""]) {
         [_alertView setMessage:@"Please enter title!"];
@@ -186,7 +220,7 @@
         return;
     }
 	
-	UIImage *sketch = [_viewDrawingPad sketchImage];
+	UIImage *sketch = [_drawingControlView.drawingView sketchImage];
     [[NoteHelper sharedInstance] addNote:_txfTitle.text
                                     text:_txvNoteText.text
 								   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
@@ -206,20 +240,22 @@
     }
     
     if (!_pickerViewTogged) {
-        _categoryPickerFrameMoved = CGRectMake(0,
-                                               self.view.frame.size.height - _pickerViewCategory.frame.size.height,
-                                               _pickerViewCategory.frame.size.width,
-                                               _pickerViewCategory.frame.size.height);
+        _categoryPickerFrameMoved =
+			CGRectMake(0,
+					   self.view.frame.size.height - _pickerViewCategory.frame.size.height,
+					   _pickerViewCategory.frame.size.width,
+					   _pickerViewCategory.frame.size.height);
         [UIView animateWithDuration:0.3 animations:^{
             [_pickerViewCategory setFrame:_categoryPickerFrameMoved];
         } completion:^(BOOL finished) {
             _pickerViewTogged = YES;
         }];
     } else {
-        _categoryPickerFrameOriginal = CGRectMake(0,
-                                                  self.view.frame.size.height,
-                                                  _pickerViewCategory.frame.size.width,
-                                                  _pickerViewCategory.frame.size.height);
+        _categoryPickerFrameOriginal =
+			CGRectMake(0,
+					   self.view.frame.size.height,
+					   _pickerViewCategory.frame.size.width,
+					   _pickerViewCategory.frame.size.height);
         [UIView animateWithDuration:0.3 animations:^{
             [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
         } completion:^(BOOL finished) {
@@ -232,10 +268,16 @@
 	UISegmentedControl *selector = (UISegmentedControl *)sender;
 	if ([selector selectedSegmentIndex] == 0) {
 		[_txvNoteText setHidden:NO];
-		[_viewDrawingPad setHidden:YES];
-	} else {
+		[_drawingControlView setHidden:YES];
+		[_imagePicker setHidden:YES];
+	} else if ([selector selectedSegmentIndex] == 1) {
 		[_txvNoteText setHidden:YES];
-		[_viewDrawingPad setHidden:NO];
+		[_imagePicker setHidden:YES];
+		[_drawingControlView setHidden:NO];
+	} else if ([selector selectedSegmentIndex] == 2) {
+		[_txvNoteText setHidden:YES];
+		[_imagePicker setHidden:NO];
+		[_drawingControlView setHidden:YES];
 	}
 }
 
@@ -246,6 +288,11 @@
 	[_btnChooseCategory setTitle:@"Select category" forState:UIControlStateNormal];
 	[self.imagePicker reset];
 	_selectedCategory = nil;
+	
+	[_segment setSelectedSegmentIndex:0];
+	[_txvNoteText setHidden:NO];
+	[_drawingControlView setHidden:YES];
+	[_imagePicker setHidden:YES];
 }
 
 @end

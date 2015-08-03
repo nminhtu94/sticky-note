@@ -17,8 +17,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="note_background" translatesAutoresizingMaskIntoConstraints="NO" id="Fl6-vU-XNm">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ta-co-ux7">
-                        <rect key="frame" x="15.5" y="15" width="119.5" height="120"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ta-co-ux7">
+                        <rect key="frame" x="16" y="15" width="120" height="120"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="1ta-co-ux7" secondAttribute="height" multiplier="1:1" id="qbG-Jr-W3N"/>
                         </constraints>
