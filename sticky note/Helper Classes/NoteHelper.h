@@ -1,11 +1,3 @@
-//
-//  NoteHelper.h
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 5/31/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "CoreDataCommonHelper.h"
 #import "CategoryModel.h"
 #import "NoteModel.h"
@@ -15,7 +7,7 @@
 + (NoteHelper *)sharedInstance;
 
 - (BOOL)addNote:(NSString *)title
-           text:(NSString *)text
+           text:(NSAttributedString *)text
           image:(NSData *)image
          sketch:(NSData *)sketch
            date:(NSDate *)date
@@ -23,7 +15,7 @@
 
 - (BOOL)updateNote:(NSManagedObjectID *)objectID
              title:(NSString *)title
-              text:(NSString *)text
+              text:(NSAttributedString *)text
              image:(NSData *)image
             sketch:(NSData *)sketch
               date:(NSDate *)date

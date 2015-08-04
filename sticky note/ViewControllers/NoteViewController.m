@@ -1,16 +1,9 @@
-//
-//  NoteViewController.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 7/4/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "NoteViewController.h"
 #import "NoteCollectionView.h"
 #import "NoteHelper.h"
 #import "ViewNoteViewController.h"
 #import "CategoryModel.h"
+#import "QuickNoteViewController.h"
 
 @interface NoteViewController () <NoteCollectionViewDelegate>
 
@@ -73,8 +66,15 @@ static CategoryModel *selectedCategory;
 
 #pragma mar <NoteCollectionDelegate>
 - (void)noteCollectionView:(NoteCollectionView *)collectionView didSelectNote:(NoteModel *)note {
+	/*
 	[_viewNoteVC setNote:note];
 	[self.navigationController pushViewController:_viewNoteVC animated:YES];
+	 */
+	UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main"
+														 bundle:[NSBundle mainBundle]];
+	QuickNoteViewController *editNoteVC = [storyBoard instantiateViewControllerWithIdentifier:@"quickNoteVC"];
+	[editNoteVC setNote:note];
+	[self.navigationController pushViewController:editNoteVC animated:YES];
 }
 
 @end
