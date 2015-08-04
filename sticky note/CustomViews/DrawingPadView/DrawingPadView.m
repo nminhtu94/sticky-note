@@ -52,8 +52,7 @@
 	[_path removeAllPoints]; //(4)
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	[self touchesEnded:touches withEvent:event];
 }
 
@@ -68,14 +67,15 @@
 		[[UIColor whiteColor] setFill];
 		[rectpath fill]; // filling it with white
 	}
-	[_incrementalImage drawAtPoint:CGPointZero];
+	[_incrementalImage drawInRect:self.bounds];
 	[_path stroke];
 	_incrementalImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 }
 
-- (UIImage *)getDrawingImage {
-	return _incrementalImage;
+- (void)setSketchImage:(UIImage *)sketchImage {
+	_incrementalImage = sketchImage;
+	[_incrementalImage drawInRect:self.bounds];
+	[self setNeedsDisplay];
 }
-
 @end

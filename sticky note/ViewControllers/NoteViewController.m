@@ -66,12 +66,13 @@ static CategoryModel *selectedCategory;
 
 #pragma mar <NoteCollectionDelegate>
 - (void)noteCollectionView:(NoteCollectionView *)collectionView didSelectNote:(NoteModel *)note {
-	/*
-	[_viewNoteVC setNote:note];
-	[self.navigationController pushViewController:_viewNoteVC animated:YES];
-	 */
-	UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main"
-														 bundle:[NSBundle mainBundle]];
+//	
+//	[_viewNoteVC setNote:note];
+//	[self.navigationController pushViewController:_viewNoteVC animated:YES];
+	
+	UIStoryboard *storyBoard =
+		[UIStoryboard storyboardWithName:@"Main"
+								  bundle:[NSBundle mainBundle]];
 	QuickNoteViewController *editNoteVC = [storyBoard instantiateViewControllerWithIdentifier:@"quickNoteVC"];
 	[editNoteVC setNote:note];
 	[self.navigationController pushViewController:editNoteVC animated:YES];

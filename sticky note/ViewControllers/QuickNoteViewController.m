@@ -54,10 +54,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
-	[self.drawingControlView.layer setBorderColor:[UIColor blackColor].CGColor];
-	[self.drawingControlView.layer setBorderWidth:1.0f];
-	[self.drawingControlView setDelegate:self];
-	
 	[self.imagePicker setDelegate:self];
 	
 	if (self.willResetData) {
@@ -87,6 +83,10 @@
 		[_txvNotingView.view setFrame:self.customTextView.bounds];
 	}
 	
+	[self.drawingControlView.layer setBorderColor:[UIColor blackColor].CGColor];
+	[self.drawingControlView.layer setBorderWidth:1.0f];
+	[self.drawingControlView setDelegate:self];
+	
 	if (self.note != nil) {
 		[self.segment setSelectedSegmentIndex:0];
 		self.willResetData = NO;
@@ -95,6 +95,7 @@
 		[self.txvNotingView setText:self.note.text];
 		[self.txfTitle setText:self.note.title];
 		[self.imagePicker.imageView setImage:[UIImage imageWithData:self.note.image]];
+		[self.drawingControlView.drawingView setNeedsDisplay];
 	}
 	
 	[self.customTextView addSubview:_txvNotingView.view];
@@ -272,15 +273,15 @@
 - (IBAction)onChangeInputMode:(id)sender {
 	UISegmentedControl *selector = (UISegmentedControl *)sender;
 	if ([selector selectedSegmentIndex] == 0) {
-		[_txvNotingView.view setHidden:NO];
+		[self.customTextView setHidden:NO];
 		[_drawingControlView setHidden:YES];
 		[_imagePicker setHidden:YES];
 	} else if ([selector selectedSegmentIndex] == 1) {
-		[_txvNotingView.view setHidden:YES];
+		[self.customTextView setHidden:YES];
 		[_imagePicker setHidden:YES];
 		[_drawingControlView setHidden:NO];
 	} else if ([selector selectedSegmentIndex] == 2) {
-		[_txvNotingView.view setHidden:YES];
+		[self.customTextView setHidden:YES];
 		[_imagePicker setHidden:NO];
 		[_drawingControlView setHidden:YES];
 	}
@@ -298,7 +299,7 @@
 	_selectedCategory = nil;
 	
 	[_segment setSelectedSegmentIndex:0];
-	[_txvNotingView.view setHidden:NO];
+	[self.customTextView setHidden:NO];
 	[_drawingControlView setHidden:YES];
 	[_imagePicker setHidden:YES];
 }
