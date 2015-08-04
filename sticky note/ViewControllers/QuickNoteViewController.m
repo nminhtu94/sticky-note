@@ -80,6 +80,7 @@
 	
 	if (_txvNotingView == nil) {
 		_txvNotingView = [[NotingViewController alloc] init];
+		[self addChildViewController:_txvNotingView];
 		[_txvNotingView.view setFrame:self.customTextView.bounds];
 	}
 	

@@ -1,19 +1,14 @@
-//
-//  NotingViewController.m
-//  sticky note
-//
-//  Created by Le Thanh Tan on 8/2/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "NotingViewController.h"
+#import "NEOColorPickerViewController.h"
 
-@interface NotingViewController ()
+@interface NotingViewController () <NEOColorPickerViewControllerDelegate>
 
 @property (nonatomic) NSArray *arrFont;
 @property (nonatomic) NSArray *arrSize;
+@property (nonatomic) BOOL colorPickerReturn;
 
 - (UIFont *)getFont:(NSAttributedString *)text;
+- (UIColor *)getColor:(NSAttributedString *)text;
 
 @end
 
@@ -96,15 +91,18 @@
 		[self.btnFont setTitle:[self getFont:_text].fontName forState:UIControlStateNormal];
 		[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f", [self getFont:_text].pointSize]
 					  forState:UIControlStateNormal];
+		[self.btnColor setBackgroundColor:[self getColor:_text]];
 		[self.textView setFont:[self getFont:_text]];
 		[self.textView setAttributedText:_text];
 	} else {
 		UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0];
 		[self.textView setFont:font];
+		[self.textView setTextColor:[UIColor blackColor]];
 		_text = [self.textView attributedText];
 		[self.btnFont setTitle:font.fontName forState:UIControlStateNormal];
 		[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f", font.pointSize]
 					  forState:UIControlStateNormal];
+		[self.btnColor setBackgroundColor:[UIColor blackColor]];
 	}
 }
 
@@ -155,6 +153,27 @@
 
 -(void) clickPickerViewCancel{
     self.viewOfPickerView.hidden = YES;
+}
+
+#pragma mark <NEOColorPickerViewControllerDelegate>
+- (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller
+				   didChangeColor:(UIColor *)color {
+	[self.textView setTextColor:color];
+	_text = self.textView.attributedText;
+	[self.btnColor setBackgroundColor:color];
+	[controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller
+				   didSelectColor:(UIColor *)color {
+	[self.textView setTextColor:color];
+	_text = self.textView.attributedText;
+	[self.btnColor setBackgroundColor:color];
+	[controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)colorPickerViewControllerDidCancel:(NEOColorPickerBaseViewController *)controller {
+	[controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark
@@ -211,7 +230,13 @@
 }
 
 - (IBAction)actionColor:(id)sender {
-	
+	NEOColorPickerViewController *controller = [[NEOColorPickerViewController alloc] init];
+	controller.delegate = self;
+	[controller setSelectedColor:[UIColor blackColor]];
+	controller.title = @"Select brush color";
+	UINavigationController* navVC =
+	[[UINavigationController alloc] initWithRootViewController:controller];
+	[self.parentViewController presentViewController:navVC animated:YES completion:nil];
 }
 
 - (UIFont *)getFont:(NSAttributedString *)text {
@@ -226,4 +251,13 @@
 	return fontAttribute;
 }
 
+- (UIColor *)getColor:(NSAttributedString *)text {
+	NSRange range = NSMakeRange(0, text.length);
+	if (text.length == 0) {
+		return [UIColor blackColor];
+	}
+	
+	UIColor *color = [text attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:&range];
+	return color != nil ? color : [UIColor blackColor];
+}
 @end
