@@ -27,7 +27,7 @@
     self.viewOfPickerView.hidden = YES;
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
-    
+	
     UIBarButtonItem *pickerViewCancel =
 		[[UIBarButtonItem alloc] initWithTitle:@"Cancel"
 										 style:UIBarButtonItemStyleDone
@@ -260,4 +260,5 @@
 	UIColor *color = [text attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:&range];
 	return color != nil ? color : [UIColor blackColor];
 }
+
 @end
