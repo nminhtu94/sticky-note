@@ -7,9 +7,12 @@
 //
 
 #import "SearchViewController.h"
+#import "NoteHelper.h"
+#import "NoteModel.h"
 
 @interface SearchViewController () {
     ExpandableSearchBar *searchBar;
+    NSArray *result;
 }
 
 @end
@@ -19,6 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tblResult.delegate = self;
+    self.tblResult.dataSource = self;
+    self.tblResult.hidden = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +51,43 @@
         [searchBar.lblTitle setTextColor:[UIColor blackColor]];
         
     }
+    searchBar.delegate = self;
     [self.navigationItem setTitleView:searchBar];
+}
+
+#pragma mark - Search protocol delegate
+-(void) searchNote{
+    NSString *searchKey = searchBar.txfQuery.text;
+    result = [[NoteHelper sharedInstance] searchNote:searchKey];
+    NSLog(@"Result search: %@", result);
+    [self.tblResult reloadData];
+    self.tblResult.hidden = NO;
+}
+
+
+#pragma mark uiTableView
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [result count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    SearchTableViewCell *cell = [self.tblResult dequeueReusableCellWithIdentifier:@"myCell"];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    NoteModel *model = (NoteModel *) [result objectAtIndex:indexPath.row];
+    cell.txtTitle.text = [NSString stringWithFormat:@"%@", model.title];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MM/dd"];
+    cell.txtDate.text = [NSString stringWithFormat:@"%@", [format stringFromDate:model.date]];
+    
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
 }
 
 @end

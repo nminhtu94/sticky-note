@@ -87,6 +87,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if ([self.btnSearch isEnabled]) {
         [self searchTapped:_btnSearch];
+        [self.delegate searchNote];
     } else {
         [self.txfQuery resignFirstResponder];
     }
