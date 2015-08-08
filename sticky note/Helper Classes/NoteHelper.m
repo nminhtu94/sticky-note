@@ -1,11 +1,3 @@
-//
-//  NoteHelper.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 5/31/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "NoteHelper.h"
 
 @interface NoteHelper()
@@ -33,30 +25,38 @@
     return self;
 }
 
-- (BOOL)addNote:(NSString *)title text:(NSString *)text image:(NSData *)image sketch:(NSData *)sketch date:(NSDate *)date category:(CategoryModel *)category {
+- (BOOL)addNote:(NSString *)title
+		   text:(NSAttributedString *)text
+		  image:(NSData *)image
+		 sketch:(NSData *)sketch
+		   date:(NSDate *)date
+	   category:(CategoryModel *)category {
     
-    NoteModel *note = [NSEntityDescription insertNewObjectForEntityForName:@"NoteModel"
-                                                    inManagedObjectContext:[self managedObjectContext]];
+    NoteModel *note =
+		[NSEntityDescription insertNewObjectForEntityForName:@"NoteModel"
+									  inManagedObjectContext:[self managedObjectContext]];
     [note setTitle:title];
     [note setText:text];
     [note setImage:image];
     [note setSketch:sketch];
     [note setDate:date];
-    [note setValue:[self.managedObjectContext objectWithID:[category objectID]] forKey:@"category"];
+    [note setValue:[self.managedObjectContext objectWithID:[category objectID]]
+			forKey:@"category"];
     [self save];
     return YES;
 }
 
 - (BOOL)updateNote:(NSManagedObjectID *)objectID
              title:(NSString *)title
-              text:(NSString *)text
+              text:(NSAttributedString *)text
              image:(NSData *)image
             sketch:(NSData *)sketch
               date:(NSDate *)date
           category:(CategoryModel *)category {
     
     NSError *error = nil;
-    NoteModel *note = (NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
+    NoteModel *note =
+		(NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
     
     if (note != nil) {
         [note setTitle:title];
@@ -90,7 +90,8 @@
 - (BOOL)deleteNote:(NSManagedObjectID *)objectID {
     
     NSError *error = nil;
-    NoteModel *note = (NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
+    NoteModel *note =
+		(NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
     
     if (note != nil) {
         [[self managedObjectContext] deleteObject:note];

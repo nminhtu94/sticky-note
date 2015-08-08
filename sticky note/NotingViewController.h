@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIView *viewOfPickerView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
+@property (nonatomic, strong) NSAttributedString *text;
 
 @end

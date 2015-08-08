@@ -28,7 +28,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self.navigationItem setTitle:self.note.title];
-	[self.noteText setText:[self.note text]];
+	[self.noteText setAttributedText:[self.note text]];
 	[self.drawingImage setImage:[UIImage imageWithData:self.note.sketch]];
 	[self.noteImage setImage:[UIImage imageWithData:self.note.image]];
 }

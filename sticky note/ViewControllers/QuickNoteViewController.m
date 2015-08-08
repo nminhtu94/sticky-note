@@ -4,6 +4,7 @@
 #import "MainTabBarViewController.h"
 #import "DrawingControl.h"
 #import "NEOColorPickerViewController.h"
+#import "NotingViewController.h"
 
 @interface QuickNoteViewController () <UIPickerViewDelegate,
 									   UIPickerViewDataSource,
@@ -19,6 +20,8 @@
 @property (nonatomic) CategoryModel *selectedCategory;
 @property (nonatomic) UIActionSheet *actionSheet;
 @property (nonatomic, assign) BOOL willResetData;
+
+@property (nonatomic, strong) NotingViewController *txvNotingView;
 
 @end
 
@@ -50,42 +53,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:
-						  CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 30)];
-    toolbar.barStyle = UIBarStyleDefault;
-    [toolbar sizeToFit];
-    
-    NSMutableArray *barItems = [[NSMutableArray alloc] init];
-    UIBarButtonItem *flexibleSpace =
-		[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-													  target:nil
-													  action:nil];
-    UIBarButtonItem *doneBtn =
-		[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-													  target:self
-													  action:@selector(textViewDone:)];
-    [barItems addObject:flexibleSpace];
-    [barItems addObject:doneBtn];
-    [toolbar setItems:barItems animated:YES];
-    
-    [self.txvNoteText.layer setBorderColor:[UIColor blackColor].CGColor];
-    [self.txvNoteText.layer setBorderWidth:1.0f];
-    [self.txvNoteText setInputAccessoryView:toolbar];
-	
-	[self.drawingControlView.layer setBorderColor:[UIColor blackColor].CGColor];
-	[self.drawingControlView.layer setBorderWidth:1.0f];
-	[self.drawingControlView setDelegate:self];
 	
 	[self.imagePicker setDelegate:self];
 	
 	if (self.willResetData) {
 		[self resetData];
 	}
-}
-
-- (void)textViewDone:(id)sender {
-    [self.txvNoteText resignFirstResponder];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -104,6 +77,29 @@
                                               self.view.frame.size.height,
                                               _pickerViewCategory.frame.size.width,
                                               _pickerViewCategory.frame.size.height);
+	
+	if (_txvNotingView == nil) {
+		_txvNotingView = [[NotingViewController alloc] init];
+		[self addChildViewController:_txvNotingView];
+		[_txvNotingView.view setFrame:self.customTextView.bounds];
+	}
+	
+	[self.drawingControlView.layer setBorderColor:[UIColor blackColor].CGColor];
+	[self.drawingControlView.layer setBorderWidth:1.0f];
+	[self.drawingControlView setDelegate:self];
+	
+	if (self.note != nil) {
+		[self.segment setSelectedSegmentIndex:0];
+		self.willResetData = NO;
+		[self.drawingControlView.drawingView setSketchImage:[UIImage imageWithData:self.note.sketch]];
+		[self.txvNotingView.textView setAttributedText:self.note.text];
+		[self.txvNotingView setText:self.note.text];
+		[self.txfTitle setText:self.note.title];
+		[self.imagePicker.imageView setImage:[UIImage imageWithData:self.note.image]];
+		[self.drawingControlView.drawingView setNeedsDisplay];
+	}
+	
+	[self.customTextView addSubview:_txvNotingView.view];
     [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
 	[self.view layoutSubviews];
 }
@@ -221,15 +217,26 @@
     }
 	
 	UIImage *sketch = [_drawingControlView.drawingView sketchImage];
-    [[NoteHelper sharedInstance] addNote:_txfTitle.text
-                                    text:_txvNoteText.text
-								   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
-                                  sketch:UIImagePNGRepresentation(sketch)
-                                    date:[NSDate date]
-                                category:_selectedCategory];
-	self.willResetData = YES;
-	[self resetData];
-    [MainTabBar setSelectedIndex:0];
+	
+	if (_note == nil) {
+		[[NoteHelper sharedInstance] addNote:_txfTitle.text
+										text:_txvNotingView.textView.attributedText
+									   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
+									  sketch:UIImagePNGRepresentation(sketch)
+										date:[NSDate date]
+									category:_selectedCategory];
+		self.willResetData = YES;
+		[self resetData];
+		[MainTabBar setSelectedIndex:0];
+	} else {
+		[[NoteHelper sharedInstance] updateNote:_note.objectID
+										  title:_txfTitle.text
+										   text:_txvNotingView.textView.attributedText
+										  image:UIImagePNGRepresentation([self.imagePicker selectedImage])
+										 sketch:UIImagePNGRepresentation(sketch)
+										   date:[NSDate date]
+									   category:_selectedCategory];
+	}
 }
 
 - (IBAction)onSelectCategory:(id)sender {
@@ -267,15 +274,15 @@
 - (IBAction)onChangeInputMode:(id)sender {
 	UISegmentedControl *selector = (UISegmentedControl *)sender;
 	if ([selector selectedSegmentIndex] == 0) {
-		[_txvNoteText setHidden:NO];
+		[self.customTextView setHidden:NO];
 		[_drawingControlView setHidden:YES];
 		[_imagePicker setHidden:YES];
 	} else if ([selector selectedSegmentIndex] == 1) {
-		[_txvNoteText setHidden:YES];
+		[self.customTextView setHidden:YES];
 		[_imagePicker setHidden:YES];
 		[_drawingControlView setHidden:NO];
 	} else if ([selector selectedSegmentIndex] == 2) {
-		[_txvNoteText setHidden:YES];
+		[self.customTextView setHidden:YES];
 		[_imagePicker setHidden:NO];
 		[_drawingControlView setHidden:YES];
 	}
@@ -284,13 +291,16 @@
 #pragma mark Private-Method
 - (void)resetData {
 	[_txfTitle setText:@""];
-	[_txvNoteText setText:@""];
+	[_txvNotingView setText:nil];
+	[_txvNotingView.textView setText:@""];
+	[_txvNotingView viewDidLoad];
+	[_txvNotingView viewWillAppear:NO];
 	[_btnChooseCategory setTitle:@"Select category" forState:UIControlStateNormal];
 	[self.imagePicker reset];
 	_selectedCategory = nil;
 	
 	[_segment setSelectedSegmentIndex:0];
-	[_txvNoteText setHidden:NO];
+	[self.customTextView setHidden:NO];
 	[_drawingControlView setHidden:YES];
 	[_imagePicker setHidden:YES];
 }
