@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A62C15101B711DCC0088E0BB /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A62C150E1B711DCC0088E0BB /* SearchTableViewCell.m */; };
+		A62C15111B711DCC0088E0BB /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62C150F1B711DCC0088E0BB /* SearchTableViewCell.xib */; };
 		A6BDD26E1B6E2CE800A7913E /* NotingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BDD26C1B6E2CE800A7913E /* NotingViewController.m */; };
 		A6BDD26F1B6E2CE800A7913E /* NotingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6BDD26D1B6E2CE800A7913E /* NotingViewController.xib */; };
 		BE29A9B61B69F13D00EC126A /* colorPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE29A9A31B69F13D00EC126A /* colorPicker.bundle */; };
@@ -76,6 +78,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A62C150D1B711DCC0088E0BB /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		A62C150E1B711DCC0088E0BB /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
+		A62C150F1B711DCC0088E0BB /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		A6BDD26B1B6E2CE800A7913E /* NotingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotingViewController.h; sourceTree = "<group>"; };
 		A6BDD26C1B6E2CE800A7913E /* NotingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotingViewController.m; sourceTree = "<group>"; };
 		A6BDD26D1B6E2CE800A7913E /* NotingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotingViewController.xib; sourceTree = "<group>"; };
@@ -192,6 +197,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A62C15091B711D7B0088E0BB /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				A62C150D1B711DCC0088E0BB /* SearchTableViewCell.h */,
+				A62C150E1B711DCC0088E0BB /* SearchTableViewCell.m */,
+				A62C150F1B711DCC0088E0BB /* SearchTableViewCell.xib */,
+			);
+			name = SearchView;
+			sourceTree = "<group>";
+		};
 		BE29A9A21B69F13300EC126A /* ColorPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +421,7 @@
 		BE9146401B08A3530084D0FA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				A62C15091B711D7B0088E0BB /* SearchView */,
 				BE29A9A21B69F13300EC126A /* ColorPickerView */,
 				BEF05F671B67393C0040B57B /* ImagePickerView */,
 				BE6BCC9E1B53162F008A151F /* DrawingPadView */,
@@ -529,6 +545,7 @@
 				BE29A9C01B69F13D00EC126A /* NEOColorPickerViewController.xib in Resources */,
 				BE43D3641B1B98B600BA7794 /* ExpandableSearchBar.xib in Resources */,
 				BE29A9BE1B69F13D00EC126A /* NEOColorPickerHueGridViewController.xib in Resources */,
+				A62C15111B711DCC0088E0BB /* SearchTableViewCell.xib in Resources */,
 				BEF05F6C1B6739CE0040B57B /* ImagePickerView.xib in Resources */,
 				BE6222E21B48652000DB7F13 /* NoteCollectionView.xib in Resources */,
 				BE29A9B61B69F13D00EC126A /* colorPicker.bundle in Resources */,
@@ -561,6 +578,7 @@
 				BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */,
 				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
 				BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */,
+				A62C15101B711DCC0088E0BB /* SearchTableViewCell.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
 				BE29A9C11B69F13D00EC126A /* UIColor+NEOColor.m in Sources */,
 				BE29A9BB1B69F13D00EC126A /* NEOColorPickerHSLViewController.m in Sources */,

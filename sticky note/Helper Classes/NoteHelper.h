@@ -24,4 +24,6 @@
 - (NSArray *)getNoteOfCategory:(CategoryModel *)category;
 
 - (BOOL)deleteNote:(NSManagedObjectID *)objectID;
+
+- (NSArray *)searchNote:(NSString *)query;
 @end

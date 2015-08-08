@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchViewController.h"
 
 @interface ExpandableSearchBar : UIView <UITextFieldDelegate>
 
@@ -16,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutTxfLeading;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutBtnTrailing;
+
+/* Delegate */
+@property (strong, nonatomic) id delegate;
 
 - (IBAction)searchTapped:(id)sender;
 
@@ -27,4 +31,10 @@
 
 - (void)setTitle:(NSString *)title;
 - (NSString *)title;
+@end
+
+@protocol SearchProtocolDelegate <NSObject>
+
+-(void) searchNote;
+
 @end
