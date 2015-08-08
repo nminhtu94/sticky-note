@@ -48,6 +48,9 @@
 																			  nil),
 						nil];
 	}
+	
+	[self.txfTitle setReturnKeyType:UIReturnKeyDone];
+	[self.txfTitle setDelegate:self];
 	self.willResetData = YES;
 }
 
@@ -68,6 +71,7 @@
         _pickerViewCategory = [[UIPickerView alloc] init];
         
         // Create a category picker view.
+		[_pickerViewCategory setBackgroundColor:[UIColor whiteColor]];
         [_pickerViewCategory setDelegate:self];
         [_pickerViewCategory setDataSource:self];
         [self.view addSubview:_pickerViewCategory];
@@ -107,6 +111,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark <UITextFieldDelegate>
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[textField resignFirstResponder];
+	return YES;
 }
 
 #pragma mark <UIPickerViewDelegate>
@@ -237,6 +247,7 @@
 										   date:[NSDate date]
 									   category:_selectedCategory];
 	}
+	[self resignFirstResponder];
 }
 
 - (IBAction)onSelectCategory:(id)sender {
