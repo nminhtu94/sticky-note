@@ -25,7 +25,6 @@
     self.tblResult.delegate = self;
     self.tblResult.dataSource = self;
     self.tblResult.hidden = YES;
-    
 }
 
 - (void)didReceiveMemoryWarning {
