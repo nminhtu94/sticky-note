@@ -9,11 +9,13 @@
 #import "SearchViewController.h"
 #import "NoteHelper.h"
 #import "NoteModel.h"
+#import "ViewNoteViewController.h"
 
 @interface SearchViewController () {
     ExpandableSearchBar *searchBar;
     NSArray *result;
 }
+@property (nonatomic) ViewNoteViewController *viewNoteVC;
 
 @end
 
@@ -87,6 +89,12 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (_viewNoteVC == nil) {
+        _viewNoteVC = [[ViewNoteViewController alloc] init];
+    }
+    [self.tblResult deselectRowAtIndexPath:indexPath animated:NO];
+    [_viewNoteVC setNote:(NoteModel *) [result objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:_viewNoteVC animated:YES];
 
 }
 
