@@ -11,6 +11,8 @@
 		A62C15111B711DCC0088E0BB /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A62C150F1B711DCC0088E0BB /* SearchTableViewCell.xib */; };
 		A6BDD26E1B6E2CE800A7913E /* NotingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BDD26C1B6E2CE800A7913E /* NotingViewController.m */; };
 		A6BDD26F1B6E2CE800A7913E /* NotingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6BDD26D1B6E2CE800A7913E /* NotingViewController.xib */; };
+		BE08B15F1B82EFE100968E01 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = BE08B15E1B82EFE100968E01 /* Utility.m */; };
+		BE08B1621B82F14500968E01 /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BE08B1611B82F14500968E01 /* UIImage+ColorImage.m */; };
 		BE29A9B61B69F13D00EC126A /* colorPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE29A9A31B69F13D00EC126A /* colorPicker.bundle */; };
 		BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9A51B69F13D00EC126A /* NEOColorPickerBaseViewController.m */; };
 		BE29A9B81B69F13D00EC126A /* NEOColorPickerFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE29A9A71B69F13D00EC126A /* NEOColorPickerFavoritesViewController.m */; };
@@ -84,6 +86,10 @@
 		A6BDD26B1B6E2CE800A7913E /* NotingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotingViewController.h; sourceTree = "<group>"; };
 		A6BDD26C1B6E2CE800A7913E /* NotingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotingViewController.m; sourceTree = "<group>"; };
 		A6BDD26D1B6E2CE800A7913E /* NotingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotingViewController.xib; sourceTree = "<group>"; };
+		BE08B15D1B82EFE100968E01 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		BE08B15E1B82EFE100968E01 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		BE08B1601B82F14500968E01 /* UIImage+ColorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorImage.h"; sourceTree = "<group>"; };
+		BE08B1611B82F14500968E01 /* UIImage+ColorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorImage.m"; sourceTree = "<group>"; };
 		BE29A9A31B69F13D00EC126A /* colorPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = colorPicker.bundle; path = CustomViews/ColorPickerView/colorPicker.bundle; sourceTree = "<group>"; };
 		BE29A9A41B69F13D00EC126A /* NEOColorPickerBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerBaseViewController.h; path = CustomViews/ColorPickerView/NEOColorPickerBaseViewController.h; sourceTree = "<group>"; };
 		BE29A9A51B69F13D00EC126A /* NEOColorPickerBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerBaseViewController.m; path = CustomViews/ColorPickerView/NEOColorPickerBaseViewController.m; sourceTree = "<group>"; };
@@ -329,6 +335,10 @@
 		BE7B20331B451BFC00BFCF49 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BE08B1601B82F14500968E01 /* UIImage+ColorImage.h */,
+				BE08B1611B82F14500968E01 /* UIImage+ColorImage.m */,
+				BE08B15D1B82EFE100968E01 /* Utility.h */,
+				BE08B15E1B82EFE100968E01 /* Utility.m */,
 				BE7B20341B451C0600BFCF49 /* RFSwizzlingUtils.h */,
 				BE7B20351B451C0600BFCF49 /* RFSwizzlingUtils.m */,
 			);
@@ -576,6 +586,7 @@
 				BE2CBFCE1B1B58150049010E /* NoteModel.m in Sources */,
 				BE6222EA1B4869A300DB7F13 /* NoteViewController.m in Sources */,
 				BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */,
+				BE08B1621B82F14500968E01 /* UIImage+ColorImage.m in Sources */,
 				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
 				BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */,
 				A62C15101B711DCC0088E0BB /* SearchTableViewCell.m in Sources */,
@@ -601,6 +612,7 @@
 				BE6222E61B48667200DB7F13 /* NoteCollectionViewCell.m in Sources */,
 				BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */,
 				BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */,
+				BE08B15F1B82EFE100968E01 /* Utility.m in Sources */,
 				BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */,
 				BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */,
 				BE29A9C61B69F37C00EC126A /* DrawingControl.m in Sources */,

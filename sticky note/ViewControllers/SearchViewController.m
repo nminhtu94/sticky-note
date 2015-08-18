@@ -10,6 +10,7 @@
 #import "NoteHelper.h"
 #import "NoteModel.h"
 #import "QuickNoteViewController.h"
+#import "Utility.h"
 
 @interface SearchViewController () {
     ExpandableSearchBar *searchBar;
@@ -26,6 +27,22 @@
     self.tblResult.delegate = self;
     self.tblResult.dataSource = self;
     self.tblResult.hidden = YES;
+	
+	// this will appear as the title in the navigation bar
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+	label.backgroundColor = [UIColor clearColor];
+	label.font = [UIFont boldSystemFontOfSize:20.0];
+	label.textAlignment = NSTextAlignmentCenter;
+	// ^-Use UITextAlignmentCenter for older SDKs.
+	label.textColor = [UIColor whiteColor]; // change this color
+	self.navigationItem.titleView = label;
+	label.text = NSLocalizedString(@"Search", @"");
+	[label sizeToFit];
+	
+	[self.navigationController.navigationBar setTranslucent:NO];
+	[self.navigationController.navigationBar setBarTintColor:THEME_COLOR];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,7 +87,8 @@
     return [result count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView
+		 cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SearchTableViewCell *cell = [self.tblResult dequeueReusableCellWithIdentifier:@"myCell"];
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchTableViewCell" owner:self options:nil];

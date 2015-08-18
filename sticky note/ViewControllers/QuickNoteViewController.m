@@ -5,11 +5,13 @@
 #import "DrawingControl.h"
 #import "NEOColorPickerViewController.h"
 #import "NotingViewController.h"
+#import "Utility.h"
 
 @interface QuickNoteViewController () <UIPickerViewDelegate,
 									   UIPickerViewDataSource,
 									   UIActionSheetDelegate,
 									   DrawingControlDelegate,
+									   UITextFieldDelegate,
 									   NEOColorPickerViewControllerDelegate>
 
 @property (nonatomic) UIPickerView *pickerViewCategory;
@@ -19,7 +21,6 @@
 @property (nonatomic) UIAlertView *alertView;
 @property (nonatomic) CategoryModel *selectedCategory;
 @property (nonatomic) UIActionSheet *actionSheet;
-@property (nonatomic, assign) BOOL willResetData;
 
 @property (nonatomic, strong) NotingViewController *txvNotingView;
 
@@ -52,6 +53,22 @@
 	[self.txfTitle setReturnKeyType:UIReturnKeyDone];
 	[self.txfTitle setDelegate:self];
 	self.willResetData = YES;
+	
+	// this will appear as the title in the navigation bar
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+	label.backgroundColor = [UIColor clearColor];
+	label.font = [UIFont boldSystemFontOfSize:20.0];
+	label.textAlignment = NSTextAlignmentCenter;
+	// ^-Use UITextAlignmentCenter for older SDKs.
+	label.textColor = [UIColor whiteColor]; // change this color
+	self.navigationItem.titleView = label;
+	label.text = NSLocalizedString(@"Sticky Note", @"");
+	[label sizeToFit];
+	
+	[self.navigationController.navigationBar setTranslucent:NO];
+	[self.navigationController.navigationBar setBarTintColor:THEME_COLOR];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,6 +79,13 @@
 	if (self.willResetData) {
 		[self resetData];
 	}
+	[self.view setBackgroundColor:THEME_COLOR_DARKER];
+	
+	[self.txfTitle setBackgroundColor:THEME_COLOR_DARKER];
+	[self.txfTitle setTextColor:[UIColor whiteColor]];
+	[self.txfTitle.layer setBorderWidth:3.0f];
+	[self.txfTitle.layer setBorderColor:[UIColor whiteColor].CGColor];
+	[self.txfTitle setClipsToBounds:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -302,7 +326,7 @@
 #pragma mark Private-Method
 - (void)resetData {
 	[_txfTitle setText:@""];
-	[_txvNotingView setText:nil];
+	[self.txvNotingView setText:nil];
 	[_txvNotingView.textView setText:@""];
 	[_txvNotingView viewDidLoad];
 	[_txvNotingView viewWillAppear:NO];

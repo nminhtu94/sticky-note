@@ -61,11 +61,13 @@ static NSString* cellIdentifier = @"CategoryCollectionCell";
 
 #pragma mark UICollectionViewDelegate
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CategoryCollectionViewCell *cell = (CategoryCollectionViewCell *)[self dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    CategoryCollectionViewCell *cell =
+		(CategoryCollectionViewCell *)[self dequeueReusableCellWithReuseIdentifier:cellIdentifier
+																	  forIndexPath:indexPath];
     
     CategoryModel *category = [categories objectAtIndex:indexPath.row];
     [cell.lblName setText:category.name];
-    
+	[cell.lblName setTextColor:[UIColor whiteColor]];
     [cell.imgIcon setImage:[UIImage imageWithData:category.icon]];
     return cell;
 }

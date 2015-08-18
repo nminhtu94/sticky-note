@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *customTextView;
 
 @property (nonatomic, strong) NoteModel *note;
+@property (nonatomic, assign) BOOL willResetData;
 
 - (IBAction)onSaveNote:(id)sender;
 - (IBAction)onSelectCategory:(id)sender;

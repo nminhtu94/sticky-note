@@ -1,5 +1,6 @@
 #import "NotingViewController.h"
 #import "NEOColorPickerViewController.h"
+#import "QuickNoteViewController.h"
 
 @interface NotingViewController () <NEOColorPickerViewControllerDelegate>
 
@@ -15,6 +16,7 @@
 @implementation NotingViewController
 @synthesize arrFont = arrFont;
 @synthesize arrSize = arrSize;
+@synthesize text = _text;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,22 +89,27 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-	if (_text != nil) {
-		[self.btnFont setTitle:[self getFont:_text].fontName forState:UIControlStateNormal];
-		[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f", [self getFont:_text].pointSize]
-					  forState:UIControlStateNormal];
-		[self.btnColor setBackgroundColor:[self getColor:_text]];
-		[self.textView setFont:[self getFont:_text]];
-		[self.textView setAttributedText:_text];
+	if (!self.colorPickerReturn) {
+		if (_text != nil) {
+			[self.btnFont setTitle:[self getFont:_text].fontName forState:UIControlStateNormal];
+			[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f",
+				[self getFont:_text].pointSize]
+						  forState:UIControlStateNormal];
+			[self.btnColor setBackgroundColor:[self getColor:_text]];
+			[self.textView setFont:[self getFont:_text]];
+			[self.textView setAttributedText:_text];
+		} else {
+			UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0];
+			[self.textView setFont:font];
+			[self.textView setTextColor:[UIColor blackColor]];
+			_text = [self.textView attributedText];
+			[self.btnFont setTitle:font.fontName forState:UIControlStateNormal];
+			[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f", font.pointSize]
+						  forState:UIControlStateNormal];
+			[self.btnColor setBackgroundColor:[UIColor blackColor]];
+		}
 	} else {
-		UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0];
-		[self.textView setFont:font];
-		[self.textView setTextColor:[UIColor blackColor]];
-		_text = [self.textView attributedText];
-		[self.btnFont setTitle:font.fontName forState:UIControlStateNormal];
-		[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f", font.pointSize]
-					  forState:UIControlStateNormal];
-		[self.btnColor setBackgroundColor:[UIColor blackColor]];
+		self.colorPickerReturn = NO;
 	}
 }
 
@@ -159,20 +166,25 @@
 - (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller
 				   didChangeColor:(UIColor *)color {
 	[self.textView setTextColor:color];
-	_text = self.textView.attributedText;
 	[self.btnColor setBackgroundColor:color];
+	self.colorPickerReturn = YES;
+	QuickNoteViewController *pView = (QuickNoteViewController *)[self parentViewController];
+	[pView setWillResetData:NO];
 	[controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller
 				   didSelectColor:(UIColor *)color {
 	[self.textView setTextColor:color];
-	_text = self.textView.attributedText;
 	[self.btnColor setBackgroundColor:color];
+	self.colorPickerReturn = YES;
+	QuickNoteViewController *pView = (QuickNoteViewController *)[self parentViewController];
+	[pView setWillResetData:NO];
 	[controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)colorPickerViewControllerDidCancel:(NEOColorPickerBaseViewController *)controller {
+	self.colorPickerReturn = YES;
 	[controller dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -236,6 +248,7 @@
 	controller.title = @"Select brush color";
 	UINavigationController* navVC =
 	[[UINavigationController alloc] initWithRootViewController:controller];
+	_text = self.textView.attributedText;
 	[self.parentViewController presentViewController:navVC animated:YES completion:nil];
 }
 
@@ -257,7 +270,8 @@
 		return [UIColor blackColor];
 	}
 	
-	UIColor *color = [text attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:&range];
+	UIColor *color =
+		[text attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:&range];
 	return color != nil ? color : [UIColor blackColor];
 }
 

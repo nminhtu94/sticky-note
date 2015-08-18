@@ -25,7 +25,17 @@ static CategoryModel *selectedCategory;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setTitle:selectedCategory.name];
+	
+	// this will appear as the title in the navigation bar
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+	label.backgroundColor = [UIColor clearColor];
+	label.font = [UIFont boldSystemFontOfSize:20.0];
+	label.textAlignment = NSTextAlignmentCenter;
+	// ^-Use UITextAlignmentCenter for older SDKs.
+	label.textColor = [UIColor whiteColor]; // change this color
+	self.navigationItem.titleView = label;
+	label.text = NSLocalizedString(selectedCategory.name, @"");
+	[label sizeToFit];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

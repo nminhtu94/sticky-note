@@ -1,12 +1,6 @@
-//
-//  MainTabBarViewController.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 7/4/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "MainTabBarViewController.h"
+#import "Utility.h"
+#import "UIImage+ColorImage.h"
 
 @interface MainTabBarViewController ()
 
@@ -42,6 +36,19 @@ static NSString *tabName = @"mainTabBarController";
 			(MainTabBarViewController*)[storyBoard instantiateViewControllerWithIdentifier:tabName];
     }
     return self;
+}
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	// Do any additional setup after loading the view.
+	[[UITabBar appearance] setBackgroundImage:[UIImage imageFromColor:THEME_COLOR_DARK
+															  forSize:CGSizeMake(self.tabBar.frame.size.width, self.tabBar.frame.size.height)
+													 withCornerRadius:0.0f]];
+	
+	[self.tabBar setSelectedImageTintColor:[UIColor whiteColor]];
+	[self.tabBar setSelectionIndicatorImage:[UIImage imageFromColor:THEME_ORANGE_COLOR
+															forSize:CGSizeMake(self.tabBar.frame.size.width / 5, self.tabBar.frame.size.height)
+												   withCornerRadius:0.0f]];
 }
 
 @end
