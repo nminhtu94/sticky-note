@@ -45,6 +45,12 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.view setBackgroundColor:THEME_COLOR_DARKER];
+    [self.tblResult setBackgroundColor:THEME_COLOR_DARKER];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -94,12 +100,14 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+    [cell setBackgroundColor:THEME_COLOR_DARKER];
     NoteModel *model = (NoteModel *) [result objectAtIndex:indexPath.row];
     cell.txtTitle.text = [NSString stringWithFormat:@"%@", model.title];
+    cell.txtTitle.textColor = [UIColor whiteColor];
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MM/dd"];
     cell.txtDate.text = [NSString stringWithFormat:@"%@", [format stringFromDate:model.date]];
-    
+    cell.txtDate.textColor = [UIColor whiteColor];
     
     return cell;
 }
