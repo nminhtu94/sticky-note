@@ -192,16 +192,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bbW-mH-QLn" userLabel="Table Result">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bbW-mH-QLn" secondAttribute="trailing" id="FOG-DI-TAf"/>
-                            <constraint firstItem="vp1-bG-4qr" firstAttribute="top" secondItem="bbW-mH-QLn" secondAttribute="bottom" constant="-49" id="b2v-Bj-O4L"/>
+                            <constraint firstItem="vp1-bG-4qr" firstAttribute="top" secondItem="bbW-mH-QLn" secondAttribute="bottom" id="b2v-Bj-O4L"/>
                             <constraint firstItem="bbW-mH-QLn" firstAttribute="leading" secondItem="z4K-0P-B14" secondAttribute="leading" id="fj4-Vv-4sv"/>
-                            <constraint firstItem="bbW-mH-QLn" firstAttribute="top" secondItem="s8U-to-2ET" secondAttribute="bottom" constant="-64" id="ulR-lD-KUr"/>
+                            <constraint firstItem="bbW-mH-QLn" firstAttribute="top" secondItem="s8U-to-2ET" secondAttribute="bottom" id="ulR-lD-KUr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Doo-7A-hM4"/>
@@ -320,7 +320,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xVu-cd-nQ9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xVu-cd-nQ9">
                                 <rect key="frame" x="16" y="98" width="400" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
