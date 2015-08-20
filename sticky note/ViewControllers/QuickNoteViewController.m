@@ -86,6 +86,9 @@
 	[self.txfTitle.layer setBorderWidth:3.0f];
 	[self.txfTitle.layer setBorderColor:[UIColor whiteColor].CGColor];
 	[self.txfTitle setClipsToBounds:YES];
+	
+	[self.btnChooseCategory.layer setCornerRadius:5.0f];
+	[self.btnChooseCategory setClipsToBounds:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -95,9 +98,14 @@
         _pickerViewCategory = [[UIPickerView alloc] init];
         
         // Create a category picker view.
-		[_pickerViewCategory setBackgroundColor:[UIColor whiteColor]];
+		[_pickerViewCategory setBackgroundColor:THEME_COLOR_DARKER];
+		[_pickerViewCategory setTintColor:[UIColor whiteColor]];
         [_pickerViewCategory setDelegate:self];
         [_pickerViewCategory setDataSource:self];
+		[_pickerViewCategory.layer setBorderWidth:3.0f];
+		[_pickerViewCategory.layer setBorderColor:[UIColor whiteColor].CGColor];
+		[_pickerViewCategory setShowsSelectionIndicator:YES];
+		
         [self.view addSubview:_pickerViewCategory];
     }
     
@@ -164,12 +172,17 @@
 }
 
 #pragma mark <UIPickerViewDataSource>
-- (NSString *)pickerView:(UIPickerView *)pickerView
-			 titleForRow:(NSInteger)row
-			forComponent:(NSInteger)component {
-    NSArray *allCategory = [[CategoryHelper sharedInstance] getAllCategory];
-    CategoryModel *category = [allCategory objectAtIndex:row];
-    return category.name;
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView
+			 attributedTitleForRow:(NSInteger)row
+					  forComponent:(NSInteger)component {
+	NSArray *allCategory = [[CategoryHelper sharedInstance] getAllCategory];
+	CategoryModel *category = [allCategory objectAtIndex:row];
+	
+	NSAttributedString *attString =
+		[[NSAttributedString alloc] initWithString:category.name
+										attributes:
+  			@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+	return attString;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -338,6 +351,10 @@
 	[self.customTextView setHidden:NO];
 	[_drawingControlView setHidden:YES];
 	[_imagePicker setHidden:YES];
+}
+
+- (void)pickerDoneTapped {
+	[self onSelectCategory:self.btnChooseCategory];
 }
 
 @end
