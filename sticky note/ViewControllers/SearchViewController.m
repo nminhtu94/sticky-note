@@ -49,6 +49,7 @@
     [super viewWillAppear:animated];
     [self.view setBackgroundColor:THEME_COLOR_DARKER];
     [self.tblResult setBackgroundColor:THEME_COLOR_DARKER];
+	[self.tblResult setSeparatorColor:[UIColor clearColor]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,12 +80,18 @@
 }
 
 #pragma mark - Search protocol delegate
--(void) searchNote{
-    NSString *searchKey = searchBar.txfQuery.text;
-    result = [[NoteHelper sharedInstance] searchNote:searchKey];
-    NSLog(@"Result search: %@", result);
-    [self.tblResult reloadData];
-    self.tblResult.hidden = NO;
+-(void) searchNote {
+	if ([self.searchSegment selectedSegmentIndex] == 0) {
+		NSString *searchKey = searchBar.txfQuery.text;
+		result = [[NoteHelper sharedInstance] searchNote:searchKey];
+		[self.tblResult reloadData];
+		self.tblResult.hidden = NO;
+	} else {
+		NSString *query = searchBar.txfQuery.text;
+		result = [[NoteHelper sharedInstance] searchNoteByTag:query];
+		[self.tblResult reloadData];
+		self.tblResult.hidden = NO;
+	}
 }
 
 
@@ -122,4 +129,6 @@
     [self.navigationController pushViewController:editNoteVC animated:YES];
 }
 
+- (IBAction)searchSegmentChanged:(id)sender {
+}
 @end

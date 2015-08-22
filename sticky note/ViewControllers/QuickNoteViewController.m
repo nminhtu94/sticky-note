@@ -21,6 +21,7 @@
 @property (nonatomic) UIAlertView *alertView;
 @property (nonatomic) CategoryModel *selectedCategory;
 @property (nonatomic) UIActionSheet *actionSheet;
+@property (nonatomic) CGRect viewOriginalFrame;
 
 @property (nonatomic, strong) NotingViewController *txvNotingView;
 
@@ -139,9 +140,11 @@
 	
 	[self.customTextView addSubview:_txvNotingView.view];
     [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
-	[self.view layoutSubviews];
-	[self.view setNeedsUpdateConstraints];
-	[self.view layoutIfNeeded];
+	
+	self.viewOriginalFrame = self.view.frame;
+	[self.imagePicker layoutSubviews];
+	[self.imagePicker setNeedsUpdateConstraints];
+	[self.imagePicker layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -363,6 +366,44 @@
 
 - (void)pickerDoneTapped {
 	[self onSelectCategory:self.btnChooseCategory];
+}
+
+- (void)addEventToViews {
+	// For keyboards events
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillShow:)
+												 name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillHide:)
+												 name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardDidHide:)
+												 name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+	NSDictionary* keyboardInfo = [notification userInfo];
+	NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
+	CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+	
+	if ([self.txfTags isFirstResponder]) {
+		[UIView animateWithDuration:0.2 animations:^{
+			[self.view setFrame:CGRectMake(0,
+										   -keyboardFrameBeginRect.size.height,
+										   self.view.frame.size.width,
+										   self.view.frame.size.height)];
+		}];
+	}
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+	[UIView animateWithDuration:0.2 animations:^{
+		[self.view setFrame:self.viewOriginalFrame];
+	}];
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification {
+	
 }
 
 @end

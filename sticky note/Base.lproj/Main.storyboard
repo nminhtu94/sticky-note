@@ -94,7 +94,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDD-Ui-yZQ" customClass="ImagePickerView">
-                                <rect key="frame" x="150" y="151" width="300" height="300"/>
+                                <rect key="frame" x="10" y="151" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zDD-Ui-yZQ" secondAttribute="height" multiplier="1:1" id="ZP9-NV-WPq"/>
@@ -116,6 +116,7 @@
                             <constraint firstItem="oI8-2f-PBg" firstAttribute="top" secondItem="VtA-h5-nsW" secondAttribute="bottom" constant="4" id="7aI-dM-T2B"/>
                             <constraint firstItem="AZj-Eq-UXc" firstAttribute="top" secondItem="VtA-h5-nsW" secondAttribute="bottom" constant="48" id="8mJ-JP-Wt0"/>
                             <constraint firstItem="VtA-h5-nsW" firstAttribute="top" secondItem="Mgc-XE-5xy" secondAttribute="top" id="8yE-Kf-lf7"/>
+                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="leading" secondItem="I8J-Jj-axT" secondAttribute="leading" id="GFv-MZ-ZFV"/>
                             <constraint firstItem="tTS-zM-54P" firstAttribute="top" secondItem="AZj-Eq-UXc" secondAttribute="bottom" constant="10" id="IY4-k4-Kba"/>
                             <constraint firstItem="VtA-h5-nsW" firstAttribute="leading" secondItem="Mgc-XE-5xy" secondAttribute="leading" id="JfT-h2-bo5"/>
                             <constraint firstItem="VtA-h5-nsW" firstAttribute="top" secondItem="I8J-Jj-axT" secondAttribute="bottom" constant="10" id="LQx-K7-1Qs"/>
@@ -125,6 +126,8 @@
                             <constraint firstItem="zDD-Ui-yZQ" firstAttribute="leading" secondItem="DMu-mq-6ne" secondAttribute="leadingMargin" id="Oxf-KK-76h"/>
                             <constraint firstItem="VtA-h5-nsW" firstAttribute="bottom" secondItem="Mgc-XE-5xy" secondAttribute="bottom" id="Rmu-hY-NGz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VtA-h5-nsW" secondAttribute="trailing" constant="10" id="Sq1-rr-94q"/>
+                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="centerX" secondItem="I8J-Jj-axT" secondAttribute="centerX" id="Vay-Nu-en7"/>
+                            <constraint firstItem="zDD-Ui-yZQ" firstAttribute="leading" secondItem="I8J-Jj-axT" secondAttribute="leading" id="XM3-9W-GIE"/>
                             <constraint firstItem="I8J-Jj-axT" firstAttribute="top" secondItem="Eb7-XK-5V5" secondAttribute="bottom" constant="10" id="XQJ-Mz-Ba2"/>
                             <constraint firstItem="Eb7-XK-5V5" firstAttribute="leading" secondItem="DMu-mq-6ne" secondAttribute="leading" constant="10" id="Xoe-P0-0z5"/>
                             <constraint firstItem="zDD-Ui-yZQ" firstAttribute="width" secondItem="DMu-mq-6ne" secondAttribute="width" multiplier="1:2" id="aVd-EB-gVp"/>
@@ -136,7 +139,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="2xL-7Z-FuE"/>
                                 <exclude reference="Oxf-KK-76h"/>
+                                <exclude reference="Vay-Nu-en7"/>
+                                <exclude reference="XM3-9W-GIE"/>
                                 <exclude reference="8mJ-JP-Wt0"/>
                             </mask>
                         </variation>
@@ -210,20 +216,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bbW-mH-QLn" userLabel="Table Result">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="94" width="600" height="457"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IQz-XR-qJD">
+                                <rect key="frame" x="0.0" y="64" width="600" height="31"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.30196078431372547" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="kBU-MG-NyF"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Text"/>
+                                    <segment title="Tag"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="searchSegmentChanged:" destination="a6f-iz-kIv" eventType="valueChanged" id="7Be-qb-sDW"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IQz-XR-qJD" firstAttribute="top" secondItem="s8U-to-2ET" secondAttribute="bottom" id="3e9-qN-E5W"/>
+                            <constraint firstItem="IQz-XR-qJD" firstAttribute="leading" secondItem="z4K-0P-B14" secondAttribute="leading" id="7DU-fx-0r7"/>
+                            <constraint firstAttribute="trailing" secondItem="IQz-XR-qJD" secondAttribute="trailing" id="Eoi-EP-uF2"/>
                             <constraint firstAttribute="trailing" secondItem="bbW-mH-QLn" secondAttribute="trailing" id="FOG-DI-TAf"/>
                             <constraint firstItem="vp1-bG-4qr" firstAttribute="top" secondItem="bbW-mH-QLn" secondAttribute="bottom" id="b2v-Bj-O4L"/>
                             <constraint firstItem="bbW-mH-QLn" firstAttribute="leading" secondItem="z4K-0P-B14" secondAttribute="leading" id="fj4-Vv-4sv"/>
-                            <constraint firstItem="bbW-mH-QLn" firstAttribute="top" secondItem="s8U-to-2ET" secondAttribute="bottom" id="ulR-lD-KUr"/>
+                            <constraint firstItem="bbW-mH-QLn" firstAttribute="top" secondItem="s8U-to-2ET" secondAttribute="bottom" constant="30" id="ulR-lD-KUr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Doo-7A-hM4"/>
                     <connections>
+                        <outlet property="searchSegment" destination="IQz-XR-qJD" id="ICi-w2-els"/>
                         <outlet property="tblResult" destination="bbW-mH-QLn" id="DG8-eE-VFt"/>
                     </connections>
                 </viewController>

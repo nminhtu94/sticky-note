@@ -25,7 +25,12 @@
 
 - (NSArray *)getNoteOfCategory:(CategoryModel *)category;
 
+- (NSArray *)getAllNotes;
+
 - (BOOL)deleteNote:(NSManagedObjectID *)objectID;
 
 - (NSArray *)searchNote:(NSString *)query;
+
+- (NSArray *)searchNoteByTag:(NSString *)tag;
+
 @end

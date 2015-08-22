@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -14,26 +15,41 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gD-Bq-Ehf" userLabel="Title">
-                        <rect key="frame" x="18" y="13" width="212" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="note_background" translatesAutoresizingMaskIntoConstraints="NO" id="PGq-sW-WuA">
+                        <rect key="frame" x="24" y="13" width="17.5" height="17.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="PGq-sW-WuA" secondAttribute="height" multiplier="1:1" id="rwP-Hy-Vlg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gD-Bq-Ehf" userLabel="Title">
+                        <rect key="frame" x="51.5" y="12" width="39" height="19"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnR-6T-Fgx" userLabel="Data">
-                        <rect key="frame" x="270" y="13" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnR-6T-Fgx" userLabel="Data">
+                        <rect key="frame" x="276.5" y="13.5" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="centerYWithinMargins" secondItem="4gD-Bq-Ehf" secondAttribute="centerYWithinMargins" id="6kn-js-hRv"/>
-                    <constraint firstItem="4gD-Bq-Ehf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="6ut-Nk-T2d"/>
+                    <constraint firstItem="PGq-sW-WuA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="DUH-GL-tM2"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="PGq-sW-WuA" secondAttribute="bottom" constant="5" id="Pa4-iV-CkY"/>
                     <constraint firstAttribute="centerYWithinMargins" secondItem="KnR-6T-Fgx" secondAttribute="centerYWithinMargins" id="QRm-Bk-ruu"/>
                     <constraint firstAttribute="trailing" secondItem="KnR-6T-Fgx" secondAttribute="trailing" constant="8" id="TFU-Tf-vfL"/>
-                    <constraint firstAttribute="trailing" secondItem="4gD-Bq-Ehf" secondAttribute="trailing" constant="90" id="sj0-0m-6jf"/>
+                    <constraint firstItem="PGq-sW-WuA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="fyX-NN-eE2"/>
+                    <constraint firstItem="KnR-6T-Fgx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4gD-Bq-Ehf" secondAttribute="trailing" constant="5" id="sok-Gq-58d"/>
+                    <constraint firstItem="KnR-6T-Fgx" firstAttribute="leading" secondItem="4gD-Bq-Ehf" secondAttribute="trailing" constant="5" id="v9u-Zg-qaK"/>
+                    <constraint firstItem="4gD-Bq-Ehf" firstAttribute="leading" secondItem="PGq-sW-WuA" secondAttribute="trailing" constant="10" id="xQo-Pu-VFs"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="v9u-Zg-qaK"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="txtDate" destination="KnR-6T-Fgx" id="aIp-E8-GBA"/>
@@ -41,4 +57,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="note_background" width="300" height="300"/>
+    </resources>
 </document>

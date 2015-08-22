@@ -83,6 +83,24 @@
     return NO;
 }
 
+- (NSArray *)getAllNotes {
+	NSMutableArray *notes = [NSMutableArray new];
+	
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"NoteModel"
+											  inManagedObjectContext:[self managedObjectContext]];
+	[fetchRequest setEntity:entity];
+	
+	NSError *error = nil;
+	NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+	
+	if (!error) {
+		[notes addObjectsFromArray:results];
+	}
+	
+	return notes;
+}
+
 - (NSArray *)getNoteOfCategory:(CategoryModel *)category {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category = %@", category];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"NoteModel"];
@@ -104,15 +122,37 @@
     return NO;
 }
 
-- (NSArray *)searchNote:(NSString *)query{
-    NSArray *result = [[NSArray alloc] init];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@) OR (text CONTAINS[cd] %@)", query, query];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"NoteModel"];
-    [fetchRequest setPredicate:predicate];
-    
-    result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    // FILTER AFTER SHOW RESULT
+- (NSArray *)searchNote:(NSString *)query {
+	NSMutableArray *result = [NSMutableArray array];
+	
+	NSArray *allNote = [self getAllNotes];
+	
+	for (NoteModel *note in allNote) {
+		NSString *text = [note.text.string lowercaseString];
+		NSString *title = note.title;
+		if ([text rangeOfString:[query lowercaseString]].location != NSNotFound
+			|| [title rangeOfString:[query lowercaseString]].location != NSNotFound) {
+			[result addObject:note];
+		}
+	}
+	
     return result;
+}
+
+- (NSArray *)searchNoteByTag:(NSString *)tag {
+	NSMutableArray *result = [NSMutableArray array];
+	NSArray *allNote = [self getAllNotes];
+	
+	for (NoteModel *note in allNote) {
+		NSArray *tags = note.tags;
+		for (NSString *value in tags) {
+			if ([value isEqualToString:[tag lowercaseString]]) {
+				[result addObject:note];
+			}
+		}
+	}
+	
+	return result;
 }
 
 @end
