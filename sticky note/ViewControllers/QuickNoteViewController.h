@@ -11,6 +11,7 @@
 @property (weak, nonatomic) IBOutlet ImagePickerView *imagePicker;
 @property (weak, nonatomic) IBOutlet DrawingControl *drawingControlView;
 @property (weak, nonatomic) IBOutlet UIView *customTextView;
+@property (weak, nonatomic) IBOutlet UITextField *txfTags;
 
 @property (nonatomic, strong) NoteModel *note;
 @property (nonatomic, assign) BOOL willResetData;

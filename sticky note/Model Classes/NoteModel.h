@@ -2,7 +2,7 @@
 //  NoteModel.h
 //  sticky note
 //
-//  Created by Nguyen Minh Tu on 8/3/15.
+//  Created by Nguyen Minh Tu on 8/22/15.
 //  Copyright (c) 2015 Apps Fellow. All rights reserved.
 //
 
@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSData * sketch;
 @property (nonatomic, retain) NSAttributedString *text;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSArray *tags;
 @property (nonatomic, retain) CategoryModel *category;
 
 @end

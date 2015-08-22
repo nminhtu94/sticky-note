@@ -31,7 +31,6 @@
 		BE2CBFBC1B1B4A2F0049010E /* CoreDataCommonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFBB1B1B4A2F0049010E /* CoreDataCommonHelper.m */; };
 		BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFBD1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld */; };
 		BE2CBFCB1B1B52BC0049010E /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */; };
-		BE2CBFCE1B1B58150049010E /* NoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFCD1B1B58150049010E /* NoteModel.m */; };
 		BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFD01B1B73980049010E /* NoteHelper.m */; };
 		BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3551B1B8A1C00BA7794 /* CategoryHelper.m */; };
 		BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3581B1B8F5C00BA7794 /* EditCategoryViewController.m */; };
@@ -63,6 +62,7 @@
 		BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463A1B08A2F40084D0FA /* CategoryViewController.m */; };
 		BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463E1B08A3100084D0FA /* SearchViewController.m */; };
 		BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */; };
+		BEDCC97C1B89062A00BF3D43 /* NoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC97B1B89062A00BF3D43 /* NoteModel.m */; };
 		BEF05F651B6735280040B57B /* ViewNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF05F631B6735280040B57B /* ViewNoteViewController.m */; };
 		BEF05F661B6735280040B57B /* ViewNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF05F641B6735280040B57B /* ViewNoteViewController.xib */; };
 		BEF05F6A1B6739B90040B57B /* ImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF05F691B6739B90040B57B /* ImagePickerView.m */; };
@@ -119,8 +119,6 @@
 		BE2CBFBE1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		BE2CBFC91B1B52BC0049010E /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryModel.h; path = "Model Classes/CategoryModel.h"; sourceTree = "<group>"; };
 		BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryModel.m; path = "Model Classes/CategoryModel.m"; sourceTree = "<group>"; };
-		BE2CBFCC1B1B58150049010E /* NoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteModel.h; path = "Model Classes/NoteModel.h"; sourceTree = "<group>"; };
-		BE2CBFCD1B1B58150049010E /* NoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteModel.m; path = "Model Classes/NoteModel.m"; sourceTree = "<group>"; };
 		BE2CBFCF1B1B73980049010E /* NoteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteHelper.h; path = "Helper Classes/NoteHelper.h"; sourceTree = "<group>"; };
 		BE2CBFD01B1B73980049010E /* NoteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteHelper.m; path = "Helper Classes/NoteHelper.m"; sourceTree = "<group>"; };
 		BE43D3541B1B8A1C00BA7794 /* CategoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryHelper.h; path = "Helper Classes/CategoryHelper.h"; sourceTree = "<group>"; };
@@ -177,6 +175,8 @@
 		BE91463E1B08A3100084D0FA /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/SearchViewController.m; sourceTree = "<group>"; };
 		BE9146461B08A6E80084D0FA /* QuickNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickNoteViewController.h; path = ViewControllers/QuickNoteViewController.h; sourceTree = "<group>"; };
 		BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickNoteViewController.m; path = ViewControllers/QuickNoteViewController.m; sourceTree = "<group>"; };
+		BEDCC97A1B89062A00BF3D43 /* NoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteModel.h; path = "Model Classes/NoteModel.h"; sourceTree = "<group>"; };
+		BEDCC97B1B89062A00BF3D43 /* NoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteModel.m; path = "Model Classes/NoteModel.m"; sourceTree = "<group>"; };
 		BEF05F621B6735280040B57B /* ViewNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewNoteViewController.h; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.h; sourceTree = "<group>"; };
 		BEF05F631B6735280040B57B /* ViewNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewNoteViewController.m; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.m; sourceTree = "<group>"; };
 		BEF05F641B6735280040B57B /* ViewNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewNoteViewController.xib; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.xib; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 		BE2CBFB51B1B48A20049010E /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BE2CBFCC1B1B58150049010E /* NoteModel.h */,
-				BE2CBFCD1B1B58150049010E /* NoteModel.m */,
+				BEDCC97A1B89062A00BF3D43 /* NoteModel.h */,
+				BEDCC97B1B89062A00BF3D43 /* NoteModel.m */,
 				BE2CBFC91B1B52BC0049010E /* CategoryModel.h */,
 				BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */,
 				BE2CBFB61B1B48AC0049010E /* AppCoreModel.h */,
@@ -583,12 +583,12 @@
 				BE43D3771B1BA62400BA7794 /* CategoryCollectionViewCell.m in Sources */,
 				BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */,
 				BE2CBFCB1B1B52BC0049010E /* CategoryModel.m in Sources */,
-				BE2CBFCE1B1B58150049010E /* NoteModel.m in Sources */,
 				BE6222EA1B4869A300DB7F13 /* NoteViewController.m in Sources */,
 				BE9146161B0893C70084D0FA /* AppDelegate.m in Sources */,
 				BE08B1621B82F14500968E01 /* UIImage+ColorImage.m in Sources */,
 				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
 				BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */,
+				BEDCC97C1B89062A00BF3D43 /* NoteModel.m in Sources */,
 				A62C15101B711DCC0088E0BB /* SearchTableViewCell.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
 				BE29A9C11B69F13D00EC126A /* UIColor+NEOColor.m in Sources */,

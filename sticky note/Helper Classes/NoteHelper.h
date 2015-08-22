@@ -11,7 +11,8 @@
           image:(NSData *)image
          sketch:(NSData *)sketch
            date:(NSDate *)date
-       category:(CategoryModel *)category;
+	   category:(CategoryModel *)category
+		   tags:(NSArray *)tags;
 
 - (BOOL)updateNote:(NSManagedObjectID *)objectID
              title:(NSString *)title
@@ -19,7 +20,8 @@
              image:(NSData *)image
             sketch:(NSData *)sketch
               date:(NSDate *)date
-          category:(CategoryModel *)category;
+		  category:(CategoryModel *)category
+			  tags:(NSArray *)tags;
 
 - (NSArray *)getNoteOfCategory:(CategoryModel *)category;
 

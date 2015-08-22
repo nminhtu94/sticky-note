@@ -14,6 +14,8 @@ static NSString * const ContactLayoutCellKind = @"ContactCollectionCell";
 
 @property (nonatomic, strong) NSDictionary *layoutInfo;
 
+
+
 @end
 
 @implementation CAImageCollectionLayout
@@ -45,7 +47,6 @@ static NSString * const ContactLayoutCellKind = @"ContactCollectionCell";
     self.itemInsets = UIEdgeInsetsMake(10.0f, 10.0f, 5.0f, 10.0f);
     self.itemSize = CGSizeMake(120.0f, 160.0f);
     self.interItemSpacingY = 5.0f;
-    self.numberOfColumns = [UIScreen mainScreen].bounds.size.width / self.itemSize.width;
 }
 
 #pragma mark - Layout
@@ -79,8 +80,8 @@ static NSString * const ContactLayoutCellKind = @"ContactCollectionCell";
 
 #pragma mark - Private
 
-- (CGRect)frameForImageAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGRect)frameForImageAtIndexPath:(NSIndexPath *)indexPath {
+	self.numberOfColumns = [UIScreen mainScreen].bounds.size.width / self.itemSize.width;
     NSInteger row = indexPath.item / self.numberOfColumns;
     NSInteger column = indexPath.item % self.numberOfColumns;
     
@@ -125,6 +126,7 @@ static NSString * const ContactLayoutCellKind = @"ContactCollectionCell";
 
 - (CGSize)collectionViewContentSize
 {
+	self.numberOfColumns = [UIScreen mainScreen].bounds.size.width / self.itemSize.width;
     NSInteger rowCount = [self.collectionView numberOfItemsInSection:0] / self.numberOfColumns;
     // make sure we count another row if one is only partially filled
     if ([self.collectionView numberOfItemsInSection:0] % self.numberOfColumns) rowCount++;

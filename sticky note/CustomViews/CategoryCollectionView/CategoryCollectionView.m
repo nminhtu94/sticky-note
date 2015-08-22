@@ -49,8 +49,9 @@ static NSString* cellIdentifier = @"CategoryCollectionCell";
                                      bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:cellIdentifier];
     [self setBackgroundColor:[UIColor clearColor]];
     CAImageCollectionLayout* imageLayout = [[CAImageCollectionLayout alloc] init];
-    [imageLayout setItemSize:CGSizeMake(120.0f, 160.0f)];
-    [imageLayout setNumberOfColumns:[UIScreen mainScreen].bounds.size.width / 120.0f];
+	[imageLayout setItemSize:CGSizeMake(120, 160)];
+	[imageLayout setNumberOfColumns:self.frame.size.width / 120];
+	[imageLayout setItemInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [self setCollectionViewLayout:imageLayout];
 }
 

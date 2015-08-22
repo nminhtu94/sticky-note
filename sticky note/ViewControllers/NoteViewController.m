@@ -21,10 +21,34 @@ static CategoryModel *selectedCategory;
 	if (_viewNoteVC == nil) {
 		_viewNoteVC = [[ViewNoteViewController alloc] init];
 	}
+	
+	UIBarButtonItem *backButton =
+		[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+													  target:self
+													  action:@selector(backButtonTapped)];
+	[backButton setTintColor:[UIColor whiteColor]];
+	[self.navigationItem setLeftBarButtonItem:backButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (_noteCollection == nil) {
+        UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        flowLayout.itemSize = CGSizeMake(75, 75);
+        _noteCollection =
+			[[NoteCollectionView alloc] initWithFrame:_viewNoteCollectionHolder.bounds
+								 collectionViewLayout:flowLayout];
+		[_noteCollection setItemSize:CGSizeMake(75, 75)];
+        [_noteCollection setBackgroundColor:[UIColor clearColor]];
+        [_viewNoteCollectionHolder addSubview:_noteCollection];
+        [_viewNoteCollectionHolder bringSubviewToFront:_noteCollection];
+		[_noteCollection setCustomDelegate:self];
+    }
+	
 	
 	// this will appear as the title in the navigation bar
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -36,21 +60,6 @@ static CategoryModel *selectedCategory;
 	self.navigationItem.titleView = label;
 	label.text = NSLocalizedString(selectedCategory.name, @"");
 	[label sizeToFit];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (_noteCollection == nil) {
-        UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(100, 100);
-        _noteCollection = [[NoteCollectionView alloc] initWithFrame:_viewNoteCollectionHolder.bounds
-                                               collectionViewLayout:flowLayout];
-        [_noteCollection setBackgroundColor:[UIColor clearColor]];
-        [_viewNoteCollectionHolder addSubview:_noteCollection];
-        [_viewNoteCollectionHolder bringSubviewToFront:_noteCollection];
-		[_noteCollection setCustomDelegate:self];
-    }
     
     [self setup];
 }
@@ -68,6 +77,10 @@ static CategoryModel *selectedCategory;
     selectedCategory = category;
 }
 
+- (void)backButtonTapped {
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)setup {
     [_noteCollection setNotes:[[NoteHelper sharedInstance] getNoteOfCategory:selectedCategory]];
     [_noteCollection reloadData];
@@ -76,14 +89,11 @@ static CategoryModel *selectedCategory;
 
 #pragma mar <NoteCollectionDelegate>
 - (void)noteCollectionView:(NoteCollectionView *)collectionView didSelectNote:(NoteModel *)note {
-//	
-//	[_viewNoteVC setNote:note];
-//	[self.navigationController pushViewController:_viewNoteVC animated:YES];
-	
 	UIStoryboard *storyBoard =
 		[UIStoryboard storyboardWithName:@"Main"
 								  bundle:[NSBundle mainBundle]];
-	QuickNoteViewController *editNoteVC = [storyBoard instantiateViewControllerWithIdentifier:@"quickNoteVC"];
+	QuickNoteViewController *editNoteVC =
+		[storyBoard instantiateViewControllerWithIdentifier:@"quickNoteVC"];
 	[editNoteVC setNote:note];
 	[self.navigationController pushViewController:editNoteVC animated:YES];
 }

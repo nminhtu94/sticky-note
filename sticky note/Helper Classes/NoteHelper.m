@@ -30,8 +30,9 @@
 		  image:(NSData *)image
 		 sketch:(NSData *)sketch
 		   date:(NSDate *)date
-	   category:(CategoryModel *)category {
-    
+	   category:(CategoryModel *)category
+		   tags:(NSArray *)tags {
+	
     NoteModel *note =
 		[NSEntityDescription insertNewObjectForEntityForName:@"NoteModel"
 									  inManagedObjectContext:[self managedObjectContext]];
@@ -42,18 +43,20 @@
     [note setDate:date];
     [note setValue:[self.managedObjectContext objectWithID:[category objectID]]
 			forKey:@"category"];
+	[note setTags:tags];
     [self save];
     return YES;
 }
 
 - (BOOL)updateNote:(NSManagedObjectID *)objectID
-             title:(NSString *)title
-              text:(NSAttributedString *)text
-             image:(NSData *)image
-            sketch:(NSData *)sketch
-              date:(NSDate *)date
-          category:(CategoryModel *)category {
-    
+			 title:(NSString *)title
+			  text:(NSAttributedString *)text
+			 image:(NSData *)image
+			sketch:(NSData *)sketch
+			  date:(NSDate *)date
+		  category:(CategoryModel *)category
+			  tags:(NSArray *)tags {
+	
     NSError *error = nil;
     NoteModel *note =
 		(NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
@@ -64,6 +67,7 @@
         [note setImage:image];
         [note setSketch:sketch];
         [note setDate:date];
+		[note setTags:tags];
         
         if (category.objectID != note.category.objectID) {
             [note.category removeNotesObject:note];

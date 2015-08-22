@@ -127,17 +127,21 @@
 	if (self.note != nil) {
 		[self.segment setSelectedSegmentIndex:0];
 		self.willResetData = NO;
-		[self.drawingControlView.drawingView setSketchImage:[UIImage imageWithData:self.note.sketch]];
+		[self.drawingControlView.drawingView setSketchImage:
+		 	[UIImage imageWithData:self.note.sketch]];
 		[self.txvNotingView.textView setAttributedText:self.note.text];
 		[self.txvNotingView setText:self.note.text];
 		[self.txfTitle setText:self.note.title];
 		[self.imagePicker.imageView setImage:[UIImage imageWithData:self.note.image]];
 		[self.drawingControlView.drawingView setNeedsDisplay];
+		[self.txfTags setText:[AppUtil generateStrings:self.note.tags]];
 	}
 	
 	[self.customTextView addSubview:_txvNotingView.view];
     [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
 	[self.view layoutSubviews];
+	[self.view setNeedsUpdateConstraints];
+	[self.view layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -271,7 +275,8 @@
 									   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
 									  sketch:UIImagePNGRepresentation(sketch)
 										date:[NSDate date]
-									category:_selectedCategory];
+									category:_selectedCategory
+										tags:[AppUtil parseDataFromString:self.txfTags.text]];
 		self.willResetData = YES;
 		[self resetData];
 		[MainTabBar setSelectedIndex:0];
@@ -282,7 +287,8 @@
 										  image:UIImagePNGRepresentation([self.imagePicker selectedImage])
 										 sketch:UIImagePNGRepresentation(sketch)
 										   date:[NSDate date]
-									   category:_selectedCategory];
+									   category:_selectedCategory
+										   tags:[AppUtil parseDataFromString:self.txfTags.text]];
 	}
 	[self resignFirstResponder];
 }
@@ -351,6 +357,8 @@
 	[self.customTextView setHidden:NO];
 	[_drawingControlView setHidden:YES];
 	[_imagePicker setHidden:YES];
+	
+	[self.txfTags setText:@""];
 }
 
 - (void)pickerDoneTapped {

@@ -50,10 +50,11 @@ static NSString* cellIdentifier = @"NoteCollectionCell";
     [self registerNib:[UINib nibWithNibName:@"NoteCollectionViewCell"
                                      bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:cellIdentifier];
     [self setBackgroundColor:[UIColor clearColor]];
-    CAImageCollectionLayout* imageLayout = [[CAImageCollectionLayout alloc] init];
-    [imageLayout setItemSize:CGSizeMake(120.0f, 120.0f)];
-    [imageLayout setNumberOfColumns:[UIScreen mainScreen].bounds.size.width/120.0];
-    [self setCollectionViewLayout:imageLayout];
+	CAImageCollectionLayout* imageLayout = [[CAImageCollectionLayout alloc] init];
+	[imageLayout setItemSize:CGSizeMake(100, 100)];
+	[imageLayout setNumberOfColumns:self.frame.size.width / 100];
+	[imageLayout setItemInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+	[self setCollectionViewLayout:imageLayout];
 }
 
 #pragma mark <UICollectionViewDataSource>

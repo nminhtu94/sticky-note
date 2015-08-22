@@ -39,4 +39,7 @@
 
 - (UIAlertView *)showWaitIndicator: (NSString *)title;
 - (void)showAlert: (NSString *)title message: (NSString *)message;
+
+- (NSArray *)parseDataFromString:(NSString *)input;
+- (NSString *)generateStrings:(NSArray *)input;
 @end

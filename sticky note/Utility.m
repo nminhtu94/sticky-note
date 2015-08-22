@@ -71,16 +71,21 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
-    
-    // ios7+ only
-//    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0);
-//    
-//    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
-//    
-//    UIImage *copied = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-    
-//    return copied;
+}
+
+- (NSArray *)parseDataFromString:(NSString *)input {
+	NSMutableArray *result = [NSMutableArray new];
+	
+	if (input != nil && ![input isEqual:[NSNull null]]) {
+		NSArray *data = [input componentsSeparatedByString:@","];
+		for (NSString *item in data) {
+			NSString *trimmedItem =
+				[item stringByTrimmingCharactersInSet:
+				 	[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+			[result addObject:[trimmedItem lowercaseString]];
+		}
+	}
+	return result;
 }
 
 - (NSDate *)dateFromUTCFormat:(NSString *)dateString {
@@ -114,6 +119,24 @@
     [progressAlert addSubview:activityView];
     [activityView startAnimating];
     return progressAlert;
+}
+
+- (NSString *)generateStrings:(NSArray *)input {
+	NSString *result = @"";
+	
+	if (input.count <= 0) {
+		return result;
+	}
+	
+	for (NSString *skill in input) {
+		result = [result stringByAppendingString:[NSString stringWithFormat:@"%@, ", skill]];
+	}
+	
+	result =
+		[result stringByReplacingCharactersInRange:NSMakeRange(result.length - 2, 2)
+										withString:@""];
+	
+	return result;
 }
 
 // Helper for showing an alert
