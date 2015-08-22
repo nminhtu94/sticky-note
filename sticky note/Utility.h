@@ -38,7 +38,7 @@
 - (NSDate *)dateFromUTCFormat:(NSString *)dateString;
 
 - (UIAlertView *)showWaitIndicator: (NSString *)title;
-- (void)showAlert: (NSString *)title message: (NSString *)message;
+- (void)showAlert:(NSString *)title message: (NSString *)message;
 
 - (NSArray *)parseDataFromString:(NSString *)input;
 - (NSString *)generateStrings:(NSArray *)input;

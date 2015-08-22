@@ -1,12 +1,5 @@
-//
-//  EditCategoryViewController.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 5/31/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "EditCategoryViewController.h"
+#import "Utility.h"
 
 @interface EditCategoryViewController () {
     UIActionSheet *actionSheet;
@@ -22,9 +15,34 @@
     // Do any additional setup after loading the view.
     
     if (actionSheet == nil) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Photo", nil) delegate:self
-                                         cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Camera", nil), NSLocalizedString(@"Photo Library", nil), nil];
+        actionSheet =
+			[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Photo", nil)
+										delegate:self
+							   cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+						  destructiveButtonTitle:nil
+							   otherButtonTitles:NSLocalizedString(@"Camera", nil),
+			 									 NSLocalizedString(@"Photo Library", nil), nil];
     }
+	
+	[self.view setBackgroundColor:THEME_COLOR_DARKER];
+	
+	// this will appear as the title in the navigation bar
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+	label.backgroundColor = [UIColor clearColor];
+	label.font = [UIFont boldSystemFontOfSize:20.0];
+	label.textAlignment = NSTextAlignmentCenter;
+	// ^-Use UITextAlignmentCenter for older SDKs.
+	label.textColor = [UIColor whiteColor]; // change this color
+	self.navigationItem.titleView = label;
+	label.text = NSLocalizedString(@"Edit Category", @"");
+	[label sizeToFit];
+	
+	UIBarButtonItem *backButton =
+	[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+												  target:self
+												  action:@selector(backButtonTapped)];
+	[backButton setTintColor:[UIColor whiteColor]];
+	[self.navigationItem setLeftBarButtonItem:backButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,20 +70,23 @@
 #pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        [self presentViewController:[[ImagePickerHelper sharedInstance]
-                                     pickerWithSourceType:UIImagePickerControllerSourceTypeCamera]
+        [self presentViewController:
+		 	[[ImagePickerHelper sharedInstance]
+			 	pickerWithSourceType:UIImagePickerControllerSourceTypeCamera]
                            animated:YES
                          completion:nil];
     } else if (buttonIndex == 1) {
-        [self presentViewController:[[ImagePickerHelper sharedInstance]
-                                     pickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary]
+        [self presentViewController:
+		 	[[ImagePickerHelper sharedInstance]
+			 	pickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary]
                            animated:YES
                          completion:nil];
     }
 }
 
 #pragma mark ImagePickerHelperDelegate
-- (void)onPicker:(UIImagePickerController *)picker didFinishPickingImageWithInfo:(NSDictionary *)info {
+- (void)onPicker:(UIImagePickerController *)picker
+	didFinishPickingImageWithInfo:(NSDictionary *)info {
     UIImage *importedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [self.imgIcon setImage:importedImage];
@@ -95,12 +116,20 @@
     }
     
     if (selectedCategory == nil) {
-        [[CategoryHelper sharedInstance] addCategory:self.txfName.text icon:UIImagePNGRepresentation(self.imgIcon.image)];
+        [[CategoryHelper sharedInstance] addCategory:self.txfName.text
+												icon:UIImagePNGRepresentation(self.imgIcon.image)];
     } else {
-        [[CategoryHelper sharedInstance] updateCategory:selectedCategory.objectID name:self.txfName.text icon:UIImagePNGRepresentation(self.imgIcon.image)];
+        [[CategoryHelper sharedInstance] updateCategory:selectedCategory.objectID
+												   name:self.txfName.text
+												   icon:UIImagePNGRepresentation(self.imgIcon.image)];
     }
     
     selectedCategory = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)backButtonTapped {
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

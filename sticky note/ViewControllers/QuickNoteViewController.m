@@ -70,6 +70,8 @@
 	[self.navigationController.navigationBar setBarTintColor:THEME_COLOR];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+	
+	[self addEventToViews];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -293,6 +295,8 @@
 									   category:_selectedCategory
 										   tags:[AppUtil parseDataFromString:self.txfTags.text]];
 	}
+	
+	[AppUtil showAlert:@"Sticky Notes" message:@"Note saved successfully"];
 	[self resignFirstResponder];
 }
 
