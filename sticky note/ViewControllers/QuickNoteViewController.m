@@ -6,6 +6,7 @@
 #import "NEOColorPickerViewController.h"
 #import "NotingViewController.h"
 #import "Utility.h"
+#import "AlarmViewController.h"
 
 @interface QuickNoteViewController () <UIPickerViewDelegate,
 									   UIPickerViewDataSource,
@@ -24,6 +25,8 @@
 @property (nonatomic) CGRect viewOriginalFrame;
 
 @property (nonatomic, strong) NotingViewController *txvNotingView;
+
+
 
 @end
 
@@ -92,6 +95,12 @@
 	
 	[self.btnChooseCategory.layer setCornerRadius:5.0f];
 	[self.btnChooseCategory setClipsToBounds:YES];
+    
+    // Alarm
+    if (self.alarmDate) {
+        self.txDate.text = [NSString stringWithFormat:@"%@", self.alarmDate];
+        self.txDate.hidden = NO;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -147,6 +156,9 @@
 	[self.imagePicker layoutSubviews];
 	[self.imagePicker setNeedsUpdateConstraints];
 	[self.imagePicker layoutIfNeeded];
+    
+    // Alarm
+    self.alarmDate = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,6 +169,7 @@
 #pragma mark <UITextFieldDelegate>
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[textField resignFirstResponder];
+    [self.txfTags resignFirstResponder];
 	return YES;
 }
 
@@ -295,7 +308,17 @@
 									   category:_selectedCategory
 										   tags:[AppUtil parseDataFromString:self.txfTags.text]];
 	}
-	
+    
+    if (self.txDate.text.length > 0) {
+        // Schedule the notification
+        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+        localNotification.fireDate = self.alarmDate;
+        localNotification.alertBody = self.note.title;
+        localNotification.alertAction = @"Alert";
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    }
+    
 	[AppUtil showAlert:@"Sticky Notes" message:@"Note saved successfully"];
 	[self resignFirstResponder];
 }
@@ -338,16 +361,44 @@
 		[self.customTextView setHidden:NO];
 		[_drawingControlView setHidden:YES];
 		[_imagePicker setHidden:YES];
+        [self.alarm setHidden:YES];
 	} else if ([selector selectedSegmentIndex] == 1) {
 		[self.customTextView setHidden:YES];
 		[_imagePicker setHidden:YES];
 		[_drawingControlView setHidden:NO];
+        [self.alarm setHidden:YES];
 	} else if ([selector selectedSegmentIndex] == 2) {
 		[self.customTextView setHidden:YES];
 		[_imagePicker setHidden:NO];
 		[_drawingControlView setHidden:YES];
-	}
+        [self.alarm setHidden:YES];
+    } else if ([selector selectedSegmentIndex] == 3) {
+        [self.customTextView setHidden:YES];
+        [_imagePicker setHidden:YES];
+        [_drawingControlView setHidden:YES];
+        [self.alarm setHidden:NO];
+        
+    }
 }
+#pragma mark Alarm-Function
+- (IBAction)onCbAlarm:(id)sender {
+    if (self.txDate.text.length > 0) {
+        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+        self.txDate.text = @"";
+        self.txDate.hidden = YES;
+        self.alarmDate = nil;
+        
+        /* Remove notification */
+        
+    } else {
+        /* Pop up AlarmViewController */
+        AlarmViewController *alarmVc = [[AlarmViewController alloc] initWithNibName:@"AlarmViewController" bundle:nil];
+        alarmVc.navigationController = self.navigationController;
+        [self.navigationController presentViewController:alarmVc animated:YES completion:nil];
+    }
+}
+
+
 
 #pragma mark Private-Method
 - (void)resetData {
@@ -366,6 +417,13 @@
 	[_imagePicker setHidden:YES];
 	
 	[self.txfTags setText:@""];
+    
+    // Alarm
+    [self.alarm setHidden:YES];
+    self.txDate.hidden = YES;
+    [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+    self.txDate.text = @"";
+    
 }
 
 - (void)pickerDoneTapped {
