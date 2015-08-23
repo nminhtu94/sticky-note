@@ -110,7 +110,6 @@
 }
 
 - (BOOL)deleteNote:(NSManagedObjectID *)objectID {
-    
     NSError *error = nil;
     NoteModel *note =
 		(NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];

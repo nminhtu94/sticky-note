@@ -63,6 +63,12 @@
 		BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463E1B08A3100084D0FA /* SearchViewController.m */; };
 		BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */; };
 		BEDCC97C1B89062A00BF3D43 /* NoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC97B1B89062A00BF3D43 /* NoteModel.m */; };
+		BEDCC97F1B899A2E00BF3D43 /* ToDoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC97E1B899A2E00BF3D43 /* ToDoModel.m */; };
+		BEDCC9821B899D4600BF3D43 /* ToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9811B899D4600BF3D43 /* ToDoViewController.m */; };
+		BEDCC9851B899E3500BF3D43 /* ToDoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9841B899E3500BF3D43 /* ToDoHelper.m */; };
+		BEDCC9891B89A59300BF3D43 /* TodoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9881B89A59300BF3D43 /* TodoTableView.m */; };
+		BEDCC98D1B89A5B800BF3D43 /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC98B1B89A5B800BF3D43 /* TodoTableViewCell.m */; };
+		BEDCC98E1B89A5B800BF3D43 /* TodoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEDCC98C1B89A5B800BF3D43 /* TodoTableViewCell.xib */; };
 		BEF05F651B6735280040B57B /* ViewNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF05F631B6735280040B57B /* ViewNoteViewController.m */; };
 		BEF05F661B6735280040B57B /* ViewNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF05F641B6735280040B57B /* ViewNoteViewController.xib */; };
 		BEF05F6A1B6739B90040B57B /* ImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF05F691B6739B90040B57B /* ImagePickerView.m */; };
@@ -177,6 +183,17 @@
 		BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickNoteViewController.m; path = ViewControllers/QuickNoteViewController.m; sourceTree = "<group>"; };
 		BEDCC97A1B89062A00BF3D43 /* NoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteModel.h; path = "Model Classes/NoteModel.h"; sourceTree = "<group>"; };
 		BEDCC97B1B89062A00BF3D43 /* NoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteModel.m; path = "Model Classes/NoteModel.m"; sourceTree = "<group>"; };
+		BEDCC97D1B899A2E00BF3D43 /* ToDoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoModel.h; path = "Model Classes/ToDoModel.h"; sourceTree = "<group>"; };
+		BEDCC97E1B899A2E00BF3D43 /* ToDoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoModel.m; path = "Model Classes/ToDoModel.m"; sourceTree = "<group>"; };
+		BEDCC9801B899D4600BF3D43 /* ToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoViewController.h; path = ViewControllers/ToDoViewController.h; sourceTree = "<group>"; };
+		BEDCC9811B899D4600BF3D43 /* ToDoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoViewController.m; path = ViewControllers/ToDoViewController.m; sourceTree = "<group>"; };
+		BEDCC9831B899E3500BF3D43 /* ToDoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoHelper.h; path = "Helper Classes/ToDoHelper.h"; sourceTree = "<group>"; };
+		BEDCC9841B899E3500BF3D43 /* ToDoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoHelper.m; path = "Helper Classes/ToDoHelper.m"; sourceTree = "<group>"; };
+		BEDCC9871B89A59300BF3D43 /* TodoTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoTableView.h; path = CustomViews/ToDoTableView/TodoTableView.h; sourceTree = "<group>"; };
+		BEDCC9881B89A59300BF3D43 /* TodoTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoTableView.m; path = CustomViews/ToDoTableView/TodoTableView.m; sourceTree = "<group>"; };
+		BEDCC98A1B89A5B800BF3D43 /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoTableViewCell.h; path = CustomViews/ToDoTableView/TodoTableViewCell.h; sourceTree = "<group>"; };
+		BEDCC98B1B89A5B800BF3D43 /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoTableViewCell.m; path = CustomViews/ToDoTableView/TodoTableViewCell.m; sourceTree = "<group>"; };
+		BEDCC98C1B89A5B800BF3D43 /* TodoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TodoTableViewCell.xib; path = CustomViews/ToDoTableView/TodoTableViewCell.xib; sourceTree = "<group>"; };
 		BEF05F621B6735280040B57B /* ViewNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewNoteViewController.h; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.h; sourceTree = "<group>"; };
 		BEF05F631B6735280040B57B /* ViewNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewNoteViewController.m; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.m; sourceTree = "<group>"; };
 		BEF05F641B6735280040B57B /* ViewNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewNoteViewController.xib; path = ViewControllers/ViewNoteViewController/ViewNoteViewController.xib; sourceTree = "<group>"; };
@@ -242,6 +259,8 @@
 		BE2CBFB51B1B48A20049010E /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BEDCC97D1B899A2E00BF3D43 /* ToDoModel.h */,
+				BEDCC97E1B899A2E00BF3D43 /* ToDoModel.m */,
 				BEDCC97A1B89062A00BF3D43 /* NoteModel.h */,
 				BEDCC97B1B89062A00BF3D43 /* NoteModel.m */,
 				BE2CBFC91B1B52BC0049010E /* CategoryModel.h */,
@@ -264,6 +283,8 @@
 				BE2CBFD01B1B73980049010E /* NoteHelper.m */,
 				BE43D3541B1B8A1C00BA7794 /* CategoryHelper.h */,
 				BE43D3551B1B8A1C00BA7794 /* CategoryHelper.m */,
+				BEDCC9831B899E3500BF3D43 /* ToDoHelper.h */,
+				BEDCC9841B899E3500BF3D43 /* ToDoHelper.m */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -424,6 +445,8 @@
 				BE6222E91B4869A300DB7F13 /* NoteViewController.m */,
 				BE6222EB1B486FBD00DB7F13 /* MainTabBarViewController.h */,
 				BE6222EC1B486FBD00DB7F13 /* MainTabBarViewController.m */,
+				BEDCC9801B899D4600BF3D43 /* ToDoViewController.h */,
+				BEDCC9811B899D4600BF3D43 /* ToDoViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -431,6 +454,7 @@
 		BE9146401B08A3530084D0FA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				BEDCC9861B89A55700BF3D43 /* TodoTableView */,
 				A62C15091B711D7B0088E0BB /* SearchView */,
 				BE29A9A21B69F13300EC126A /* ColorPickerView */,
 				BEF05F671B67393C0040B57B /* ImagePickerView */,
@@ -442,6 +466,18 @@
 				BE43D35F1B1B988800BA7794 /* ExpandableSearchBar */,
 			);
 			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		BEDCC9861B89A55700BF3D43 /* TodoTableView */ = {
+			isa = PBXGroup;
+			children = (
+				BEDCC9871B89A59300BF3D43 /* TodoTableView.h */,
+				BEDCC9881B89A59300BF3D43 /* TodoTableView.m */,
+				BEDCC98A1B89A5B800BF3D43 /* TodoTableViewCell.h */,
+				BEDCC98B1B89A5B800BF3D43 /* TodoTableViewCell.m */,
+				BEDCC98C1B89A5B800BF3D43 /* TodoTableViewCell.xib */,
+			);
+			name = TodoTableView;
 			sourceTree = "<group>";
 		};
 		BEF05F611B6735010040B57B /* ViewNoteViewController */ = {
@@ -544,6 +580,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEDCC98E1B89A5B800BF3D43 /* TodoTableViewCell.xib in Resources */,
 				A6BDD26F1B6E2CE800A7913E /* NotingViewController.xib in Resources */,
 				BE6222E71B48667200DB7F13 /* NoteCollectionViewCell.xib in Resources */,
 				BE43D3781B1BA62400BA7794 /* CategoryCollectionViewCell.xib in Resources */,
@@ -590,11 +627,13 @@
 				BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */,
 				BEDCC97C1B89062A00BF3D43 /* NoteModel.m in Sources */,
 				A62C15101B711DCC0088E0BB /* SearchTableViewCell.m in Sources */,
+				BEDCC98D1B89A5B800BF3D43 /* TodoTableViewCell.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
 				BE29A9C11B69F13D00EC126A /* UIColor+NEOColor.m in Sources */,
 				BE29A9BB1B69F13D00EC126A /* NEOColorPickerHSLViewController.m in Sources */,
 				BE7B20361B451C0600BFCF49 /* RFSwizzlingUtils.m in Sources */,
 				BE43D35C1B1B950000BA7794 /* ImagePickerHelper.m in Sources */,
+				BEDCC9821B899D4600BF3D43 /* ToDoViewController.m in Sources */,
 				BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */,
 				BE43D3631B1B98B600BA7794 /* ExpandableSearchBar.m in Sources */,
 				BE6222ED1B486FBD00DB7F13 /* MainTabBarViewController.m in Sources */,
@@ -605,7 +644,9 @@
 				BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */,
 				BE29A9B81B69F13D00EC126A /* NEOColorPickerFavoritesViewController.m in Sources */,
 				BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */,
+				BEDCC9891B89A59300BF3D43 /* TodoTableView.m in Sources */,
 				BE6222F01B48824000DB7F13 /* UIImage+ColorImage.m in Sources */,
+				BEDCC97F1B899A2E00BF3D43 /* ToDoModel.m in Sources */,
 				A6BDD26E1B6E2CE800A7913E /* NotingViewController.m in Sources */,
 				BEF05F651B6735280040B57B /* ViewNoteViewController.m in Sources */,
 				BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */,
@@ -618,6 +659,7 @@
 				BE29A9C61B69F37C00EC126A /* DrawingControl.m in Sources */,
 				BE6222E01B48640100DB7F13 /* NoteCollectionView.m in Sources */,
 				BE9146131B0893C70084D0FA /* main.m in Sources */,
+				BEDCC9851B899E3500BF3D43 /* ToDoHelper.m in Sources */,
 				BEF05F6A1B6739B90040B57B /* ImagePickerView.m in Sources */,
 				BE29A9BA1B69F13D00EC126A /* NEOColorPickerGradientView.m in Sources */,
 			);
