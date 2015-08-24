@@ -98,7 +98,11 @@
     
     // Alarm
     if (self.alarmDate) {
-        self.txDate.text = [NSString stringWithFormat:@"%@", self.alarmDate];
+        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+        [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
+        NSString *tmp = [dateFormater stringFromDate:self.alarmDate];
+        
+        self.txDate.text = tmp;
         self.txDate.hidden = NO;
     }
 }
@@ -295,7 +299,28 @@
 										date:[NSDate date]
 									category:_selectedCategory
 										tags:[AppUtil parseDataFromString:self.txfTags.text]];
-		self.willResetData = YES;
+        
+        // alarm
+        if (self.txDate.text.length > 0) {
+            // Schedule the notification
+            NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+            [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
+            self.alarmDate = [dateFormater dateFromString:self.txDate.text];
+            
+            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+            localNotification.fireDate = self.alarmDate;
+            
+            localNotification.alertBody = self.note.title;
+            localNotification.alertTitle = @"Alarm";
+            localNotification.alertAction = @"Alert";
+            localNotification.timeZone = [NSTimeZone defaultTimeZone];
+            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+            localNotification.soundName = UILocalNotificationDefaultSoundName;
+            localNotification.applicationIconBadgeNumber = 1;
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        }
+
+        self.willResetData = YES;
 		[self resetData];
 		[MainTabBar setSelectedIndex:0];
 	} else {
@@ -307,17 +332,30 @@
 										   date:[NSDate date]
 									   category:_selectedCategory
 										   tags:[AppUtil parseDataFromString:self.txfTags.text]];
-	}
-    
-    if (self.txDate.text.length > 0) {
-        // Schedule the notification
-        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-        localNotification.fireDate = self.alarmDate;
-        localNotification.alertBody = self.note.title;
-        localNotification.alertAction = @"Alert";
-        localNotification.timeZone = [NSTimeZone defaultTimeZone];
-        localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+        // alarm
+        if (self.txDate.text.length > 0) {
+            // Schedule the notification
+            NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+            [dateFormater setDateFormat:@"EEEE-MM-dd HH:mm"];
+            self.alarmDate = [dateFormater dateFromString:self.txDate.text];
+            
+            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+            localNotification.fireDate = self.alarmDate;
+            
+            localNotification.alertBody = self.note.title;
+            localNotification.alertTitle = @"Alarm";
+            localNotification.alertAction = @"Alert";
+            localNotification.timeZone = [NSTimeZone defaultTimeZone];
+            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+            localNotification.soundName = UILocalNotificationDefaultSoundName;
+            localNotification.applicationIconBadgeNumber = 1;
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        }
+        
     }
+    
+    
+
     
 	[AppUtil showAlert:@"Sticky Notes" message:@"Note saved successfully"];
 	[self resignFirstResponder];

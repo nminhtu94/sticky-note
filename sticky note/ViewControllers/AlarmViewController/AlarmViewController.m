@@ -31,7 +31,9 @@
         }
         [arrSeconds addObject:[NSString stringWithFormat:@"%d", i]];
     }
+    
     NSDate *date = [NSDate date];
+    
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
     date = [gregorian dateFromComponents: components];
@@ -72,7 +74,10 @@
     [components setHour:self.hour];
     [components setMinute:self.minute];
     NSDate *resultDate = [gregorian dateFromComponents:components];
+    NSLocale* currentLocale = [NSLocale currentLocale];
+    [[NSDate date] descriptionWithLocale:currentLocale];
 
+    
     /* To-DO here */
     // return resultDate
     NSArray *viewControllers = self.navigationController.viewControllers;
@@ -158,7 +163,7 @@
         }
     }
     // add more one day to _dateSelected
-    _dateSelected = [_dateSelected dateByAddingTimeInterval:60*60*24*1];
+//    _dateSelected = [_dateSelected dateByAddingTimeInterval:60*60*24*1];
 }
 
 #pragma mark UIPickerView

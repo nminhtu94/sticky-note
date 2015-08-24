@@ -154,7 +154,7 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5g-17-EST">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5g-17-EST">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -170,7 +170,8 @@
                                     <constraint firstItem="cy8-wz-tVs" firstAttribute="top" secondItem="LJR-ib-Y9K" secondAttribute="bottom" constant="-40" id="Kpe-gH-WGd">
                                         <variation key="widthClass=compact" constant="-40"/>
                                     </constraint>
-                                    <constraint firstAttribute="centerX" secondItem="j5g-17-EST" secondAttribute="centerX" id="bTt-vb-GO6"/>
+                                    <constraint firstItem="j5g-17-EST" firstAttribute="leading" secondItem="fRH-dj-eTx" secondAttribute="leading" constant="30" id="LaS-lc-9rZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="j5g-17-EST" secondAttribute="trailing" constant="30" id="eWZ-5Z-Rko"/>
                                     <constraint firstItem="cy8-wz-tVs" firstAttribute="leading" secondItem="LJR-ib-Y9K" secondAttribute="trailing" constant="8" id="eY4-vv-V5M">
                                         <variation key="widthClass=compact" constant="10"/>
                                     </constraint>
@@ -183,12 +184,13 @@
                                         <exclude reference="j5g-17-EST"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="GhQ-lI-lHS"/>
-                                        <exclude reference="xGA-2N-XE5"/>
                                         <exclude reference="Kpe-gH-WGd"/>
                                         <exclude reference="eY4-vv-V5M"/>
                                         <exclude reference="HV8-lv-Gu9"/>
-                                        <exclude reference="bTt-vb-GO6"/>
+                                        <exclude reference="LaS-lc-9rZ"/>
+                                        <exclude reference="eWZ-5Z-Rko"/>
+                                        <exclude reference="GhQ-lI-lHS"/>
+                                        <exclude reference="xGA-2N-XE5"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -198,12 +200,13 @@
                                         <include reference="j5g-17-EST"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="GhQ-lI-lHS"/>
-                                        <include reference="xGA-2N-XE5"/>
                                         <include reference="Kpe-gH-WGd"/>
                                         <include reference="eY4-vv-V5M"/>
                                         <include reference="HV8-lv-Gu9"/>
-                                        <include reference="bTt-vb-GO6"/>
+                                        <include reference="LaS-lc-9rZ"/>
+                                        <include reference="eWZ-5Z-Rko"/>
+                                        <include reference="GhQ-lI-lHS"/>
+                                        <include reference="xGA-2N-XE5"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -248,15 +251,15 @@
                                 <exclude reference="fRH-dj-eTx"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5Dj-vh-5uB"/>
-                                <exclude reference="Vrw-l8-O2h"/>
-                                <exclude reference="wSx-3m-Nat"/>
                                 <exclude reference="2xL-7Z-FuE"/>
                                 <exclude reference="Oxf-KK-76h"/>
                                 <exclude reference="Vay-Nu-en7"/>
                                 <exclude reference="XM3-9W-GIE"/>
                                 <exclude reference="9MF-L1-4nK"/>
                                 <exclude reference="8mJ-JP-Wt0"/>
+                                <exclude reference="5Dj-vh-5uB"/>
+                                <exclude reference="Vrw-l8-O2h"/>
+                                <exclude reference="wSx-3m-Nat"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -264,10 +267,10 @@
                                 <include reference="fRH-dj-eTx"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="9MF-L1-4nK"/>
                                 <include reference="5Dj-vh-5uB"/>
                                 <include reference="Vrw-l8-O2h"/>
                                 <include reference="wSx-3m-Nat"/>
-                                <include reference="9MF-L1-4nK"/>
                             </mask>
                         </variation>
                     </view>
