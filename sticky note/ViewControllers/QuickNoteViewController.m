@@ -307,10 +307,10 @@
             [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
             self.alarmDate = [dateFormater dateFromString:self.txDate.text];
             
-            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+            UILocalNotification *localNotification = [[UILocalNotification alloc] init];
             localNotification.fireDate = self.alarmDate;
             
-            localNotification.alertBody = self.note.title;
+            localNotification.alertBody = _txfTitle.text;
             localNotification.alertTitle = @"Alarm";
             localNotification.alertAction = @"Alert";
             localNotification.timeZone = [NSTimeZone defaultTimeZone];
@@ -342,7 +342,7 @@
             UILocalNotification* localNotification = [[UILocalNotification alloc] init];
             localNotification.fireDate = self.alarmDate;
             
-            localNotification.alertBody = self.note.title;
+            localNotification.alertBody = _txfTitle.text;
             localNotification.alertTitle = @"Alarm";
             localNotification.alertAction = @"Alert";
             localNotification.timeZone = [NSTimeZone defaultTimeZone];
