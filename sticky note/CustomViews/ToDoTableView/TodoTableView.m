@@ -1,21 +1,42 @@
-//
-//  TodoTableView.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 8/22/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "TodoTableView.h"
+
+static NSString* cellIdentifier = @"TodoTableCell";
 
 @implementation TodoTableView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (id)initWithFrame:(CGRect)frame {
+	self = [super initWithFrame:frame];
+	
+	if (self) {
+		// Initialization code
+		NSArray *arrayOfViews =
+			[[NSBundle mainBundle] loadNibNamed:@"TodoTableView" owner:self options:nil];
+		
+		if ([arrayOfViews count] < 1) {
+			return nil;
+		}
+		
+		if (![[arrayOfViews objectAtIndex:0] isKindOfClass:[TodoTableView class]]) {
+			return nil;
+		}
+		
+		self = [arrayOfViews objectAtIndex:0];
+		
+		[self setFrame:frame];
+	}
+	
+	return self;
 }
-*/
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	[self setup];
+	[self setDelegate:self];
+	[self setDataSource:self];
+}
+
+- (void)setup {
+	
+}
 
 @end

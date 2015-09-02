@@ -21,7 +21,8 @@ static NSString* cellIdentifier = @"NoteCollectionCell";
     
     if (self) {
         // Initialization code
-        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"NoteCollectionView" owner:self options:nil];
+        NSArray *arrayOfViews =
+			[[NSBundle mainBundle] loadNibNamed:@"NoteCollectionView" owner:self options:nil];
         
         if ([arrayOfViews count] < 1) {
             return nil;

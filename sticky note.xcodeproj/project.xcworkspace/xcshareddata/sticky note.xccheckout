@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>1FC0E323-8F3A-41A6-8453-30EAA2CF7605</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>sticky note</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1571B2A266509466446C79CE25681EB899D448EB</key>
 		<string>https://bitbucket.org/nminhtu94/stick-notes.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>sticky note.xcodeproj/project.xcworkspace</string>
+	<string>sticky note.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1571B2A266509466446C79CE25681EB899D448EB</key>
