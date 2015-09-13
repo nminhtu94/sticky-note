@@ -48,8 +48,10 @@ static NSString* cellIdentifier = @"NoteCollectionCell";
 }
 
 - (void)setup {
-    [self registerNib:[UINib nibWithNibName:@"NoteCollectionViewCell"
-                                     bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:cellIdentifier];
+    [self registerNib:
+	 	[UINib nibWithNibName:@"NoteCollectionViewCell"
+					   bundle:[NSBundle mainBundle]]
+		forCellWithReuseIdentifier:cellIdentifier];
     [self setBackgroundColor:[UIColor clearColor]];
 	CAImageCollectionLayout* imageLayout = [[CAImageCollectionLayout alloc] init];
 	[imageLayout setItemSize:CGSizeMake(100, 100)];
@@ -59,7 +61,8 @@ static NSString* cellIdentifier = @"NoteCollectionCell";
 }
 
 #pragma mark <UICollectionViewDataSource>
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+	 numberOfItemsInSection:(NSInteger)section {
     return notes.count;
 }
 

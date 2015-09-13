@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,38 +14,63 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeN-6f-aah">
-                        <rect key="frame" x="10" y="5" width="30.5" height="33.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cC-OL-Sez">
-                        <rect key="frame" x="282.5" y="13" width="27.5" height="17.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sdu-ch-Z5N">
+                        <rect key="frame" x="16" y="8" width="252.5" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="aAL-HI-vUE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aAL-HI-vUE"/>
+                            </mask>
+                        </variation>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHl-Cu-Jy4">
+                        <rect key="frame" x="276.5" y="8" width="27.5" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="PHl-Cu-Jy4" secondAttribute="height" multiplier="1:1" id="45Y-jx-dqd"/>
+                        </constraints>
+                        <state key="normal" title="+">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="onSave:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RFT-jX-ndi"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWY-zO-X8v">
+                        <rect key="frame" x="0.0" y="41.5" width="320" height="2"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="9EA-uY-6jw"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="7cC-OL-Sez" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JeN-6f-aah" secondAttribute="trailing" constant="5" id="3bx-Eu-bH0"/>
-                    <constraint firstItem="7cC-OL-Sez" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="BYM-0f-s9S"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="7cC-OL-Sez" secondAttribute="bottom" constant="5" id="BtB-fG-FeW"/>
-                    <constraint firstItem="JeN-6f-aah" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="YZT-8E-gui"/>
-                    <constraint firstAttribute="bottom" secondItem="JeN-6f-aah" secondAttribute="bottom" constant="5" id="aUf-w4-NFs"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="7cC-OL-Sez" secondAttribute="trailing" constant="18" id="cLj-A4-FL8"/>
-                    <constraint firstItem="JeN-6f-aah" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ofn-hJ-8Cy"/>
-                    <constraint firstAttribute="trailing" secondItem="7cC-OL-Sez" secondAttribute="trailing" constant="10" id="pf4-z6-Z9u"/>
+                    <constraint firstItem="PHl-Cu-Jy4" firstAttribute="leading" secondItem="sdu-ch-Z5N" secondAttribute="trailing" constant="8" id="Hco-MB-Ap0"/>
+                    <constraint firstItem="mWY-zO-X8v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JQ8-Ta-Mwh"/>
+                    <constraint firstAttribute="trailing" secondItem="PHl-Cu-Jy4" secondAttribute="trailing" constant="16" id="Jdf-7n-GZ9"/>
+                    <constraint firstAttribute="trailing" secondItem="mWY-zO-X8v" secondAttribute="trailing" id="KjY-Sc-62Q"/>
+                    <constraint firstAttribute="bottom" secondItem="mWY-zO-X8v" secondAttribute="bottom" id="PNi-S7-LZ1"/>
+                    <constraint firstAttribute="trailing" secondItem="sdu-ch-Z5N" secondAttribute="trailing" constant="16" id="UEP-MM-6ih"/>
+                    <constraint firstAttribute="bottom" secondItem="sdu-ch-Z5N" secondAttribute="bottom" constant="8" id="aVN-ky-9Kg"/>
+                    <constraint firstItem="PHl-Cu-Jy4" firstAttribute="bottom" secondItem="sdu-ch-Z5N" secondAttribute="bottom" id="bkk-wR-EWG"/>
+                    <constraint firstItem="sdu-ch-Z5N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="dN0-qK-Mch"/>
+                    <constraint firstItem="PHl-Cu-Jy4" firstAttribute="top" secondItem="sdu-ch-Z5N" secondAttribute="top" id="gho-Wa-wbj"/>
+                    <constraint firstItem="mWY-zO-X8v" firstAttribute="top" secondItem="sdu-ch-Z5N" secondAttribute="bottom" constant="-6" id="h1A-U1-3n4"/>
+                    <constraint firstItem="sdu-ch-Z5N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="vQm-Se-iDt"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="cLj-A4-FL8"/>
+                        <exclude reference="UEP-MM-6ih"/>
+                        <exclude reference="h1A-U1-3n4"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="lblDate" destination="7cC-OL-Sez" id="djE-DS-nBc"/>
-                <outlet property="lblTitle" destination="JeN-6f-aah" id="pl9-1J-eIz"/>
+                <outlet property="btnSave" destination="PHl-Cu-Jy4" id="vYj-44-iHl"/>
+                <outlet property="txfTitle" destination="sdu-ch-Z5N" id="lbz-bi-46V"/>
             </connections>
         </tableViewCell>
     </objects>

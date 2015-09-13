@@ -1,7 +1,12 @@
 #import <UIKit/UIKit.h>
 
-@interface TodoTableView : UITableView <UITableViewDataSource, UITableViewDelegate>
+#import "TodoTableViewCell.h"
 
-@property (nonatomic, strong) NSArray *data;
+@interface TodoTableView : UITableView <UITableViewDataSource, UITableViewDelegate,
+                                        TodoTableCellDelegate>
+
+@property (nonatomic, strong) NSMutableArray *data;
+
+- (void)insertRowAtEnd;
 
 @end
