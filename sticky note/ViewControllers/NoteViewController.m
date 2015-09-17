@@ -1,5 +1,6 @@
 #import "NoteViewController.h"
 #import "NoteCollectionView.h"
+
 #import "NoteHelper.h"
 #import "ViewNoteViewController.h"
 #import "CategoryModel.h"
@@ -13,6 +14,7 @@
 @end
 
 static CategoryModel *selectedCategory;
+
 @implementation NoteViewController
 
 - (void)viewDidLoad {
@@ -34,21 +36,19 @@ static CategoryModel *selectedCategory;
     [super viewWillAppear:animated];
 }
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (_noteCollection == nil) {
-        UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(75, 75);
-        _noteCollection =
-			[[NoteCollectionView alloc] initWithFrame:_viewNoteCollectionHolder.bounds
-								 collectionViewLayout:flowLayout];
-		[_noteCollection setItemSize:CGSizeMake(75, 75)];
-        [_noteCollection setBackgroundColor:[UIColor clearColor]];
-        [_viewNoteCollectionHolder addSubview:_noteCollection];
-        [_viewNoteCollectionHolder bringSubviewToFront:_noteCollection];
-		[_noteCollection setCustomDelegate:self];
-    }
-	
+  [super viewDidAppear:animated];
+  
+  if (_noteCollection == nil) {
+    UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    flowLayout.itemSize = CGSizeMake(75, 75);
+    _noteCollection =
+        [[NoteCollectionView alloc] initWithFrame:_viewNoteCollectionHolder.bounds
+                   collectionViewLayout:flowLayout];
+    [_noteCollection setBackgroundColor:[UIColor clearColor]];
+    [_viewNoteCollectionHolder addSubview:_noteCollection];
+    [_viewNoteCollectionHolder bringSubviewToFront:_noteCollection];
+    [_noteCollection setCustomDelegate:self];
+  }
 	
 	// this will appear as the title in the navigation bar
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -61,12 +61,7 @@ static CategoryModel *selectedCategory;
 	label.text = NSLocalizedString(selectedCategory.name, @"");
 	[label sizeToFit];
     
-    [self setup];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [self setup];
 }
 
 + (CategoryModel *)selectedCategory {
@@ -82,16 +77,15 @@ static CategoryModel *selectedCategory;
 }
 
 - (void)setup {
-    [_noteCollection setNotes:[[NoteHelper sharedInstance] getNoteOfCategory:selectedCategory]];
-    [_noteCollection reloadData];
-    [_imgBackground setImage:[UIImage imageWithData:selectedCategory.icon]];
+  [_noteCollection setNotes:[[NoteHelper sharedInstance] getNoteOfCategory:selectedCategory]];
+  [_noteCollection reloadData];
+  [_imgBackground setImage:[UIImage imageWithData:selectedCategory.icon]];
 }
 
 #pragma mar <NoteCollectionDelegate>
 - (void)noteCollectionView:(NoteCollectionView *)collectionView didSelectNote:(NoteModel *)note {
 	UIStoryboard *storyBoard =
-		[UIStoryboard storyboardWithName:@"Main"
-								  bundle:[NSBundle mainBundle]];
+      [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
 	QuickNoteViewController *editNoteVC =
 		[storyBoard instantiateViewControllerWithIdentifier:@"quickNoteVC"];
 	[editNoteVC setNote:note];

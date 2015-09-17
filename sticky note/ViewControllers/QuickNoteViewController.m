@@ -29,16 +29,16 @@
 
 @implementation QuickNoteViewController
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    if (_alertView == nil) {
-        _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Note"
-												message:@""
-											   delegate:nil
-									  cancelButtonTitle:@"OK"
-									  otherButtonTitles:nil, nil];
-    }
+  [super viewDidLoad];
+  // Do any additional setup after loading the view.
+  
+  if (_alertView == nil) {
+      _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Note"
+                      message:@""
+                       delegate:nil
+                  cancelButtonTitle:@"OK"
+                  otherButtonTitles:nil, nil];
+  }
 	
 	if (_actionSheet == nil) {
 		_actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Photo", nil)
@@ -75,7 +75,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
 	
 	[self.imagePicker setDelegate:self];
 	
@@ -95,27 +95,27 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (_pickerViewCategory == nil) {
-        _pickerViewCategory = [[UIPickerView alloc] init];
-        
-        // Create a category picker view.
-		[_pickerViewCategory setBackgroundColor:THEME_COLOR_DARKER];
-		[_pickerViewCategory setTintColor:[UIColor whiteColor]];
+  [super viewDidAppear:animated];
+  
+  if (_pickerViewCategory == nil) {
+    _pickerViewCategory = [[UIPickerView alloc] init];
+      
+    // Create a category picker view.
+    [_pickerViewCategory setBackgroundColor:THEME_COLOR_DARKER];
+    [_pickerViewCategory setTintColor:[UIColor whiteColor]];
         [_pickerViewCategory setDelegate:self];
         [_pickerViewCategory setDataSource:self];
-		[_pickerViewCategory.layer setBorderWidth:3.0f];
-		[_pickerViewCategory.layer setBorderColor:[UIColor whiteColor].CGColor];
-		[_pickerViewCategory setShowsSelectionIndicator:YES];
-		
-        [self.view addSubview:_pickerViewCategory];
-    }
-    
-    _categoryPickerFrameOriginal = CGRectMake(0,
-                                              self.view.frame.size.height,
-                                              _pickerViewCategory.frame.size.width,
-                                              _pickerViewCategory.frame.size.height);
+    [_pickerViewCategory.layer setBorderWidth:3.0f];
+    [_pickerViewCategory.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [_pickerViewCategory setShowsSelectionIndicator:YES];
+  
+    [self.view addSubview:_pickerViewCategory];
+  }
+  
+  _categoryPickerFrameOriginal = CGRectMake(0,
+                                            self.view.frame.size.height,
+                                            _pickerViewCategory.frame.size.width,
+                                            _pickerViewCategory.frame.size.height);
 	
 	if (_txvNotingView == nil) {
 		_txvNotingView = [[NotingViewController alloc] init];
@@ -141,7 +141,8 @@
 	}
 	
 	[self.customTextView addSubview:_txvNotingView.view];
-    [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
+  [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
+  [_pickerViewCategory reloadAllComponents];
 	
 	self.viewOriginalFrame = self.view.frame;
 	[self.imagePicker layoutSubviews];
@@ -276,24 +277,26 @@
 	
 	if (_note == nil) {
 		[[NoteHelper sharedInstance] addNote:_txfTitle.text
-										text:_txvNotingView.textView.attributedText
-									   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
-									  sketch:UIImagePNGRepresentation(sketch)
-										date:[NSDate date]
-									category:_selectedCategory
-										tags:[AppUtil parseDataFromString:self.txfTags.text]];
+                                    text:_txvNotingView.textView.attributedText
+                                   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
+                                  sketch:UIImagePNGRepresentation(sketch)
+                                    date:[NSDate date]
+                                category:_selectedCategory
+                                    tags:[AppUtil parseDataFromString:self.txfTags.text]];
 		self.willResetData = YES;
 		[self resetData];
 		[MainTabBar setSelectedIndex:0];
 	} else {
+    UIImage *selectedImage = [self.imagePicker selectedImage];
 		[[NoteHelper sharedInstance] updateNote:_note.objectID
-										  title:_txfTitle.text
-										   text:_txvNotingView.textView.attributedText
-										  image:UIImagePNGRepresentation([self.imagePicker selectedImage])
-										 sketch:UIImagePNGRepresentation(sketch)
-										   date:[NSDate date]
-									   category:_selectedCategory
-										   tags:[AppUtil parseDataFromString:self.txfTags.text]];
+                                      title:_txfTitle.text
+                                       text:_txvNotingView.textView.attributedText
+                                      image:UIImagePNGRepresentation(selectedImage)
+                                     sketch:UIImagePNGRepresentation(sketch)
+                                       date:[NSDate date]
+                                   category:_selectedCategory
+                                       tags:[AppUtil parseDataFromString:self.txfTags.text]];
+    [self.navigationController popViewControllerAnimated:YES];
 	}
 	
 	[AppUtil showAlert:@"Sticky Notes" message:@"Note saved successfully"];
@@ -347,6 +350,14 @@
 		[_imagePicker setHidden:NO];
 		[_drawingControlView setHidden:YES];
 	}
+}
+
+- (IBAction)onCancel:(id)sender {
+  if (self.willResetData) {
+    [self resetData];
+  } else {
+    [self.navigationController popViewControllerAnimated:YES];
+  }
 }
 
 #pragma mark Private-Method

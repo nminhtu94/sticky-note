@@ -1,11 +1,3 @@
-//
-//  CategoryHelper.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 5/31/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "CategoryHelper.h"
 
 @implementation CategoryHelper
@@ -29,8 +21,9 @@
 
 - (BOOL)addCategory:(NSString *)name icon:(NSData *)icon {
     
-    CategoryModel *category = [NSEntityDescription insertNewObjectForEntityForName:@"CategoryModel"
-                                                            inManagedObjectContext:[self managedObjectContext]];
+    CategoryModel *category =
+        [NSEntityDescription insertNewObjectForEntityForName:@"CategoryModel"
+                                      inManagedObjectContext:[self managedObjectContext]];
     
     [category setName:name];
     [category setIcon:icon];

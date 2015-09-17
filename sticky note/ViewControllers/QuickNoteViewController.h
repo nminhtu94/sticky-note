@@ -19,5 +19,6 @@
 - (IBAction)onSaveNote:(id)sender;
 - (IBAction)onSelectCategory:(id)sender;
 - (IBAction)onChangeInputMode:(id)sender;
+- (IBAction)onCancel:(id)sender;
 
 @end

@@ -1,11 +1,12 @@
 #import "ToDoModel.h"
+#import "CategoryModel.h"
 
 
 @implementation ToDoModel
 
-@dynamic title;
 @dynamic date;
+@dynamic title;
 @dynamic toDoList;
-@dynamic doneList;
+@dynamic category;
 
 @end

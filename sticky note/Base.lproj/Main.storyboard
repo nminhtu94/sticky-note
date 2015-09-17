@@ -149,6 +149,12 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Quick Note" id="fKf-Zg-0nc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nxb-Bg-UKO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onCancel:" destination="GVX-vg-yE9" id="PPh-Xr-5ki"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="5GU-c4-vI2">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -170,11 +176,11 @@
             </objects>
             <point key="canvasLocation" x="-398" y="1727"/>
         </scene>
-        <!--Item-->
+        <!--To-Do-->
         <scene sceneID="dCt-4v-SWB">
             <objects>
                 <navigationController id="X41-1j-uZD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="6Cy-oW-GK5"/>
+                    <tabBarItem key="tabBarItem" title="To-Do" id="6Cy-oW-GK5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Y1-NC-fGt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -190,7 +196,7 @@
         <!--To-Do-->
         <scene sceneID="TQO-Dv-KqD">
             <objects>
-                <viewController id="0kX-Mm-5Uq" customClass="ToDoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="quickTodoVC" id="0kX-Mm-5Uq" customClass="QuickToDoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BbK-By-d6G"/>
                         <viewControllerLayoutGuide type="bottom" id="hlt-2G-MZ9"/>
@@ -203,7 +209,7 @@
                                 <rect key="frame" x="0.0" y="160" width="600" height="391"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chd-K2-pZ3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chd-K2-pZ3" userLabel="Control Holder">
                                 <rect key="frame" x="0.0" y="64" width="600" height="48"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uE-5O-Yk4">
@@ -250,6 +256,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectCategoryTapped:" destination="0kX-Mm-5Uq" eventType="touchUpInside" id="DIC-g5-qWT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -269,17 +278,23 @@
                     </view>
                     <navigationItem key="navigationItem" title="To-Do" id="M66-cv-cIt">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7t5-jy-zoA">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onCancel:" destination="0kX-Mm-5Uq" id="eeX-F2-vTe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="6H4-UL-aoe">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onSave:" destination="0kX-Mm-5Uq" id="RiH-vf-d7q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnAddTodo" destination="jLH-AS-QIW" id="jW6-0a-oPa"/>
+                        <outlet property="btnCategory" destination="jbk-NY-gUr" id="4nN-NG-5eQ"/>
+                        <outlet property="controlView" destination="Chd-K2-pZ3" id="x2o-0J-ff1"/>
+                        <outlet property="txfTitle" destination="7uE-5O-Yk4" id="2Y2-6f-Nff"/>
                         <outlet property="viewTodoTable" destination="Sak-ak-GeI" id="7Nh-Bl-pJY"/>
                     </connections>
                 </viewController>
@@ -410,17 +425,17 @@
                     </navigationItem>
                     <connections>
                         <outlet property="viewCategoryTblHolder" destination="XLu-z6-mGD" id="m2S-CP-pXa"/>
-                        <segue destination="LyH-2C-5f8" kind="push" identifier="toNoteViewController" id="P4w-DA-emp"/>
+                        <segue destination="zKm-26-JhW" kind="push" identifier="toSelectorViewController" id="z8K-cA-xhb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aM1-cM-ESK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1769" y="-270"/>
+            <point key="canvasLocation" x="1752" y="-262"/>
         </scene>
         <!--Note View Controller-->
         <scene sceneID="5Y1-wR-fLK">
             <objects>
-                <viewController id="LyH-2C-5f8" customClass="NoteViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="noteViewController" id="LyH-2C-5f8" customClass="NoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Tx-4u-Ryu"/>
                         <viewControllerLayoutGuide type="bottom" id="vC3-v4-mnj"/>
@@ -430,10 +445,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ME3-I3-mBA" userLabel="Note Collection Holder">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m4T-DD-gOt" userLabel="Background Image">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -461,7 +476,105 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AIh-vB-h4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2511" y="-994"/>
+            <point key="canvasLocation" x="3522" y="-1029"/>
+        </scene>
+        <!--To Do Collection View Controller-->
+        <scene sceneID="gBw-fP-DVt">
+            <objects>
+                <viewController storyboardIdentifier="todoCollectionViewController" id="V70-et-8vI" customClass="ToDoCollectionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E6B-8g-GX3"/>
+                        <viewControllerLayoutGuide type="bottom" id="GSf-P9-JXi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zf4-Mj-J3O">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGj-hh-hfq" userLabel="ToDo Collection Holder">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iMh-ib-TgY" userLabel="Background Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="iMh-ib-TgY" firstAttribute="top" secondItem="rGj-hh-hfq" secondAttribute="top" id="HfK-Pd-nSG"/>
+                                    <constraint firstAttribute="trailing" secondItem="iMh-ib-TgY" secondAttribute="trailing" id="TUF-ke-KcS"/>
+                                    <constraint firstItem="iMh-ib-TgY" firstAttribute="leading" secondItem="rGj-hh-hfq" secondAttribute="leading" id="ohv-1a-8xX"/>
+                                    <constraint firstAttribute="bottom" secondItem="iMh-ib-TgY" secondAttribute="bottom" id="rPy-qt-DOR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rGj-hh-hfq" firstAttribute="leading" secondItem="zf4-Mj-J3O" secondAttribute="leading" id="8y8-KV-zmN"/>
+                            <constraint firstAttribute="trailing" secondItem="rGj-hh-hfq" secondAttribute="trailing" id="hgK-Pu-yF1"/>
+                            <constraint firstItem="rGj-hh-hfq" firstAttribute="top" secondItem="E6B-8g-GX3" secondAttribute="bottom" id="sWl-h8-NDa"/>
+                            <constraint firstItem="GSf-P9-JXi" firstAttribute="top" secondItem="rGj-hh-hfq" secondAttribute="bottom" id="wVj-2o-575"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="iMh-ib-TgY" id="DBK-Ui-KtP"/>
+                        <outlet property="todoCollectionHolder" destination="rGj-hh-hfq" id="AOy-r6-GuO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVe-AZ-XRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4175" y="-1029"/>
+        </scene>
+        <!--Category Selector View Controller-->
+        <scene sceneID="HV8-gh-HtW">
+            <objects>
+                <viewController id="zKm-26-JhW" customClass="CategorySelectorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o4V-w5-mVI"/>
+                        <viewControllerLayoutGuide type="bottom" id="EZ8-Oh-Zn0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ese-0a-7Hs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="atL-jy-eyh">
+                                <rect key="frame" x="0.0" y="64" width="600" height="31"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.30196078430000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xNB-qf-05y"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Notes"/>
+                                    <segment title="To-Do"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="segmentControlChanged:" destination="zKm-26-JhW" eventType="valueChanged" id="KK8-sV-3jG"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAz-RI-HsI" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="95" width="600" height="456"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oAz-RI-HsI" firstAttribute="leading" secondItem="ese-0a-7Hs" secondAttribute="leading" id="6Gz-KW-SIi"/>
+                            <constraint firstItem="atL-jy-eyh" firstAttribute="leading" secondItem="ese-0a-7Hs" secondAttribute="leading" id="G7e-nh-EE8"/>
+                            <constraint firstItem="EZ8-Oh-Zn0" firstAttribute="top" secondItem="oAz-RI-HsI" secondAttribute="bottom" id="MIj-6f-pjb"/>
+                            <constraint firstItem="atL-jy-eyh" firstAttribute="top" secondItem="o4V-w5-mVI" secondAttribute="bottom" id="ZQS-6P-WXc"/>
+                            <constraint firstAttribute="trailing" secondItem="oAz-RI-HsI" secondAttribute="trailing" id="avM-WW-ggM"/>
+                            <constraint firstItem="oAz-RI-HsI" firstAttribute="top" secondItem="atL-jy-eyh" secondAttribute="bottom" constant="1" id="i64-3K-MH0"/>
+                            <constraint firstAttribute="trailing" secondItem="atL-jy-eyh" secondAttribute="trailing" id="wRw-50-dau"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cps-KS-EaE"/>
+                    <connections>
+                        <outlet property="contentView" destination="oAz-RI-HsI" id="pca-WI-KwD"/>
+                        <outlet property="segmentControl" destination="atL-jy-eyh" id="xnN-Zk-pSi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t3Q-cu-ADm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2511" y="-1035"/>
         </scene>
         <!--Edit category-->
         <scene sceneID="deS-wL-sze">

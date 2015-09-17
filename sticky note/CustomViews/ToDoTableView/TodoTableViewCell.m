@@ -1,5 +1,7 @@
 #import "TodoTableViewCell.h"
 
+#import "Utility.h"
+
 @interface TodoTableViewCell()
 
 @property (nonatomic, assign) STATES state_;
@@ -10,7 +12,7 @@
 @synthesize delegate;
 
 - (void)awakeFromNib {
-    // Initialization code
+  [self.contentView setBackgroundColor:THEME_COLOR_DARKER];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -19,14 +21,14 @@
 
 - (void)enableEditting {
 	[self.txfTitle setEnabled:YES];
-  [self.btnSave setTitle:@"+" forState:UIControlStateNormal];
+  [self.btnSave setImage:[UIImage imageNamed:@"check_todo"] forState:UIControlStateNormal];
   self.state_ = EDITING;
 	[self.txfTitle becomeFirstResponder];
 }
 
 - (void)disableEditting {
 	[self.txfTitle setEnabled:NO];
-  [self.btnSave setTitle:@"-" forState:UIControlStateNormal];
+  [self.btnSave setImage:[UIImage imageNamed:@"remove_todo"] forState:UIControlStateNormal];
   self.state_ = DISABLED;
 	[self.txfTitle resignFirstResponder];
 }

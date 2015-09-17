@@ -1,11 +1,3 @@
-//
-//  NoteCollectionView.m
-//  sticky note
-//
-//  Created by Nguyen Minh Tu on 7/4/15.
-//  Copyright (c) 2015 Apps Fellow. All rights reserved.
-//
-
 #import "NoteCollectionView.h"
 #import "NoteHelper.h"
 #import "CAImageCollectionLayout.h"
@@ -14,7 +6,7 @@
 @implementation NoteCollectionView
 @synthesize notes, customDelegate;
 
-static NSString* cellIdentifier = @"NoteCollectionCell";
+static NSString* const cellIdentifier = @"NoteCollectionCell";
 
 - (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
     self = [super initWithFrame:frame collectionViewLayout:layout];
@@ -48,11 +40,11 @@ static NSString* cellIdentifier = @"NoteCollectionCell";
 }
 
 - (void)setup {
-    [self registerNib:
-	 	[UINib nibWithNibName:@"NoteCollectionViewCell"
-					   bundle:[NSBundle mainBundle]]
-		forCellWithReuseIdentifier:cellIdentifier];
-    [self setBackgroundColor:[UIColor clearColor]];
+  [self registerNib:
+      [UINib nibWithNibName:@"NoteCollectionViewCell"
+                     bundle:[NSBundle mainBundle]]
+      forCellWithReuseIdentifier:cellIdentifier];
+  [self setBackgroundColor:[UIColor clearColor]];
 	CAImageCollectionLayout* imageLayout = [[CAImageCollectionLayout alloc] init];
 	[imageLayout setItemSize:CGSizeMake(100, 100)];
 	[imageLayout setNumberOfColumns:self.frame.size.width / 100];

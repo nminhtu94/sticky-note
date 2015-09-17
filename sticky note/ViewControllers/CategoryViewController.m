@@ -1,8 +1,10 @@
 #import "CategoryViewController.h"
+
 #import "CategoryCollectionView.h"
 #import "CategoryHelper.h"
 #import "NoteViewController.h"
 #import "Utility.h"
+#import "CategorySelectorViewController.h"
 
 @interface CategoryViewController ()<CategoryCollectionDelegate>
 
@@ -65,8 +67,8 @@
 #pragma mark <CategoryCollectionDelegate>
 - (void)CategoryCollection:(CategoryCollectionView *)collection
 			onItemSelected:(CategoryModel *)categoryItem {
-    [NoteViewController setSelectedCategory:categoryItem];
-    [self performSegueWithIdentifier:@"toNoteViewController" sender:self];
+    [CategorySelectorViewController setSelectedCategory:categoryItem];
+    [self performSegueWithIdentifier:@"toSelectorViewController" sender:self];
 }
 
 - (IBAction)onAddCategory:(id)sender {

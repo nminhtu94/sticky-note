@@ -12,8 +12,6 @@
 @interface NoteCollectionView : UICollectionView<UICollectionViewDataSource,
 												 UICollectionViewDelegate>
 
-@property (nonatomic, assign) CGSize ItemSize;
-
 @property (nonatomic, strong) NSArray *notes;
 @property (nonatomic, assign) id customDelegate;
 

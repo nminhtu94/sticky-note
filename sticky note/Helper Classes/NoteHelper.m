@@ -33,19 +33,19 @@
 	   category:(CategoryModel *)category
 		   tags:(NSArray *)tags {
 	
-    NoteModel *note =
-		[NSEntityDescription insertNewObjectForEntityForName:@"NoteModel"
-									  inManagedObjectContext:[self managedObjectContext]];
-    [note setTitle:title];
-    [note setText:text];
-    [note setImage:image];
-    [note setSketch:sketch];
-    [note setDate:date];
-    [note setValue:[self.managedObjectContext objectWithID:[category objectID]]
-			forKey:@"category"];
+  NoteModel *note =
+  [NSEntityDescription insertNewObjectForEntityForName:@"NoteModel"
+                  inManagedObjectContext:[self managedObjectContext]];
+  [note setTitle:title];
+  [note setText:text];
+  [note setImage:image];
+  [note setSketch:sketch];
+  [note setDate:date];
+  [note setValue:[self.managedObjectContext objectWithID:[category objectID]]
+    forKey:@"category"];
 	[note setTags:tags];
-    [self save];
-    return YES;
+  [self save];
+  return YES;
 }
 
 - (BOOL)updateNote:(NSManagedObjectID *)objectID
