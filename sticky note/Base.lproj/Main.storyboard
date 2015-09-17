@@ -180,7 +180,7 @@
         <scene sceneID="dCt-4v-SWB">
             <objects>
                 <navigationController id="X41-1j-uZD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="To-Do" id="6Cy-oW-GK5"/>
+                    <tabBarItem key="tabBarItem" title="To-Do" image="todo" id="6Cy-oW-GK5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Y1-NC-fGt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -709,5 +709,6 @@
         <image name="category" width="30" height="30"/>
         <image name="icon_replace" width="60" height="60"/>
         <image name="search" width="30" height="30"/>
+        <image name="todo" width="512" height="512"/>
     </resources>
 </document>
