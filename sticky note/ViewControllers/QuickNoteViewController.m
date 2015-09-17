@@ -262,14 +262,14 @@
 
 #pragma mark <NEOColorPickerViewControllerDelegate>
 - (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller
-				   didChangeColor:(UIColor *)color {
+                   didChangeColor:(UIColor *)color {
 	[self.drawingControlView.drawingView setBrushColor:color];
 	[self.drawingControlView.colorPickerButton setBackgroundColor:color];
 	[controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller
-				   didSelectColor:(UIColor *)color {
+                   didSelectColor:(UIColor *)color {
 	[self.drawingControlView.drawingView setBrushColor:color];
 	[self.drawingControlView.colorPickerButton setBackgroundColor:color];
 	[controller dismissViewControllerAnimated:YES completion:nil];
@@ -280,118 +280,122 @@
 }
 
 - (IBAction)onSaveNote:(id)sender {
-    if ([_txfTitle.text isEqualToString:@""]) {
-        [_alertView setMessage:@"Please enter title!"];
-        [_alertView show];
-        return;
-    }
-    
-    if (_selectedCategory == nil) {
-        [_alertView setMessage:@"Please select category!"];
-        [_alertView show];
-        return;
-    }
+  if ([_txfTitle.text isEqualToString:@""]) {
+      [_alertView setMessage:@"Please enter title!"];
+      [_alertView show];
+      return;
+  }
+  
+  if (_selectedCategory == nil) {
+      [_alertView setMessage:@"Please select category!"];
+      [_alertView show];
+      return;
+  }
 	
 	UIImage *sketch = [_drawingControlView.drawingView sketchImage];
 	
 	if (_note == nil) {
 		[[NoteHelper sharedInstance] addNote:_txfTitle.text
-										text:_txvNotingView.textView.attributedText
-									   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
-									  sketch:UIImagePNGRepresentation(sketch)
-										date:[NSDate date]
-									category:_selectedCategory
-										tags:[AppUtil parseDataFromString:self.txfTags.text]];
+                                    text:_txvNotingView.textView.attributedText
+                                   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
+                                  sketch:UIImagePNGRepresentation(sketch)
+                                    date:[NSDate date]
+                                category:_selectedCategory
+                                    tags:[AppUtil parseDataFromString:self.txfTags.text]
+                                   alarm:nil];
         
-        // alarm
-        if (self.txDate.text.length > 0) {
-            // Schedule the notification
-            NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-            [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
-            self.alarmDate = [dateFormater dateFromString:self.txDate.text];
-            
-            UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-            localNotification.fireDate = self.alarmDate;
-            
-            localNotification.alertBody = _txfTitle.text;
-            localNotification.alertTitle = @"Alarm";
-            localNotification.alertAction = @"Alert";
-            localNotification.timeZone = [NSTimeZone defaultTimeZone];
-            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-            localNotification.soundName = UILocalNotificationDefaultSoundName;
-            localNotification.applicationIconBadgeNumber = 1;
-            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-        }
+    // alarm
+    if (self.txDate.text.length > 0) {
+      // Schedule the notification
+      NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+      [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
+      self.alarmDate = [dateFormater dateFromString:self.txDate.text];
+      
+      UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+      localNotification.fireDate = self.alarmDate;
+      
+      localNotification.alertBody = _txfTitle.text;
+      localNotification.alertTitle = @"Alarm";
+      localNotification.alertAction = @"Alert";
+      localNotification.timeZone = [NSTimeZone defaultTimeZone];
+      localNotification.applicationIconBadgeNumber =
+          [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+      localNotification.soundName = UILocalNotificationDefaultSoundName;
+      localNotification.applicationIconBadgeNumber = 1;
+      [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    }
 
-        self.willResetData = YES;
+    self.willResetData = YES;
 		[self resetData];
 		[MainTabBar setSelectedIndex:0];
 	} else {
     UIImage *selectedImage = [self.imagePicker selectedImage];
 		[[NoteHelper sharedInstance] updateNote:_note.objectID
-										  title:_txfTitle.text
-										   text:_txvNotingView.textView.attributedText
-										  image:UIImagePNGRepresentation(selectedImage)
-										 sketch:UIImagePNGRepresentation(sketch)
-										   date:[NSDate date]
-									   category:_selectedCategory
-										   tags:[AppUtil parseDataFromString:self.txfTags.text]];
-  [self.navigationController popViewControllerAnimated:YES];
-        // alarm
-        if (self.txDate.text.length > 0) {
-            // Schedule the notification
-            NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-            [dateFormater setDateFormat:@"EEEE-MM-dd HH:mm"];
-            self.alarmDate = [dateFormater dateFromString:self.txDate.text];
-            
-            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-            localNotification.fireDate = self.alarmDate;
-            
-            localNotification.alertBody = _txfTitle.text;
-            localNotification.alertTitle = @"Alarm";
-            localNotification.alertAction = @"Alert";
-            localNotification.timeZone = [NSTimeZone defaultTimeZone];
-            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-            localNotification.soundName = UILocalNotificationDefaultSoundName;
-            localNotification.applicationIconBadgeNumber = 1;
-            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-        }
-        
+                                      title:_txfTitle.text
+                                       text:_txvNotingView.textView.attributedText
+                                      image:UIImagePNGRepresentation(selectedImage)
+                                     sketch:UIImagePNGRepresentation(sketch)
+                                       date:[NSDate date]
+                                   category:_selectedCategory
+                                       tags:[AppUtil parseDataFromString:self.txfTags.text]
+                                      alarm:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+    // alarm
+    if (self.txDate.text.length > 0) {
+      // Schedule the notification
+      NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+      [dateFormater setDateFormat:@"EEEE-MM-dd HH:mm"];
+      self.alarmDate = [dateFormater dateFromString:self.txDate.text];
+      
+      UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+      localNotification.fireDate = self.alarmDate;
+      
+      localNotification.alertBody = _txfTitle.text;
+      localNotification.alertTitle = @"Alarm";
+      localNotification.alertAction = @"Alert";
+      localNotification.timeZone = [NSTimeZone defaultTimeZone];
+      localNotification.applicationIconBadgeNumber =
+          [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+      localNotification.soundName = UILocalNotificationDefaultSoundName;
+      localNotification.applicationIconBadgeNumber = 1;
+      [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
+    
+  }
 	[AppUtil showAlert:@"Sticky Notes" message:@"Note saved successfully"];
 	[self resignFirstResponder];
 }
 
 - (IBAction)onSelectCategory:(id)sender {
-    if ([[CategoryHelper sharedInstance] getAllCategory].count == 0) {
-        [_alertView setMessage:@"You don't have any category, please create some"];
-        [_alertView show];
-        return;
-    }
-    
-    if (!_pickerViewTogged) {
-        _categoryPickerFrameMoved =
-			CGRectMake(0,
-					   self.view.frame.size.height - _pickerViewCategory.frame.size.height,
-					   _pickerViewCategory.frame.size.width,
-					   _pickerViewCategory.frame.size.height);
-        [UIView animateWithDuration:0.3 animations:^{
-            [_pickerViewCategory setFrame:_categoryPickerFrameMoved];
-        } completion:^(BOOL finished) {
-            _pickerViewTogged = YES;
-        }];
-    } else {
-        _categoryPickerFrameOriginal =
-			CGRectMake(0,
-					   self.view.frame.size.height,
-					   _pickerViewCategory.frame.size.width,
-					   _pickerViewCategory.frame.size.height);
-        [UIView animateWithDuration:0.3 animations:^{
-            [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
-        } completion:^(BOOL finished) {
-            _pickerViewTogged = NO;
-        }];
-    }
+  if ([[CategoryHelper sharedInstance] getAllCategory].count == 0) {
+      [_alertView setMessage:@"You don't have any category, please create some"];
+      [_alertView show];
+      return;
+  }
+  
+  if (!_pickerViewTogged) {
+    _categoryPickerFrameMoved =
+        CGRectMake(0,
+               self.view.frame.size.height - _pickerViewCategory.frame.size.height,
+               _pickerViewCategory.frame.size.width,
+               _pickerViewCategory.frame.size.height);
+    [UIView animateWithDuration:0.3 animations:^{
+      [_pickerViewCategory setFrame:_categoryPickerFrameMoved];
+    } completion:^(BOOL finished) {
+      _pickerViewTogged = YES;
+    }];
+  } else {
+    _categoryPickerFrameOriginal =
+        CGRectMake(0,
+               self.view.frame.size.height,
+               _pickerViewCategory.frame.size.width,
+               _pickerViewCategory.frame.size.height);
+    [UIView animateWithDuration:0.3 animations:^{
+      [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
+    } completion:^(BOOL finished) {
+      _pickerViewTogged = NO;
+    }];
+  }
 }
 
 - (IBAction)onChangeInputMode:(id)sender {
@@ -400,41 +404,40 @@
 		[self.customTextView setHidden:NO];
 		[_drawingControlView setHidden:YES];
 		[_imagePicker setHidden:YES];
-        [self.alarm setHidden:YES];
+    [self.alarm setHidden:YES];
 	} else if ([selector selectedSegmentIndex] == 1) {
 		[self.customTextView setHidden:YES];
 		[_imagePicker setHidden:YES];
 		[_drawingControlView setHidden:NO];
-        [self.alarm setHidden:YES];
+      [self.alarm setHidden:YES];
 	} else if ([selector selectedSegmentIndex] == 2) {
 		[self.customTextView setHidden:YES];
 		[_imagePicker setHidden:NO];
 		[_drawingControlView setHidden:YES];
-        [self.alarm setHidden:YES];
-    } else if ([selector selectedSegmentIndex] == 3) {
-        [self.customTextView setHidden:YES];
-        [_imagePicker setHidden:YES];
-        [_drawingControlView setHidden:YES];
-        [self.alarm setHidden:NO];
-        
-    }
+    [self.alarm setHidden:YES];
+  } else if ([selector selectedSegmentIndex] == 3) {
+    [self.customTextView setHidden:YES];
+    [_imagePicker setHidden:YES];
+    [_drawingControlView setHidden:YES];
+    [self.alarm setHidden:NO];
+  }
 }
 #pragma mark Alarm-Function
 - (IBAction)onCbAlarm:(id)sender {
-    if (self.txDate.text.length > 0) {
-        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
-        self.txDate.text = @"";
-        self.txDate.hidden = YES;
-        self.alarmDate = nil;
-        
-        /* Remove notification */
-        
-    } else {
-        /* Pop up AlarmViewController */
-        AlarmViewController *alarmVc = [[AlarmViewController alloc] initWithNibName:@"AlarmViewController" bundle:nil];
-        alarmVc.navigationController = self.navigationController;
-        [self.navigationController presentViewController:alarmVc animated:YES completion:nil];
-    }
+  if (self.txDate.text.length > 0) {
+    [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+    self.txDate.text = @"";
+    self.txDate.hidden = YES;
+    self.alarmDate = nil;
+    
+    /* Remove notification */
+      
+  } else {
+    /* Pop up AlarmViewController */
+    AlarmViewController *alarmVc = [[AlarmViewController alloc] initWithNibName:@"AlarmViewController" bundle:nil];
+    alarmVc.navigationController = self.navigationController;
+    [self.navigationController presentViewController:alarmVc animated:YES completion:nil];
+  }
 }
 
 - (IBAction)onCancel:(id)sender {

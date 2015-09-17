@@ -41,6 +41,7 @@
 		BE3E6BC51BAA5FF700F11A9E /* ToDoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BC41BAA5FF700F11A9E /* ToDoCollectionViewController.m */; };
 		BE3E6BCA1BAA872100F11A9E /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BC81BAA872100F11A9E /* AlarmViewController.m */; };
 		BE3E6BCB1BAA872100F11A9E /* AlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3E6BC91BAA872100F11A9E /* AlarmViewController.xib */; };
+		BE3E6BCE1BAA8AB500F11A9E /* NoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BCD1BAA8AB500F11A9E /* NoteModel.m */; };
 		BE43D3561B1B8A1C00BA7794 /* CategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3551B1B8A1C00BA7794 /* CategoryHelper.m */; };
 		BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3581B1B8F5C00BA7794 /* EditCategoryViewController.m */; };
 		BE43D35C1B1B950000BA7794 /* ImagePickerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D35B1B1B950000BA7794 /* ImagePickerHelper.m */; };
@@ -72,7 +73,6 @@
 		BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463A1B08A2F40084D0FA /* CategoryViewController.m */; };
 		BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463E1B08A3100084D0FA /* SearchViewController.m */; };
 		BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */; };
-		BEDCC97C1B89062A00BF3D43 /* NoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC97B1B89062A00BF3D43 /* NoteModel.m */; };
 		BEDCC9821B899D4600BF3D43 /* QuickToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9811B899D4600BF3D43 /* QuickToDoViewController.m */; };
 		BEDCC9851B899E3500BF3D43 /* ToDoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9841B899E3500BF3D43 /* ToDoHelper.m */; };
 		BEDCC9891B89A59300BF3D43 /* TodoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9881B89A59300BF3D43 /* TodoTableView.m */; };
@@ -154,6 +154,8 @@
 		BE3E6BC71BAA872100F11A9E /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmViewController.h; path = ViewControllers/AlarmViewController/AlarmViewController.h; sourceTree = "<group>"; };
 		BE3E6BC81BAA872100F11A9E /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmViewController.m; path = ViewControllers/AlarmViewController/AlarmViewController.m; sourceTree = "<group>"; };
 		BE3E6BC91BAA872100F11A9E /* AlarmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlarmViewController.xib; path = ViewControllers/AlarmViewController/AlarmViewController.xib; sourceTree = "<group>"; };
+		BE3E6BCC1BAA8AB500F11A9E /* NoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteModel.h; path = "Model Classes/NoteModel.h"; sourceTree = "<group>"; };
+		BE3E6BCD1BAA8AB500F11A9E /* NoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteModel.m; path = "Model Classes/NoteModel.m"; sourceTree = "<group>"; };
 		BE43D3541B1B8A1C00BA7794 /* CategoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryHelper.h; path = "Helper Classes/CategoryHelper.h"; sourceTree = "<group>"; };
 		BE43D3551B1B8A1C00BA7794 /* CategoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryHelper.m; path = "Helper Classes/CategoryHelper.m"; sourceTree = "<group>"; };
 		BE43D3571B1B8F5C00BA7794 /* EditCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCategoryViewController.h; path = ViewControllers/EditCategoryViewController.h; sourceTree = "<group>"; };
@@ -209,8 +211,6 @@
 		BE91463E1B08A3100084D0FA /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/SearchViewController.m; sourceTree = "<group>"; };
 		BE9146461B08A6E80084D0FA /* QuickNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickNoteViewController.h; path = ViewControllers/QuickNoteViewController.h; sourceTree = "<group>"; };
 		BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickNoteViewController.m; path = ViewControllers/QuickNoteViewController.m; sourceTree = "<group>"; };
-		BEDCC97A1B89062A00BF3D43 /* NoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteModel.h; path = "Model Classes/NoteModel.h"; sourceTree = "<group>"; };
-		BEDCC97B1B89062A00BF3D43 /* NoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteModel.m; path = "Model Classes/NoteModel.m"; sourceTree = "<group>"; };
 		BEDCC9801B899D4600BF3D43 /* QuickToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickToDoViewController.h; path = ViewControllers/QuickToDoViewController.h; sourceTree = "<group>"; };
 		BEDCC9811B899D4600BF3D43 /* QuickToDoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickToDoViewController.m; path = ViewControllers/QuickToDoViewController.m; sourceTree = "<group>"; };
 		BEDCC9831B899E3500BF3D43 /* ToDoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoHelper.h; path = "Helper Classes/ToDoHelper.h"; sourceTree = "<group>"; };
@@ -309,10 +309,10 @@
 		BE2CBFB51B1B48A20049010E /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BE3E6BCC1BAA8AB500F11A9E /* NoteModel.h */,
+				BE3E6BCD1BAA8AB500F11A9E /* NoteModel.m */,
 				BE174A481BA828AB009E843B /* ToDoModel.h */,
 				BE174A491BA828AB009E843B /* ToDoModel.m */,
-				BEDCC97A1B89062A00BF3D43 /* NoteModel.h */,
-				BEDCC97B1B89062A00BF3D43 /* NoteModel.m */,
 				BE2CBFC91B1B52BC0049010E /* CategoryModel.h */,
 				BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */,
 				BE2CBFB61B1B48AC0049010E /* AppCoreModel.h */,
@@ -742,7 +742,6 @@
 				BE08B1621B82F14500968E01 /* UIImage+ColorImage.m in Sources */,
 				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
 				BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */,
-				BEDCC97C1B89062A00BF3D43 /* NoteModel.m in Sources */,
 				A62C15101B711DCC0088E0BB /* SearchTableViewCell.m in Sources */,
 				BEDCC98D1B89A5B800BF3D43 /* TodoTableViewCell.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
@@ -776,6 +775,7 @@
 				BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */,
 				BE3E6BCA1BAA872100F11A9E /* AlarmViewController.m in Sources */,
 				BE3E6BC51BAA5FF700F11A9E /* ToDoCollectionViewController.m in Sources */,
+				BE3E6BCE1BAA8AB500F11A9E /* NoteModel.m in Sources */,
 				BE29A9C61B69F37C00EC126A /* DrawingControl.m in Sources */,
 				BE6222E01B48640100DB7F13 /* NoteCollectionView.m in Sources */,
 				BE9146131B0893C70084D0FA /* main.m in Sources */,

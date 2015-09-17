@@ -6,6 +6,7 @@
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NoteModel" inverseName="category" inverseEntity="NoteModel" syncable="YES"/>
     </entity>
     <entity name="NoteModel" representedClassName="NoteModel" syncable="YES">
+        <attribute name="alarm" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="sketch" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -22,7 +23,7 @@
     </entity>
     <elements>
         <element name="CategoryModel" positionX="-54" positionY="18" width="128" height="88"/>
-        <element name="NoteModel" positionX="-504" positionY="93" width="128" height="150"/>
+        <element name="NoteModel" positionX="-504" positionY="93" width="128" height="165"/>
         <element name="ToDoModel" positionX="-297" positionY="117" width="128" height="105"/>
     </elements>
 </model>

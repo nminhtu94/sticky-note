@@ -12,7 +12,8 @@
          sketch:(NSData *)sketch
            date:(NSDate *)date
        category:(CategoryModel *)category
-           tags:(NSArray *)tags;
+           tags:(NSArray *)tags
+          alarm:(NSDate *)alarm;
 
 - (BOOL)updateNote:(NSManagedObjectID *)objectID
              title:(NSString *)title
@@ -21,7 +22,8 @@
             sketch:(NSData *)sketch
               date:(NSDate *)date
           category:(CategoryModel *)category
-              tags:(NSArray *)tags;
+              tags:(NSArray *)tags
+             alarm:(NSDate *)alarm;
 
 - (NSArray *)getNoteOfCategory:(CategoryModel *)category;
 

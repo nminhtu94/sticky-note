@@ -26,16 +26,17 @@
 }
 
 - (BOOL)addNote:(NSString *)title
-		   text:(NSAttributedString *)text
-		  image:(NSData *)image
-		 sketch:(NSData *)sketch
-		   date:(NSDate *)date
-	   category:(CategoryModel *)category
-		   tags:(NSArray *)tags {
+           text:(NSAttributedString *)text
+          image:(NSData *)image
+         sketch:(NSData *)sketch
+           date:(NSDate *)date
+       category:(CategoryModel *)category
+           tags:(NSArray *)tags
+          alarm:(NSDate *)alarm {
 	
   NoteModel *note =
-  [NSEntityDescription insertNewObjectForEntityForName:@"NoteModel"
-                  inManagedObjectContext:[self managedObjectContext]];
+      [NSEntityDescription insertNewObjectForEntityForName:@"NoteModel"
+                                    inManagedObjectContext:[self managedObjectContext]];
   [note setTitle:title];
   [note setText:text];
   [note setImage:image];
@@ -44,40 +45,40 @@
   [note setValue:[self.managedObjectContext objectWithID:[category objectID]]
     forKey:@"category"];
 	[note setTags:tags];
+  [note setAlarm:alarm];
   [self save];
   return YES;
 }
 
 - (BOOL)updateNote:(NSManagedObjectID *)objectID
-			 title:(NSString *)title
-			  text:(NSAttributedString *)text
-			 image:(NSData *)image
-			sketch:(NSData *)sketch
-			  date:(NSDate *)date
-		  category:(CategoryModel *)category
-			  tags:(NSArray *)tags {
+             title:(NSString *)title
+              text:(NSAttributedString *)text
+             image:(NSData *)image
+            sketch:(NSData *)sketch
+              date:(NSDate *)date
+          category:(CategoryModel *)category
+              tags:(NSArray *)tags
+             alarm:(NSDate *)alarm {
 	
     NSError *error = nil;
     NoteModel *note =
-		(NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
+        (NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
     
     if (note != nil) {
-        [note setTitle:title];
-        [note setText:text];
-        [note setImage:image];
-        [note setSketch:sketch];
-        [note setDate:date];
-		[note setTags:tags];
-        
-        if (category.objectID != note.category.objectID) {
-            [note.category removeNotesObject:note];
-            [note setCategory:category];
-            [category addNotesObject:note];
-        }
-        
-        [self save];
-        
-        return YES;
+      [note setTitle:title];
+      [note setText:text];
+      [note setImage:image];
+      [note setSketch:sketch];
+      [note setDate:date];
+      [note setTags:tags];
+      [note setAlarm:alarm];
+      if (category.objectID != note.category.objectID) {
+          [note.category removeNotesObject:note];
+          [note setCategory:category];
+          [category addNotesObject:note];
+      }
+      [self save];
+      return YES;
     }
     
     return NO;
