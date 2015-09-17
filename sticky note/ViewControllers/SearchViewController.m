@@ -11,6 +11,8 @@
 #import "NoteModel.h"
 #import "QuickNoteViewController.h"
 #import "Utility.h"
+#import "AlarmViewController.h"
+
 
 @interface SearchViewController () {
     ExpandableSearchBar *searchBar;
@@ -60,6 +62,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self setup];
+    
 }
 
 - (void)setup {

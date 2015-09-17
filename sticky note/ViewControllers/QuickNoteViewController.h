@@ -10,11 +10,16 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet ImagePickerView *imagePicker;
 @property (weak, nonatomic) IBOutlet DrawingControl *drawingControlView;
+@property (weak, nonatomic) IBOutlet UIView *alarm;
+
 @property (weak, nonatomic) IBOutlet UIView *customTextView;
 @property (weak, nonatomic) IBOutlet UITextField *txfTags;
 
 @property (nonatomic, strong) NoteModel *note;
 @property (nonatomic, assign) BOOL willResetData;
+@property (weak, nonatomic) IBOutlet UIButton *cbAlarm;
+@property (nonatomic, strong) NSDate *alarmDate;
+@property (weak, nonatomic) IBOutlet UILabel *txDate;
 
 - (IBAction)onSaveNote:(id)sender;
 - (IBAction)onSelectCategory:(id)sender;

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlarmViewController">
+            <connections>
+                <outlet property="calendarContentView" destination="w5a-ER-aPD" id="Qac-C4-MHT"/>
+                <outlet property="calendarMenuView" destination="SzE-RK-X2P" id="W4a-gv-sh0"/>
+                <outlet property="pickerView" destination="Cxk-MP-7b3" id="62g-x1-foW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzE-RK-X2P" userLabel="JTCalendarMenuView" customClass="JTCalendarMenuView">
+                    <rect key="frame" x="0.0" y="-30" width="600" height="160"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="siw-Gd-l1V"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5a-ER-aPD" userLabel="JTHorizontalCalendarView" customClass="JTHorizontalCalendarView">
+                    <rect key="frame" x="0.0" y="80" width="600" height="370"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="fka-nR-4NY"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="fka-nR-4NY"/>
+                        </mask>
+                    </variation>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="059-Zz-19H">
+                    <rect key="frame" x="546" y="15" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="YVK-lg-PGX"/>
+                        <constraint firstAttribute="width" constant="46" id="uYR-E7-uHg"/>
+                    </constraints>
+                    <state key="normal" title="Done">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="actionBtnDone:" destination="-1" eventType="touchUpInside" id="MrS-Ob-3vq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKM-KY-hcQ" userLabel="Cancel">
+                    <rect key="frame" x="8" y="15" width="50" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="92C-MV-YLa"/>
+                        <constraint firstAttribute="width" constant="50" id="ug3-Zm-R8b"/>
+                    </constraints>
+                    <state key="normal" title="Cancel">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="actionBtnCancel:" destination="-1" eventType="touchUpInside" id="A5r-Q0-sRs"/>
+                    </connections>
+                </button>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cxk-MP-7b3">
+                    <rect key="frame" x="0.0" y="444" width="600" height="162"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="M3U-ow-Gdd"/>
+                    </constraints>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Cxk-MP-7b3" firstAttribute="top" secondItem="w5a-ER-aPD" secondAttribute="bottom" id="1HN-V3-Tlm"/>
+                <constraint firstAttribute="bottom" secondItem="Cxk-MP-7b3" secondAttribute="bottom" id="58T-Kf-XHJ"/>
+                <constraint firstItem="WKM-KY-hcQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="BeJ-cF-0Ps"/>
+                <constraint firstItem="w5a-ER-aPD" firstAttribute="top" secondItem="SzE-RK-X2P" secondAttribute="bottom" constant="-50" id="MLs-hH-kXE"/>
+                <constraint firstItem="059-Zz-19H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="Maj-2V-tJS"/>
+                <constraint firstItem="WKM-KY-hcQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Rvw-xP-lJK"/>
+                <constraint firstAttribute="centerX" secondItem="Cxk-MP-7b3" secondAttribute="centerX" id="ask-Vp-J4s"/>
+                <constraint firstAttribute="trailing" secondItem="SzE-RK-X2P" secondAttribute="trailing" id="jVB-Et-Eyy"/>
+                <constraint firstItem="SzE-RK-X2P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jrQ-gz-gby"/>
+                <constraint firstAttribute="trailing" secondItem="059-Zz-19H" secondAttribute="trailing" constant="8" id="k0y-Iy-23p"/>
+                <constraint firstItem="SzE-RK-X2P" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-30" id="oQg-wE-IEh"/>
+                <constraint firstItem="w5a-ER-aPD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="op8-Vr-TzB"/>
+                <constraint firstAttribute="trailing" secondItem="Cxk-MP-7b3" secondAttribute="trailing" id="vLE-Vw-27e"/>
+                <constraint firstItem="Cxk-MP-7b3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wfR-Qm-7Fv"/>
+                <constraint firstAttribute="trailing" secondItem="w5a-ER-aPD" secondAttribute="trailing" id="zkG-Ws-w4R"/>
+            </constraints>
+            <point key="canvasLocation" x="566" y="384"/>
+        </view>
+    </objects>
+</document>
