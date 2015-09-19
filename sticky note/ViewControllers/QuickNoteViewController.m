@@ -59,7 +59,6 @@
 	self.willResetData = YES;
   
   [self.alarm setBackgroundColor:THEME_COLOR_DARKER];
-	
 	// this will appear as the title in the navigation bar
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
 	label.backgroundColor = [UIColor clearColor];
@@ -77,6 +76,20 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	
 	[self addEventToViews];
+  
+  dispatch_async(dispatch_get_main_queue(), ^{
+    // get Alarm from database
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
+    [self.txDate setText:[dateFormater stringFromDate:self.note.alarm]];
+    self.txDate.textColor = [UIColor whiteColor];
+    self.txDate.hidden = NO;
+    if ([self.txDate.text length] > 0 ) {
+      [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"] forState:UIControlStateNormal];
+    } else {
+      [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+    }
+  });
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,16 +110,16 @@
 	
 	[self.btnChooseCategory.layer setCornerRadius:5.0f];
 	[self.btnChooseCategory setClipsToBounds:YES];
-    
-    // Alarm
-    if (self.alarmDate) {
-        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-        [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
-        NSString *tmp = [dateFormater stringFromDate:self.alarmDate];
-        
-        self.txDate.text = tmp;
-        self.txDate.hidden = NO;
-    }
+  
+  // Alarm
+  if (self.alarmDate) {
+      NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+      [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
+      NSString *tmp = [dateFormater stringFromDate:self.alarmDate];
+      
+      self.txDate.text = tmp;
+      self.txDate.hidden = NO;
+  }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -153,6 +166,15 @@
 		[self.imagePicker.imageView setImage:[UIImage imageWithData:self.note.image]];
 		[self.drawingControlView.drawingView setNeedsDisplay];
 		[self.txfTags setText:[AppUtil generateStrings:self.note.tags]];
+    
+    NSLog(@"DidAppear Alarm : %@", self.txDate.text);
+    if (self.alarmDate != nil) {
+      if ([self.txDate.text length] > 0) {
+        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"] forState:UIControlStateNormal];
+      } else {
+        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+      }
+    }
 	}
 	
 	[self.customTextView addSubview:_txvNotingView.view];
@@ -295,21 +317,15 @@
 	UIImage *sketch = [_drawingControlView.drawingView sketchImage];
 	
 	if (_note == nil) {
-		[[NoteHelper sharedInstance] addNote:_txfTitle.text
-                                    text:_txvNotingView.textView.attributedText
-                                   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
-                                  sketch:UIImagePNGRepresentation(sketch)
-                                    date:[NSDate date]
-                                category:_selectedCategory
-                                    tags:[AppUtil parseDataFromString:self.txfTags.text]
-                                   alarm:nil];
-        
+    NSDate *alarm = nil;
+    
     // alarm
     if (self.txDate.text.length > 0) {
       // Schedule the notification
       NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
       [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
       self.alarmDate = [dateFormater dateFromString:self.txDate.text];
+      alarm = self.alarmDate;
       
       UILocalNotification *localNotification = [[UILocalNotification alloc] init];
       localNotification.fireDate = self.alarmDate;
@@ -325,27 +341,28 @@
       [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
 
+    [[NoteHelper sharedInstance] addNote:_txfTitle.text
+                                    text:_txvNotingView.textView.attributedText
+                                   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
+                                  sketch:UIImagePNGRepresentation(sketch)
+                                    date:[NSDate date]
+                                category:_selectedCategory
+                                    tags:[AppUtil parseDataFromString:self.txfTags.text]
+                                   alarm:alarm];
+
     self.willResetData = YES;
 		[self resetData];
 		[MainTabBar setSelectedIndex:0];
 	} else {
     UIImage *selectedImage = [self.imagePicker selectedImage];
-		[[NoteHelper sharedInstance] updateNote:_note.objectID
-                                      title:_txfTitle.text
-                                       text:_txvNotingView.textView.attributedText
-                                      image:UIImagePNGRepresentation(selectedImage)
-                                     sketch:UIImagePNGRepresentation(sketch)
-                                       date:[NSDate date]
-                                   category:_selectedCategory
-                                       tags:[AppUtil parseDataFromString:self.txfTags.text]
-                                      alarm:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    NSDate *date = nil;
     // alarm
     if (self.txDate.text.length > 0) {
       // Schedule the notification
       NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-      [dateFormater setDateFormat:@"EEEE-MM-dd HH:mm"];
+      [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
       self.alarmDate = [dateFormater dateFromString:self.txDate.text];
+      date = self.alarmDate;
       
       UILocalNotification* localNotification = [[UILocalNotification alloc] init];
       localNotification.fireDate = self.alarmDate;
@@ -360,6 +377,17 @@
       localNotification.applicationIconBadgeNumber = 1;
       [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
+  
+    [[NoteHelper sharedInstance] updateNote:_note.objectID
+                                      title:_txfTitle.text
+                                       text:_txvNotingView.textView.attributedText
+                                      image:UIImagePNGRepresentation(selectedImage)
+                                     sketch:UIImagePNGRepresentation(sketch)
+                                       date:[NSDate date]
+                                   category:_selectedCategory
+                                       tags:[AppUtil parseDataFromString:self.txfTags.text]
+                                      alarm:date];
+    [self.navigationController popViewControllerAnimated:YES];
     
   }
 	[AppUtil showAlert:@"Sticky Notes" message:@"Note saved successfully"];
@@ -424,6 +452,7 @@
 }
 #pragma mark Alarm-Function
 - (IBAction)onCbAlarm:(id)sender {
+  NSLog(@"CbAlarm : %@", self.txDate.text);
   if (self.txDate.text.length > 0) {
     [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
     self.txDate.text = @"";
