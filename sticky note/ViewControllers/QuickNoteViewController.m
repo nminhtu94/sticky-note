@@ -134,12 +134,12 @@
   
   // Alarm
   if (self.alarmDate) {
-      NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-      [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
-      NSString *tmp = [dateFormater stringFromDate:self.alarmDate];
-      
-      self.txDate.text = tmp;
-      self.txDate.hidden = NO;
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"EEEE-MM-dd-yyyy HH:mm"];
+    NSString *tmp = [dateFormater stringFromDate:self.alarmDate];
+    
+    self.txDate.text = tmp;
+    self.txDate.hidden = NO;
   }
 }
 
@@ -148,12 +148,17 @@
   
   if (_pickerViewCategory == nil) {
     _pickerViewCategory = [[UIPickerView alloc] init];
+    [_pickerViewCategory setFrame:
+        CGRectMake(_pickerViewCategory.frame.origin.x,
+                   _pickerViewCategory.frame.origin.y,
+                   self.view.frame.size.width,
+                   _pickerViewCategory.frame.size.height)];
       
     // Create a category picker view.
     [_pickerViewCategory setBackgroundColor:THEME_COLOR_DARKER];
     [_pickerViewCategory setTintColor:[UIColor whiteColor]];
-        [_pickerViewCategory setDelegate:self];
-        [_pickerViewCategory setDataSource:self];
+    [_pickerViewCategory setDelegate:self];
+    [_pickerViewCategory setDataSource:self];
     [_pickerViewCategory.layer setBorderWidth:3.0f];
     [_pickerViewCategory.layer setBorderColor:[UIColor whiteColor].CGColor];
     [_pickerViewCategory setShowsSelectionIndicator:YES];
@@ -170,6 +175,7 @@
 		_txvNotingView = [[NotingViewController alloc] init];
 		[self addChildViewController:_txvNotingView];
 		[_txvNotingView.view setFrame:self.customTextView.bounds];
+    [self.customTextView addSubview:_txvNotingView.view];
 	}
 	
 	[self.drawingControlView.layer setBorderColor:[UIColor blackColor].CGColor];
@@ -183,7 +189,10 @@
 		[self.txvNotingView.textView setAttributedText:self.note.text];
 		[self.txvNotingView setText:self.note.text];
 		[self.txfTitle setText:self.note.title];
-		[self.imagePicker.imageView setImage:[UIImage imageWithData:self.note.image]];
+    
+    if (self.note.image != nil) {
+      [self.imagePicker setImage:[UIImage imageWithData:self.note.image]];
+    }
 		[self.drawingControlView.drawingView setNeedsDisplay];
 		[self.txfTags setText:[AppUtil generateStrings:self.note.tags]];
     
@@ -199,7 +208,6 @@
     }
 	}
 	
-	[self.customTextView addSubview:_txvNotingView.view];
   [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
   [_pickerViewCategory reloadAllComponents];
 	
@@ -456,7 +464,8 @@
 - (IBAction)onCbAlarm:(id)sender {
   NSLog(@"CbAlarm : %@", self.txDate.text);
   if (self.txDate.text.length > 0) {
-    [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+    [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"]
+                            forState:UIControlStateNormal];
     self.txDate.text = @"";
     self.txDate.hidden = YES;
     self.alarmDate = nil;
@@ -465,8 +474,10 @@
       
   } else {
     /* Pop up AlarmViewController */
-    AlarmViewController *alarmVc = [[AlarmViewController alloc] initWithNibName:@"AlarmViewController" bundle:nil];
-    alarmVc.navigationController = self.navigationController;
+    self.willResetData = NO;
+    AlarmViewController *alarmVc =
+        [[AlarmViewController alloc] initWithNibName:@"AlarmViewController"
+                                              bundle:[NSBundle mainBundle]];
     [self.navigationController presentViewController:alarmVc animated:YES completion:nil];
   }
 }
@@ -541,10 +552,6 @@
 	[UIView animateWithDuration:0.2 animations:^{
 		[self.view setFrame:self.viewOriginalFrame];
 	}];
-}
-
-- (void)keyboardDidHide:(NSNotification *)notification {
-	
 }
 
 @end

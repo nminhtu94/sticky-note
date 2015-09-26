@@ -50,9 +50,16 @@
 	[self.selectImageButton setHidden:YES];
 	[self.imageView setHidden:NO];
 	[self.imageView setImage:importedImage];
+  [self.view bringSubviewToFront:self.imageView];
 	self.selectedImage = importedImage;
 	
 	[[[ImagePickerHelper sharedInstance] picker] dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)setImage:(UIImage *)image {
+  [self.imageView setImage:image];
+  [self.selectImageButton setHidden:YES];
+  [self.imageView setHidden:NO];
 }
 
 - (void)reset {
