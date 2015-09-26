@@ -10,7 +10,6 @@
 
 @interface QuickNoteViewController () <UIPickerViewDelegate,
 									   UIPickerViewDataSource,
-									   UIActionSheetDelegate,
 									   DrawingControlDelegate,
 									   UITextFieldDelegate,
 									   NEOColorPickerViewControllerDelegate>
@@ -21,7 +20,7 @@
 @property (nonatomic, assign) CGRect categoryPickerFrameMoved;
 @property (nonatomic) UIAlertView *alertView;
 @property (nonatomic) CategoryModel *selectedCategory;
-@property (nonatomic) UIActionSheet *actionSheet;
+@property (nonatomic) UIAlertController *actionSheet;
 @property (nonatomic) CGRect viewOriginalFrame;
 
 @property (nonatomic, strong) NotingViewController *txvNotingView;
@@ -42,16 +41,36 @@
                   cancelButtonTitle:@"OK"
                   otherButtonTitles:nil, nil];
   }
-	
+
 	if (_actionSheet == nil) {
-		_actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Photo", nil)
-												   delegate:self
-										  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-									 destructiveButtonTitle:nil
-										  otherButtonTitles:NSLocalizedString(@"Camera", nil),
-															NSLocalizedString(@"Photo Library",
-																			  nil),
-						nil];
+    _actionSheet = [UIAlertController alertControllerWithTitle:@"Photos"
+                                                       message:@"Select your photos source"
+                                                preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction* library = [UIAlertAction actionWithTitle:@"Library"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:^(UIAlertAction * action)
+    {
+      [self presentViewController:
+          [[ImagePickerHelper sharedInstance]
+              pickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary]
+                         animated:YES
+                       completion:nil];
+      self.willResetData = NO;
+    }];
+    UIAlertAction* camera = [UIAlertAction actionWithTitle:@"Camera"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action)
+    {
+      self.willResetData = NO;
+      [self presentViewController:
+          [[ImagePickerHelper sharedInstance]
+              pickerWithSourceType:UIImagePickerControllerSourceTypeCamera]
+                         animated:YES
+                       completion:nil];
+    }];
+    
+    [_actionSheet addAction:library];
+    [_actionSheet addAction:camera];
 	}
 	
 	[self.txfTitle setReturnKeyType:UIReturnKeyDone];
@@ -85,9 +104,11 @@
     self.txDate.textColor = [UIColor whiteColor];
     self.txDate.hidden = NO;
     if ([self.txDate.text length] > 0 ) {
-      [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"] forState:UIControlStateNormal];
+      [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"]
+                              forState:UIControlStateNormal];
     } else {
-      [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+      [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"]
+                              forState:UIControlStateNormal];
     }
   });
 }
@@ -156,7 +177,6 @@
 	[self.drawingControlView setDelegate:self];
 	
 	if (self.note != nil) {
-		[self.segment setSelectedSegmentIndex:0];
 		self.willResetData = NO;
 		[self.drawingControlView.drawingView setSketchImage:
 		 	[UIImage imageWithData:self.note.sketch]];
@@ -167,12 +187,14 @@
 		[self.drawingControlView.drawingView setNeedsDisplay];
 		[self.txfTags setText:[AppUtil generateStrings:self.note.tags]];
     
-    NSLog(@"DidAppear Alarm : %@", self.txDate.text);
+    NSLog(@"Did Appear Alarm : %@", self.txDate.text);
     if (self.alarmDate != nil) {
       if ([self.txDate.text length] > 0) {
-        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"] forState:UIControlStateNormal];
+        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"]
+                                forState:UIControlStateNormal];
       } else {
-        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"]
+                                forState:UIControlStateNormal];
       }
     }
 	}
@@ -182,12 +204,9 @@
   [_pickerViewCategory reloadAllComponents];
 	
 	self.viewOriginalFrame = self.view.frame;
-	[self.imagePicker layoutSubviews];
-	[self.imagePicker setNeedsUpdateConstraints];
-	[self.imagePicker layoutIfNeeded];
-    
-    // Alarm
-    self.alarmDate = nil;
+  
+  // Alarm
+  self.alarmDate = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -244,30 +263,13 @@
     return [[CategoryHelper sharedInstance] getAllCategory].count;
 }
 
-#pragma mark UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == 0) {
-		self.willResetData = NO;
-		[self presentViewController:[[ImagePickerHelper sharedInstance]
-									 pickerWithSourceType:UIImagePickerControllerSourceTypeCamera]
-						   animated:YES
-						 completion:nil];
-	} else if (buttonIndex == 1) {
-		[self presentViewController:[[ImagePickerHelper sharedInstance]
-			pickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary]
-						   animated:YES
-						 completion:nil];
-		self.willResetData = NO;
-	}
-}
-
 #pragma mark <ImagePickerViewDelegate>
 - (void)imagePickerView:(ImagePickerView *)pickerView onReplaceImage:(id)sender {
-	[_actionSheet showInView:self.view];
+  [self presentViewController:_actionSheet animated:YES completion:nil];
 }
 
 - (void)imagePickerView:(ImagePickerView *)pickerView onSelectImage:(id)sender {
-	[_actionSheet showInView:self.view];
+	[self presentViewController:_actionSheet animated:YES completion:nil];
 }
 
 #pragma mark <DrawingControlDelegate>
@@ -495,11 +497,11 @@
 	
 	[self.txfTags setText:@""];
     
-    // Alarm
-    [self.alarm setHidden:YES];
-    self.txDate.hidden = YES;
-    [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
-    self.txDate.text = @"";
+  // Alarm
+  [self.alarm setHidden:YES];
+  self.txDate.hidden = YES;
+  [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+  self.txDate.text = @"";
     
 }
 
