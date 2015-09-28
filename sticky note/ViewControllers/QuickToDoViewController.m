@@ -6,8 +6,12 @@
 #import "CategoryModel.h"
 #import "Utility.h"
 #import "CategoryHelper.h"
+#import "NoteInAppHelper.h"
 
-@interface QuickToDoViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface QuickToDoViewController () <UIPickerViewDataSource,
+                                       UIPickerViewDelegate,
+                                       UITextFieldDelegate,
+                                       UIAlertViewDelegate>
 
 @property (nonatomic, strong) TodoTableView *todoTable;
 @property (nonatomic, strong) NSMutableArray *items;
@@ -164,11 +168,50 @@
   return [[CategoryHelper sharedInstance] getAllCategory].count;
 }
 
+#pragma mark - <UIAlertViewDelegate>
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  switch (buttonIndex) {
+    case 0: {
+      [alertView dismissWithClickedButtonIndex:0 animated:YES];
+      break;
+    }
+      
+    case 1: {
+      if ([PurchaseUtil product] != nil) {
+        [PurchaseUtil buyProduct:PurchaseUtil.product];
+      }
+      break;
+    }
+      
+    case 2: {
+      [PurchaseUtil requestTransactionsWithCompletionHander:^(BOOL success, NSArray *transactions) {
+        if (success) {
+          if ([PurchaseUtil productPurchased:ProductBundleID]) {
+            [AppUtil showAlert:@"Restore successful" message:@"Your purchase has been restored!"];
+          } else {
+            [AppUtil showAlert:@"Error" message:@"No purchases were found for this account"];
+          }
+        }
+      }];
+      break;
+    }
+  }
+}
+
+- (void)productPurchased:(NSNotification *)notification {
+  [AppUtil showAlert:@"Congratulations!"
+             message:@"You have purchased Sticky Notes pro, thank you for choosing us"];
+}
+
 - (IBAction)onAddItem:(id)sender {
 	[self.todoTable insertRowAtEnd];
 }
 
 - (IBAction)onSave:(id)sender {
+  if (![self checkPremium]) {
+    return;
+  }
+  
   if ([_txfTitle.text isEqualToString:@""]) {
     [_alertView setMessage:@"Please enter title!"];
     [_alertView show];
@@ -198,6 +241,23 @@
   
   [AppUtil showAlert:@"Sticky Notes" message:@"Todo saved successfully"];
   [self resignFirstResponder];
+}
+
+- (BOOL)checkPremium {
+  if ([[ToDoHelper sharedInstance] getAllTodo].count == 2 && [PurchaseUtil isLiteVersion]) {
+    UIAlertView *alertView =
+    [[UIAlertView alloc] initWithTitle:@"Sticky Note"
+                               message:@""
+                              delegate:self
+                     cancelButtonTitle:@"Cancel"
+                     otherButtonTitles:@"Upgrade", @"Restore purchased", nil];
+    [alertView setDelegate:self];
+    [alertView setMessage:@"You cannot create more than 2 todos in lite version. Please upgrade to fullversion"];
+    [alertView show];
+    return NO;
+  }
+  
+  return YES;
 }
 
 - (IBAction)onCancel:(id)sender {

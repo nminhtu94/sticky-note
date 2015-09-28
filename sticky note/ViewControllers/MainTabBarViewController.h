@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainTabBarViewController : UITabBarController<UITabBarControllerDelegate, UITabBarDelegate>
+@interface MainTabBarViewController : UITabBarController
 
 #define MainTabBar      [MainTabBarViewController sharedInstance]
 

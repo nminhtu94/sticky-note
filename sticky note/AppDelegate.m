@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
+
 #import "AlarmViewController.h"
+#import "NoteInAppHelper.h"
 
 @interface AppDelegate ()
 
@@ -17,25 +19,27 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    
-    // register
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-    
-    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types
-                                                                               categories:nil];
-    
-    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-    
-    // Handle launching from a notification
-    UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-    if (locationNotification) {
-        // Set icon badge number to zero
-        application.applicationIconBadgeNumber = 0;
-    }
-    return YES;
+  // Override point for customization after application launch.
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  
+  
+  // register
+  UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+  
+  UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types
+                                                                             categories:nil];
+  
+  [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+  
+  // Handle launching from a notification
+  UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+  if (locationNotification) {
+      // Set icon badge number to zero
+      application.applicationIconBadgeNumber = 0;
+  }
+  
+  [PurchaseUtil getProduct:nil];
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

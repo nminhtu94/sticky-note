@@ -2,7 +2,7 @@
 #import "NEOColorPickerViewController.h"
 #import "QuickNoteViewController.h"
 
-@interface NotingViewController () <NEOColorPickerViewControllerDelegate>
+@interface NotingViewController () <NEOColorPickerViewControllerDelegate, UITextViewDelegate>
 
 @property (nonatomic) NSArray *arrFont;
 @property (nonatomic) NSArray *arrSize;
@@ -59,20 +59,19 @@
 	
 	NSMutableArray *barItems = [[NSMutableArray alloc] init];
 	UIBarButtonItem *flexibleSpace =
-	[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-												  target:nil
-												  action:nil];
+      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                    target:nil
+                                                    action:nil];
 	UIBarButtonItem *doneBtn =
-	[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-												  target:self
-												  action:@selector(textViewDone:)];
+      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                    target:self
+                                                    action:@selector(textViewDone:)];
 	[barItems addObject:flexibleSpace];
 	[barItems addObject:doneBtn];
 	[toolbar setItems:barItems animated:YES];
 	
-	[self.textView.layer setBorderColor:[UIColor blackColor].CGColor];
-	[self.textView.layer setBorderWidth:1.0f];
 	[self.textView setInputAccessoryView:toolbar];
+  [self.textView setDelegate:self];
 	
     /* set up button Done on right */
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done"
@@ -160,6 +159,13 @@
 
 -(void) clickPickerViewCancel{
     self.viewOfPickerView.hidden = YES;
+}
+
+#pragma mark - <UITextViewDelegate>
+- (BOOL)textView:(UITextView *)textView
+    shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+  _text = textView.attributedText;
+  return YES;
 }
 
 #pragma mark <NEOColorPickerViewControllerDelegate>

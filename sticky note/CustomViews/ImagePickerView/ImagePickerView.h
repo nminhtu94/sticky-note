@@ -24,5 +24,6 @@
 - (IBAction)replaceImage:(id)sender;
 
 - (void)reset;
+- (void)setImage:(UIImage *)image;
 
 @end

@@ -81,7 +81,8 @@
     /* To-DO here */
     // return resultDate
     NSArray *viewControllers = self.navigationController.viewControllers;
-    QuickNoteViewController *quickNote = (QuickNoteViewController *) [viewControllers objectAtIndex:viewControllers.count - 1];
+    QuickNoteViewController *quickNote =
+        (QuickNoteViewController *) [viewControllers objectAtIndex:viewControllers.count - 1];
     
     quickNote.alarmDate = resultDate;
     quickNote.willResetData = NO;

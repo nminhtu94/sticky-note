@@ -19,9 +19,7 @@
 
 - (NSArray *)getTodoOfCategory:(CategoryModel *)category;
 
-- (BOOL)checkToDo:(NSManagedObjectID *)objectID item:(NSString *)item;
-
-- (BOOL)uncheckToDo:(NSManagedObjectID *)objectID item:(NSString *)item;
+- (NSArray *)getAllTodo;
 
 - (BOOL)deleteToDo:(NSManagedObjectID *)objectID;
 

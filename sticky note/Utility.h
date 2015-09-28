@@ -19,7 +19,7 @@
 #define THEME_YELLOW_COLOR  [UIColor colorWithRed:249/255.f green:191/255.f blue:59/255.f alpha:1.0]
 #define THEME_RED_COLOR     [AppUtil colorHex:@"#DC664D"]
 
-#define ProductBundleID             @"com.appsfellow.wodWorkout.Premium"
+#define ProductBundleID             @"com.appsfellow.stickyNotes.premium"
 
 #pragma mark Singleton
 + (Utility *)sharedInstance;

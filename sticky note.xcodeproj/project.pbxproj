@@ -38,6 +38,8 @@
 		BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFBD1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld */; };
 		BE2CBFCB1B1B52BC0049010E /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */; };
 		BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFD01B1B73980049010E /* NoteHelper.m */; };
+		BE328C3B1BB665E4006A9C70 /* InAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328C3A1BB665E4006A9C70 /* InAppHelper.m */; settings = {ASSET_TAGS = (); }; };
+		BE328C3E1BB6670B006A9C70 /* NoteInAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328C3D1BB6670B006A9C70 /* NoteInAppHelper.m */; settings = {ASSET_TAGS = (); }; };
 		BE3E6BC51BAA5FF700F11A9E /* ToDoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BC41BAA5FF700F11A9E /* ToDoCollectionViewController.m */; };
 		BE3E6BCA1BAA872100F11A9E /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BC81BAA872100F11A9E /* AlarmViewController.m */; };
 		BE3E6BCB1BAA872100F11A9E /* AlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3E6BC91BAA872100F11A9E /* AlarmViewController.xib */; };
@@ -149,6 +151,10 @@
 		BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryModel.m; path = "Model Classes/CategoryModel.m"; sourceTree = "<group>"; };
 		BE2CBFCF1B1B73980049010E /* NoteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteHelper.h; path = "Helper Classes/NoteHelper.h"; sourceTree = "<group>"; };
 		BE2CBFD01B1B73980049010E /* NoteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteHelper.m; path = "Helper Classes/NoteHelper.m"; sourceTree = "<group>"; };
+		BE328C391BB665E4006A9C70 /* InAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InAppHelper.h; path = "Helper Classes/InAppHelper.h"; sourceTree = "<group>"; };
+		BE328C3A1BB665E4006A9C70 /* InAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppHelper.m; path = "Helper Classes/InAppHelper.m"; sourceTree = "<group>"; };
+		BE328C3C1BB6670B006A9C70 /* NoteInAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteInAppHelper.h; path = "Helper Classes/NoteInAppHelper.h"; sourceTree = "<group>"; };
+		BE328C3D1BB6670B006A9C70 /* NoteInAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteInAppHelper.m; path = "Helper Classes/NoteInAppHelper.m"; sourceTree = "<group>"; };
 		BE3E6BC31BAA5FF700F11A9E /* ToDoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoCollectionViewController.h; path = ViewControllers/ToDoCollectionViewController.h; sourceTree = "<group>"; };
 		BE3E6BC41BAA5FF700F11A9E /* ToDoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoCollectionViewController.m; path = ViewControllers/ToDoCollectionViewController.m; sourceTree = "<group>"; };
 		BE3E6BC71BAA872100F11A9E /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmViewController.h; path = ViewControllers/AlarmViewController/AlarmViewController.h; sourceTree = "<group>"; };
@@ -325,6 +331,8 @@
 		BE2CBFB91B1B49EF0049010E /* Helper Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BE328C391BB665E4006A9C70 /* InAppHelper.h */,
+				BE328C3A1BB665E4006A9C70 /* InAppHelper.m */,
 				BE43D35A1B1B950000BA7794 /* ImagePickerHelper.h */,
 				BE43D35B1B1B950000BA7794 /* ImagePickerHelper.m */,
 				BE2CBFBA1B1B4A2F0049010E /* CoreDataCommonHelper.h */,
@@ -335,6 +343,8 @@
 				BE43D3551B1B8A1C00BA7794 /* CategoryHelper.m */,
 				BEDCC9831B899E3500BF3D43 /* ToDoHelper.h */,
 				BEDCC9841B899E3500BF3D43 /* ToDoHelper.m */,
+				BE328C3C1BB6670B006A9C70 /* NoteInAppHelper.h */,
+				BE328C3D1BB6670B006A9C70 /* NoteInAppHelper.m */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -742,6 +752,7 @@
 				BE08B1621B82F14500968E01 /* UIImage+ColorImage.m in Sources */,
 				BE2CBFB81B1B48AC0049010E /* AppCoreModel.m in Sources */,
 				BE29A9B71B69F13D00EC126A /* NEOColorPickerBaseViewController.m in Sources */,
+				BE328C3E1BB6670B006A9C70 /* NoteInAppHelper.m in Sources */,
 				A62C15101B711DCC0088E0BB /* SearchTableViewCell.m in Sources */,
 				BEDCC98D1B89A5B800BF3D43 /* TodoTableViewCell.m in Sources */,
 				BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */,
@@ -772,6 +783,7 @@
 				BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */,
 				BE08B15F1B82EFE100968E01 /* Utility.m in Sources */,
 				BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */,
+				BE328C3B1BB665E4006A9C70 /* InAppHelper.m in Sources */,
 				BE43D3591B1B8F5C00BA7794 /* EditCategoryViewController.m in Sources */,
 				BE3E6BCA1BAA872100F11A9E /* AlarmViewController.m in Sources */,
 				BE3E6BC51BAA5FF700F11A9E /* ToDoCollectionViewController.m in Sources */,
@@ -913,6 +925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "sticky note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appsfellow.stickyNotes.Lite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -924,6 +937,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "sticky note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appsfellow.stickyNotes.Lite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

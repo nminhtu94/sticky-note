@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotingViewController">
@@ -67,7 +68,7 @@
                     </constraints>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQg-99-KWc">
-                    <rect key="frame" x="0.0" y="10" width="600" height="540"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <attributedString key="attributedText"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -79,7 +80,7 @@
                     <rect key="frame" x="0.0" y="385" width="600" height="165"/>
                     <subviews>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfX-1R-Tvz">
-                            <rect key="frame" x="0.0" y="15" width="600" height="162"/>
+                            <rect key="frame" x="0.0" y="27" width="600" height="138"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="138" id="nLx-RJ-OzF"/>
                             </constraints>
@@ -115,7 +116,7 @@
                 <constraint firstAttribute="bottom" secondItem="yJF-5f-gaY" secondAttribute="bottom" id="KT8-1Z-YPu"/>
                 <constraint firstAttribute="trailing" secondItem="jQg-99-KWc" secondAttribute="trailing" id="U5m-dG-3Ax"/>
                 <constraint firstAttribute="trailing" secondItem="kzf-2r-036" secondAttribute="trailing" id="Xrh-RC-Vsg"/>
-                <constraint firstItem="jQg-99-KWc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="YRT-mO-Cxe"/>
+                <constraint firstItem="jQg-99-KWc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YRT-mO-Cxe"/>
                 <constraint firstItem="kzf-2r-036" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fdN-HG-lko"/>
                 <constraint firstAttribute="trailing" secondItem="yJF-5f-gaY" secondAttribute="trailing" id="g1n-Tc-iv6"/>
                 <constraint firstItem="yJF-5f-gaY" firstAttribute="top" secondItem="kzf-2r-036" secondAttribute="bottom" id="ph8-Gz-EMu"/>

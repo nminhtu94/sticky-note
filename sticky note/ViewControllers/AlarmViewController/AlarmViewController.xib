@@ -63,8 +63,8 @@
                         <action selector="actionBtnCancel:" destination="-1" eventType="touchUpInside" id="A5r-Q0-sRs"/>
                     </connections>
                 </button>
-                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cxk-MP-7b3">
-                    <rect key="frame" x="0.0" y="444" width="600" height="162"/>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cxk-MP-7b3">
+                    <rect key="frame" x="0.0" y="450" width="600" height="150"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="M3U-ow-Gdd"/>
                     </constraints>

@@ -59,52 +59,12 @@
 	return NO;
 }
 
-//- (BOOL)checkToDo:(NSManagedObjectID *)objectID item:(NSString *)item {
-//	NSError *error = nil;
-//	ToDoModel *todo =
-//		(ToDoModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
-//	
-//	if (todo != nil) {
-//		NSArray *doList = [todo toDoList];
-//		NSMutableArray *doneList = [NSMutableArray arrayWithArray:[todo doneList]];
-//		for (NSString *string in doList) {
-//			if ([string isEqualToString:item]) {
-//				[doneList addObject:string];
-//			}
-//		}
-//		
-//		[todo setDoneList:doneList];
-//		[self save];
-//		return YES;
-//	}
-//	return NO;
-//}
-
 - (NSArray *)getTodoOfCategory:(CategoryModel *)category {
   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category = %@", category];
   NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ToDoModel"];
   [fetchRequest setPredicate:predicate];
   return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
 }
-
-//- (BOOL)uncheckToDo:(NSManagedObjectID *)objectID item:(NSString *)item {
-//	NSError *error = nil;
-//	ToDoModel *todo =
-//		(ToDoModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
-//	
-//	if (todo != nil) {
-//		NSMutableArray *doneList = [NSMutableArray arrayWithArray:[todo doneList]];
-//		for (NSString *string in doneList) {
-//			if ([string isEqualToString:item]) {
-//				[doneList removeObject:string];
-//			}
-//		}
-//		[todo setDoneList:doneList];
-//		[self save];
-//		return YES;
-//	}
-//	return NO;
-//}
 
 - (BOOL)deleteToDo:(NSManagedObjectID *)objectID {
 	NSError *error = nil;
@@ -116,6 +76,24 @@
 		return YES;
 	}
 	return NO;
+}
+
+- (NSArray *)getAllTodo {
+  NSMutableArray *todos = [NSMutableArray new];
+  
+  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+  NSEntityDescription *entity = [NSEntityDescription entityForName:@"ToDoModel"
+                                            inManagedObjectContext:[self managedObjectContext]];
+  [fetchRequest setEntity:entity];
+  
+  NSError *error = nil;
+  NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+  
+  if (!error) {
+    [todos addObjectsFromArray:results];
+  }
+  
+  return todos;
 }
 
 @end
