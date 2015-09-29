@@ -524,8 +524,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XLu-z6-mGD" userLabel="Category Collection Holder">
-                                <rect key="frame" x="8" y="64" width="584" height="487"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLu-z6-mGD" userLabel="Category Collection Holder">
+                                <rect key="frame" x="12" y="64" width="576" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -712,30 +712,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8d-1Q-YCq">
-                                <rect key="frame" x="16" y="72" width="41" height="18"/>
+                                <rect key="frame" x="16" y="72" width="40.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xVu-cd-nQ9">
-                                <rect key="frame" x="16" y="98" width="400" height="30"/>
+                                <rect key="frame" x="16" y="98" width="399.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choose an icon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLa-Kv-d0X">
-                                <rect key="frame" x="16" y="138" width="108" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose an icon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLa-Kv-d0X">
+                                <rect key="frame" x="16" y="138" width="106" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ebF-CV-l5b">
-                                <rect key="frame" x="167" y="164" width="266" height="266"/>
+                                <rect key="frame" x="16" y="164" width="266" height="266"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ebF-CV-l5b" secondAttribute="height" multiplier="1:1" id="dzN-J2-Y5k"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="283-OA-lBF" userLabel="Btn Add Image">
-                                <rect key="frame" x="167" y="164" width="266" height="266"/>
+                                <rect key="frame" x="16" y="164" width="266" height="266"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="add_icon_camera">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -745,7 +745,7 @@
                                 </connections>
                             </button>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUp-IT-l1u" userLabel="Bottom Layer">
-                                <rect key="frame" x="167" y="400" width="266" height="30"/>
+                                <rect key="frame" x="16" y="400" width="266" height="30"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_replace" translatesAutoresizingMaskIntoConstraints="NO" id="5CK-r6-Pbo">
                                         <rect key="frame" x="5" y="8" width="14" height="14"/>
@@ -782,6 +782,7 @@
                         <constraints>
                             <constraint firstItem="j8d-1Q-YCq" firstAttribute="top" secondItem="NZU-XD-J9N" secondAttribute="bottom" constant="8" id="2Sa-eQ-4u8"/>
                             <constraint firstAttribute="width" secondItem="xVu-cd-nQ9" secondAttribute="width" multiplier="3:2" constant="1" id="3VX-M7-HDe"/>
+                            <constraint firstItem="ebF-CV-l5b" firstAttribute="leading" secondItem="xVu-cd-nQ9" secondAttribute="leading" id="3oc-eQ-Vv6"/>
                             <constraint firstItem="ebF-CV-l5b" firstAttribute="leading" secondItem="283-OA-lBF" secondAttribute="leading" id="79e-fM-4nP"/>
                             <constraint firstItem="eUp-IT-l1u" firstAttribute="trailing" secondItem="283-OA-lBF" secondAttribute="trailing" id="7tq-xq-fnt"/>
                             <constraint firstItem="ebF-CV-l5b" firstAttribute="top" secondItem="MLa-Kv-d0X" secondAttribute="bottom" constant="8" id="91e-WM-sNM"/>
@@ -802,6 +803,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="OdQ-kx-r3m"/>
+                                <exclude reference="QjU-D5-x3P"/>
                             </mask>
                         </variation>
                     </view>

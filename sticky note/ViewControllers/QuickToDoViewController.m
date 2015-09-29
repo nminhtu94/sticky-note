@@ -23,9 +23,12 @@
 @property (nonatomic) UIAlertView *alertView;
 @property (nonatomic, assign) BOOL willResetData;
 
+@property (nonatomic) UIView *inputView;
+
 @end
 
 @implementation QuickToDoViewController
+@synthesize inputView;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -98,26 +101,15 @@
     self.willResetData = NO;
   }
   
-  if (_pickerViewCategory == nil) {
-    _pickerViewCategory = [[UIPickerView alloc] init];
-    
-    // Create a category picker view.
-    [_pickerViewCategory setBackgroundColor:THEME_COLOR_DARKER];
-    [_pickerViewCategory setTintColor:[UIColor whiteColor]];
-    [_pickerViewCategory setDelegate:self];
-    [_pickerViewCategory setDataSource:self];
-    [_pickerViewCategory.layer setBorderWidth:3.0f];
-    [_pickerViewCategory.layer setBorderColor:[UIColor whiteColor].CGColor];
-    [_pickerViewCategory setShowsSelectionIndicator:YES];
-    
-    [self.view addSubview:_pickerViewCategory];
+  if (inputView == nil) {
+    [self createInputView];
   }
   
   _categoryPickerFrameOriginal = CGRectMake(0,
                                             self.view.frame.size.height,
-                                            _pickerViewCategory.frame.size.width,
-                                            _pickerViewCategory.frame.size.height);
-  [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
+                                            inputView.frame.size.width,
+                                            inputView.frame.size.height);
+  [inputView setFrame:_categoryPickerFrameOriginal];
   [_pickerViewCategory reloadAllComponents];
 }
 
@@ -126,32 +118,78 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)createInputView {
+  CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+  CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+  
+  UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30)];
+  toolbar.barStyle = UIBarStyleDefault;
+  [toolbar sizeToFit];
+  
+  NSMutableArray *barItems = [[NSMutableArray alloc] init];
+  UIBarButtonItem *flexibleSpace =
+  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                target:nil
+                                                action:nil];
+  UIBarButtonItem *doneBtn =
+  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                target:self
+                                                action:@selector(pickerDoneTapped)];
+  [doneBtn setTintColor:[UIColor whiteColor]];
+  
+  [toolbar setBarTintColor:THEME_COLOR];
+  [barItems addObject:flexibleSpace];
+  [barItems addObject:doneBtn];
+  [toolbar setItems:barItems animated:YES];
+  
+  _pickerViewCategory = [[UIPickerView alloc] init];
+  [_pickerViewCategory setFrame:CGRectMake(0, 30, screenWidth, 250)];
+  
+  // Create a category picker view.
+  [_pickerViewCategory setBackgroundColor:THEME_COLOR_DARKER];
+  [_pickerViewCategory setTintColor:[UIColor whiteColor]];
+  [_pickerViewCategory setDelegate:self];
+  [_pickerViewCategory setDataSource:self];
+  [_pickerViewCategory.layer setBorderWidth:3.0f];
+  [_pickerViewCategory.layer setBorderColor:[UIColor whiteColor].CGColor];
+  [_pickerViewCategory setShowsSelectionIndicator:YES];
+  
+  inputView =
+      [[UIView alloc] initWithFrame:CGRectMake(0,
+                                               screenHeight,
+                                               screenWidth,
+                                               toolbar.frame.size.height +
+                                               _pickerViewCategory.frame.size.height)];
+  inputView.backgroundColor = [UIColor clearColor];
+  [inputView addSubview:_pickerViewCategory];
+  [inputView addSubview:toolbar];
+  
+  [self.view addSubview:inputView];
+}
+
 #pragma mark <UIPickerViewDelegate>
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
+  if (row == 0) {
+    return;
+  }
   NSArray *allCategory = [[CategoryHelper sharedInstance] getAllCategory];
-  _selectedCategory = [allCategory objectAtIndex:row];
-  
+  _selectedCategory = [allCategory objectAtIndex:row - 1];
   [self.btnCategory setTitle:_selectedCategory.name forState:UIControlStateNormal];
-  
-  _categoryPickerFrameOriginal = CGRectMake(0,
-                                            self.view.frame.size.height,
-                                            _pickerViewCategory.frame.size.width,
-                                            _pickerViewCategory.frame.size.height);
-  [UIView animateWithDuration:0.3 animations:^{
-    [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
-  } completion:^(BOOL finished) {
-    _pickerViewTogged = NO;
-  }];
 }
 
 #pragma mark <UIPickerViewDataSource>
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView
              attributedTitleForRow:(NSInteger)row
                       forComponent:(NSInteger)component {
+  if (row == 0) {
+    return [[NSAttributedString alloc] initWithString:@"Select category"
+                                           attributes:
+            @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+  }
   NSArray *allCategory = [[CategoryHelper sharedInstance] getAllCategory];
-  CategoryModel *category = [allCategory objectAtIndex:row];
+  CategoryModel *category = [allCategory objectAtIndex:row - 1];
   
   NSAttributedString *attString =
 		[[NSAttributedString alloc] initWithString:category.name
@@ -165,7 +203,7 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-  return [[CategoryHelper sharedInstance] getAllCategory].count;
+  return [[CategoryHelper sharedInstance] getAllCategory].count + 1;
 }
 
 #pragma mark - <UIAlertViewDelegate>
@@ -208,10 +246,6 @@
 }
 
 - (IBAction)onSave:(id)sender {
-  if (![self checkPremium]) {
-    return;
-  }
-  
   if ([_txfTitle.text isEqualToString:@""]) {
     [_alertView setMessage:@"Please enter title!"];
     [_alertView show];
@@ -225,6 +259,9 @@
   }
   
   if (self.todoItem == nil) {
+    if (![self checkPremium]) {
+      return;
+    }
     [[ToDoHelper sharedInstance] addToDo:self.txfTitle.text
                                     date:[NSDate date]
                                     list:self.todoTable.data
@@ -278,11 +315,11 @@
   if (!_pickerViewTogged) {
     _categoryPickerFrameMoved =
     CGRectMake(0,
-               self.view.frame.size.height - _pickerViewCategory.frame.size.height,
-               _pickerViewCategory.frame.size.width,
-               _pickerViewCategory.frame.size.height);
+               self.view.frame.size.height - inputView.frame.size.height,
+               inputView.frame.size.width,
+               inputView.frame.size.height);
     [UIView animateWithDuration:0.3 animations:^{
-      [_pickerViewCategory setFrame:_categoryPickerFrameMoved];
+      [inputView setFrame:_categoryPickerFrameMoved];
     } completion:^(BOOL finished) {
       _pickerViewTogged = YES;
     }];
@@ -290,10 +327,10 @@
     _categoryPickerFrameOriginal =
     CGRectMake(0,
                self.view.frame.size.height,
-               _pickerViewCategory.frame.size.width,
-               _pickerViewCategory.frame.size.height);
+               inputView.frame.size.width,
+               inputView.frame.size.height);
     [UIView animateWithDuration:0.3 animations:^{
-      [_pickerViewCategory setFrame:_categoryPickerFrameOriginal];
+      [inputView setFrame:_categoryPickerFrameOriginal];
     } completion:^(BOOL finished) {
       _pickerViewTogged = NO;
     }];
@@ -307,4 +344,17 @@
   [self.todoTable.data removeAllObjects];
   [self.todoTable reloadData];
 }
+
+- (void)pickerDoneTapped {
+  _categoryPickerFrameOriginal = CGRectMake(0,
+                                            self.view.frame.size.height,
+                                            inputView.frame.size.width,
+                                            inputView.frame.size.height);
+  [UIView animateWithDuration:0.3 animations:^{
+    [inputView setFrame:_categoryPickerFrameOriginal];
+  } completion:^(BOOL finished) {
+    _pickerViewTogged = NO;
+  }];
+}
+
 @end

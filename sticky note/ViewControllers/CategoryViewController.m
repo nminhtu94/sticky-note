@@ -36,27 +36,27 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
 	[self.view setBackgroundColor:THEME_COLOR_DARKER];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (self.tblCategory == nil) {
-        UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(100, 100);
-        self.tblCategory =
-			[[CategoryCollectionView alloc] initWithFrame:self.viewCategoryTblHolder.bounds
-									 collectionViewLayout:flowLayout];
-        [self.tblCategory setCustomDelegate:self];
-		[self.tblCategory setBackgroundColor:[UIColor clearColor]];
-        [self.viewCategoryTblHolder addSubview:self.tblCategory];
-		[self.viewCategoryTblHolder setBackgroundColor:[UIColor clearColor]];
-    }
-    
-    [self.tblCategory setCategories:[[CategoryHelper sharedInstance] getAllCategory]];
-    [self.tblCategory reloadData];
+  [super viewDidAppear:animated];
+  
+  if (self.tblCategory == nil) {
+    UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    flowLayout.itemSize = CGSizeMake(100, 100);
+    self.tblCategory =
+        [[CategoryCollectionView alloc] initWithFrame:self.viewCategoryTblHolder.bounds
+                                 collectionViewLayout:flowLayout];
+    [self.tblCategory setCustomDelegate:self];
+    [self.tblCategory setBackgroundColor:[UIColor clearColor]];
+    [self.viewCategoryTblHolder addSubview:self.tblCategory];
+    [self.viewCategoryTblHolder setBackgroundColor:[UIColor clearColor]];
+  }
+  
+  [self.tblCategory setCategories:[[CategoryHelper sharedInstance] getAllCategory]];
+  [self.tblCategory reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,8 +67,8 @@
 #pragma mark <CategoryCollectionDelegate>
 - (void)CategoryCollection:(CategoryCollectionView *)collection
 			onItemSelected:(CategoryModel *)categoryItem {
-    [CategorySelectorViewController setSelectedCategory:categoryItem];
-    [self performSegueWithIdentifier:@"toSelectorViewController" sender:self];
+  [CategorySelectorViewController setSelectedCategory:categoryItem];
+  [self performSegueWithIdentifier:@"toSelectorViewController" sender:self];
 }
 
 - (IBAction)onAddCategory:(id)sender {
