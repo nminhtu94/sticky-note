@@ -398,7 +398,7 @@
 
     self.willResetData = YES;
 		[self resetData];
-		[MainTabBar setSelectedIndex:0];
+//		[MainTabBar setSelectedIndex:0];
 	} else {
     UIImage *selectedImage = [self.imagePicker selectedImage];
     NSDate *date = nil;
@@ -496,6 +496,8 @@
     [self.alarm setHidden:NO];
   }
 }
+
+#pragma mark -
 #pragma mark Alarm-Function
 - (IBAction)onCbAlarm:(id)sender {
   NSLog(@"CbAlarm : %@", self.txDate.text);
@@ -510,11 +512,11 @@
       
   } else {
     /* Pop up AlarmViewController */
-    self.willResetData = NO;
     AlarmViewController *alarmVc =
-        [[AlarmViewController alloc] initWithNibName:@"AlarmViewController"
-                                              bundle:[NSBundle mainBundle]];
+        [[AlarmViewController alloc] initWithNibName:@"AlarmViewController" bundle:nil];
+    alarmVc.navigationController = self.navigationController;
     [self.navigationController presentViewController:alarmVc animated:YES completion:nil];
+    
   }
 }
 
@@ -545,10 +547,11 @@
 	[self.txfTags setText:@""];
     
   // Alarm
+  self.alarmDate = nil;
   [self.alarm setHidden:YES];
   self.txDate.hidden = YES;
   [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
-  self.txDate.text = @"";
+  [self.txDate setText:@""];
     
 }
 
