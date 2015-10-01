@@ -512,11 +512,9 @@
       
   } else {
     /* Pop up AlarmViewController */
-    AlarmViewController *alarmVc =
-        [[AlarmViewController alloc] initWithNibName:@"AlarmViewController" bundle:nil];
-    alarmVc.navigationController = self.navigationController;
-    [self.navigationController presentViewController:alarmVc animated:YES completion:nil];
-    
+    AlarmViewController *alarmVc = [[AlarmViewController alloc] init];
+    [alarmVc setQuicknoteVC:self];
+    [self presentViewController:alarmVc animated:YES completion:nil];
   }
 }
 
