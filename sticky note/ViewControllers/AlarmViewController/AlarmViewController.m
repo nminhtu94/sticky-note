@@ -16,12 +16,15 @@
 }
 @end
 
+
 @implementation AlarmViewController
+@dynamic parentViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+  [self.navigationController setToolbarHidden:YES];
+  
     // init Hours, Seconds
     arrHours = [[NSMutableArray alloc] init];
     arrSeconds = [[NSMutableArray alloc] init];
@@ -80,14 +83,9 @@
     
     /* To-DO here */
     // return resultDate
-    NSArray *viewControllers = self.navigationController.viewControllers;
-    QuickNoteViewController *quickNote =
-        (QuickNoteViewController *) [viewControllers objectAtIndex:viewControllers.count - 1];
-    
-    quickNote.alarmDate = resultDate;
-    quickNote.willResetData = NO;
-    [quickNote.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"] forState:UIControlStateNormal];
-    
+    self.quicknoteVC.alarmDate = resultDate;
+    self.quicknoteVC.willResetData = NO;
+    [self.quicknoteVC.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"] forState:UIControlStateNormal];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

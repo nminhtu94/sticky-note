@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <JTCalendar/JTCalendar.h>
+#import "QuickNoteViewController.h"
 
 @interface AlarmViewController : UIViewController <JTCalendarDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (strong, nonatomic) UINavigationController *navigationController;
+@property (strong, nonatomic) QuickNoteViewController *quicknoteVC;
 
 // Tu get here
 @property (strong, nonatomic) NSDate *dateSelected;
