@@ -11,5 +11,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
 - (IBAction)segmentControlChanged:(id)sender;
+- (IBAction)cancelTapped:(id)sender;
 
 @end

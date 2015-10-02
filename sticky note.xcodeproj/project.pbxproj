@@ -54,6 +54,8 @@
 		BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */; };
 		BE43D3771B1BA62400BA7794 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */; };
 		BE43D3781B1BA62400BA7794 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */; };
+		BE44896B1BBE2F500034363E /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4489691BBE2F500034363E /* PurchaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		BE44896C1BBE2F500034363E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE44896A1BBE2F500034363E /* PurchaseViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		BE465DA91B89ABB9008493E4 /* TodoTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE465DA81B89ABB9008493E4 /* TodoTableView.xib */; };
 		BE6222E01B48640100DB7F13 /* NoteCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222DF1B48640100DB7F13 /* NoteCollectionView.m */; };
 		BE6222E21B48652000DB7F13 /* NoteCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6222E11B48652000DB7F13 /* NoteCollectionView.xib */; };
@@ -179,6 +181,9 @@
 		BE43D3741B1BA62400BA7794 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCollectionViewCell.h; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryCollectionViewCell.m; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryCollectionViewCell.xib; path = CustomViews/CategoryCollectionView/CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		BE4489681BBE2F500034363E /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = ViewControllers/PurchaseViewController/PurchaseViewController.h; sourceTree = "<group>"; };
+		BE4489691BBE2F500034363E /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = ViewControllers/PurchaseViewController/PurchaseViewController.m; sourceTree = "<group>"; };
+		BE44896A1BBE2F500034363E /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = ViewControllers/PurchaseViewController/PurchaseViewController.xib; sourceTree = "<group>"; };
 		BE465DA81B89ABB9008493E4 /* TodoTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TodoTableView.xib; path = CustomViews/ToDoTableView/TodoTableView.xib; sourceTree = "<group>"; };
 		BE6222DE1B48640100DB7F13 /* NoteCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteCollectionView.h; path = CustomViews/NoteCollectionView/NoteCollectionView.h; sourceTree = "<group>"; };
 		BE6222DF1B48640100DB7F13 /* NoteCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteCollectionView.m; path = CustomViews/NoteCollectionView/NoteCollectionView.m; sourceTree = "<group>"; };
@@ -382,6 +387,16 @@
 			name = CategoryCollectionView;
 			sourceTree = "<group>";
 		};
+		BE4489671BBE2F250034363E /* PurchaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BE4489681BBE2F500034363E /* PurchaseViewController.h */,
+				BE4489691BBE2F500034363E /* PurchaseViewController.m */,
+				BE44896A1BBE2F500034363E /* PurchaseViewController.xib */,
+			);
+			name = PurchaseViewController;
+			sourceTree = "<group>";
+		};
 		BE6222DD1B4863B300DB7F13 /* NoteCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +519,7 @@
 		BE91463C1B08A2FB0084D0FA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE4489671BBE2F250034363E /* PurchaseViewController */,
 				BE3E6BC61BAA871300F11A9E /* AlarmViewController */,
 				BEF05F611B6735010040B57B /* ViewNoteViewController */,
 				BE9146391B08A2F40084D0FA /* CategoryViewController.h */,
@@ -682,6 +698,7 @@
 				BE174A501BA82A3B009E843B /* TodoCollectionView.xib in Resources */,
 				BEF05F661B6735280040B57B /* ViewNoteViewController.xib in Resources */,
 				BE29A9C01B69F13D00EC126A /* NEOColorPickerViewController.xib in Resources */,
+				BE44896C1BBE2F500034363E /* PurchaseViewController.xib in Resources */,
 				BE43D3641B1B98B600BA7794 /* ExpandableSearchBar.xib in Resources */,
 				BE29A9BE1B69F13D00EC126A /* NEOColorPickerHueGridViewController.xib in Resources */,
 				A62C15111B711DCC0088E0BB /* SearchTableViewCell.xib in Resources */,
@@ -781,6 +798,7 @@
 				BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */,
 				BE174A581BA859E2009E843B /* CategorySelectorViewController.m in Sources */,
 				BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */,
+				BE44896B1BBE2F500034363E /* PurchaseViewController.m in Sources */,
 				BE08B15F1B82EFE100968E01 /* Utility.m in Sources */,
 				BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */,
 				BE328C3B1BB665E4006A9C70 /* InAppHelper.m in Sources */,

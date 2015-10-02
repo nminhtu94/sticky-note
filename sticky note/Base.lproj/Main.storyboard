@@ -689,7 +689,14 @@
                             <constraint firstAttribute="trailing" secondItem="atL-jy-eyh" secondAttribute="trailing" id="wRw-50-dau"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Cps-KS-EaE"/>
+                    <navigationItem key="navigationItem" id="Cps-KS-EaE">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6jI-2r-myh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelTapped:" destination="zKm-26-JhW" id="3iz-fe-tJk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="oAz-RI-HsI" id="pca-WI-KwD"/>
                         <outlet property="segmentControl" destination="atL-jy-eyh" id="xnN-Zk-pSi"/>

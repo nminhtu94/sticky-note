@@ -75,4 +75,8 @@ static CategoryModel *selectedCategory;
   }
 }
 
+- (IBAction)cancelTapped:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

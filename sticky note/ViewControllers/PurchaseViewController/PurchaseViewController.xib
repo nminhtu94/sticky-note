@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PurchaseViewController">
+            <connections>
+                <outlet property="btnBuy" destination="IMe-Ph-OwD" id="mSz-Vb-R96"/>
+                <outlet property="btnRestore" destination="MdW-NG-d3s" id="S5R-m0-QRi"/>
+                <outlet property="lblStatus" destination="Djc-T6-JfE" id="XpQ-xT-rkB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djc-T6-JfE">
+                    <rect key="frame" x="279" y="74" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMe-Ph-OwD">
+                    <rect key="frame" x="20" y="104.5" width="560" height="29"/>
+                    <color key="backgroundColor" red="0.86274509799999999" green="0.39607843139999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                    <state key="normal" title="Buy premium">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buyTapped:" destination="-1" eventType="touchUpInside" id="f4I-2J-pgE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdW-NG-d3s">
+                    <rect key="frame" x="20" y="143.5" width="560" height="29"/>
+                    <color key="backgroundColor" red="0.86274509799999999" green="0.39607843139999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                    <state key="normal" title="Restore purchase">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="restoreTapped:" destination="-1" eventType="touchUpInside" id="aH9-fE-lpY"/>
+                    </connections>
+                </button>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7n-gF-vq0">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="x3q-fc-47F"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="barTintColor" red="0.13333333333333333" green="0.2627450980392157" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Purchase Sticky Note" id="HY6-oy-XXo">
+                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="x8u-2z-zCk">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="cancelTapped:" destination="-1" id="lLn-GQ-vgp"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <color key="backgroundColor" red="0.20000000000000001" green="0.30196078430000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="MdW-NG-d3s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="42y-mk-xyp"/>
+                <constraint firstAttribute="trailing" secondItem="IMe-Ph-OwD" secondAttribute="trailing" constant="20" id="6pR-Db-3BJ"/>
+                <constraint firstAttribute="trailing" secondItem="c7n-gF-vq0" secondAttribute="trailing" id="FTZ-mY-AGS"/>
+                <constraint firstItem="Djc-T6-JfE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="GLq-5l-ES4"/>
+                <constraint firstItem="c7n-gF-vq0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hv1-RJ-Y0R"/>
+                <constraint firstItem="IMe-Ph-OwD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="LFV-3Z-moA"/>
+                <constraint firstAttribute="trailing" secondItem="MdW-NG-d3s" secondAttribute="trailing" constant="20" id="PFi-lA-3bX"/>
+                <constraint firstItem="Djc-T6-JfE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VNB-ob-iv6"/>
+                <constraint firstItem="IMe-Ph-OwD" firstAttribute="top" secondItem="Djc-T6-JfE" secondAttribute="bottom" constant="10" id="e5N-Nh-AS1"/>
+                <constraint firstItem="Djc-T6-JfE" firstAttribute="top" secondItem="c7n-gF-vq0" secondAttribute="bottom" constant="10" id="f2a-UF-NRT"/>
+                <constraint firstItem="MdW-NG-d3s" firstAttribute="top" secondItem="IMe-Ph-OwD" secondAttribute="bottom" constant="10" id="k1G-nX-HEt"/>
+                <constraint firstItem="c7n-gF-vq0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oQC-YS-aVE"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="GLq-5l-ES4"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

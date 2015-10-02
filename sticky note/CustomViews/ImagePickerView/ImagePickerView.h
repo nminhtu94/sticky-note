@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *replaceButton;
 @property (weak, nonatomic) IBOutlet UIButton *replaceIconButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *viewReplaceHolder;
 
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, strong, readonly) UIImage *selectedImage;

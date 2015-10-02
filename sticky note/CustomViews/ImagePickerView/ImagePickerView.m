@@ -28,6 +28,13 @@
 	self.selectedImage = nil;
 	[self.selectImageButton setHidden:NO];
 	[self.imageView setHidden:YES];
+  [self.viewReplaceHolder setHidden:YES];
+  
+  UIGestureRecognizer *touch =
+      [[UIGestureRecognizer alloc] initWithTarget:self
+                                           action:@selector(replaceImage:)];
+  [self.viewReplaceHolder addGestureRecognizer:touch];
+  
 	[[ImagePickerHelper sharedInstance] setDelegate:self];
 }
 
@@ -38,6 +45,7 @@
 }
 
 - (IBAction)replaceImage:(id)sender {
+  NSLog(@"Touched");
 	if (_delegate) {
 		[_delegate imagePickerView:self onReplaceImage:sender];
 	}
@@ -48,9 +56,11 @@
 	UIImage *importedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
 	
 	[self.selectImageButton setHidden:YES];
+  [self.viewReplaceHolder setHidden:NO];
 	[self.imageView setHidden:NO];
 	[self.imageView setImage:importedImage];
   [self.view bringSubviewToFront:self.imageView];
+  [self.view bringSubviewToFront:self.viewReplaceHolder];
 	self.selectedImage = importedImage;
 	
 	[[[ImagePickerHelper sharedInstance] picker] dismissViewControllerAnimated:YES completion:nil];
@@ -60,12 +70,14 @@
   [self.imageView setImage:image];
   [self.selectImageButton setHidden:YES];
   [self.imageView setHidden:NO];
+  [self.viewReplaceHolder setHidden:NO];
 }
 
 - (void)reset {
 	self.selectedImage = nil;
 	[self.selectImageButton setHidden:NO];
 	[self.imageView setHidden:YES];
+  [self.viewReplaceHolder setHidden:YES];
 	[self.imageView setImage:nil];
 }
 

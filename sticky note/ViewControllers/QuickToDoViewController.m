@@ -7,6 +7,7 @@
 #import "Utility.h"
 #import "CategoryHelper.h"
 #import "NoteInAppHelper.h"
+#import "PurchaseViewController.h"
 
 @interface QuickToDoViewController () <UIPickerViewDataSource,
                                        UIPickerViewDelegate,
@@ -22,6 +23,7 @@
 @property (nonatomic, assign, getter=isPickerViewTogged) BOOL pickerViewTogged;
 @property (nonatomic) UIAlertView *alertView;
 @property (nonatomic, assign) BOOL willResetData;
+@property (nonatomic, strong) PurchaseViewController *purchseVC;
 
 @property (nonatomic) UIView *inputView;
 
@@ -40,6 +42,10 @@
                                            delegate:nil
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil, nil];
+  }
+  
+  if (self.purchseVC == nil) {
+    self.purchseVC = [[PurchaseViewController alloc] init];
   }
   
   [self.txfTitle setReturnKeyType:UIReturnKeyDone];
@@ -215,30 +221,10 @@
     }
       
     case 1: {
-      if ([PurchaseUtil product] != nil) {
-        [PurchaseUtil buyProduct:PurchaseUtil.product];
-      }
-      break;
-    }
-      
-    case 2: {
-      [PurchaseUtil requestTransactionsWithCompletionHander:^(BOOL success, NSArray *transactions) {
-        if (success) {
-          if ([PurchaseUtil productPurchased:ProductBundleID]) {
-            [AppUtil showAlert:@"Restore successful" message:@"Your purchase has been restored!"];
-          } else {
-            [AppUtil showAlert:@"Error" message:@"No purchases were found for this account"];
-          }
-        }
-      }];
+      [self presentViewController:self.purchseVC animated:YES completion:nil];
       break;
     }
   }
-}
-
-- (void)productPurchased:(NSNotification *)notification {
-  [AppUtil showAlert:@"Congratulations!"
-             message:@"You have purchased Sticky Notes pro, thank you for choosing us"];
 }
 
 - (IBAction)onAddItem:(id)sender {
@@ -287,9 +273,9 @@
                                message:@""
                               delegate:self
                      cancelButtonTitle:@"Cancel"
-                     otherButtonTitles:@"Upgrade", @"Restore purchased", nil];
+                     otherButtonTitles:@"Upgrade", nil];
     [alertView setDelegate:self];
-    [alertView setMessage:@"You cannot create more than 2 todos in lite version. Please upgrade to fullversion"];
+    [alertView setMessage:@"You cannot create more than 2 todos in lite version. Please upgrade to premium"];
     [alertView show];
     return NO;
   }
