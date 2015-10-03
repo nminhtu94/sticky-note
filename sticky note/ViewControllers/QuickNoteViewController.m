@@ -573,8 +573,10 @@
 #pragma mark Private-Method
 - (void)resetData {
 	[_txfTitle setText:@""];
+  [_txfTitle resignFirstResponder];
 	[self.txvNotingView setText:nil];
 	[_txvNotingView.textView setText:@""];
+  [_txvNotingView.textView resignFirstResponder];
 	[_txvNotingView viewDidLoad];
 	[_txvNotingView viewWillAppear:NO];
 	[_btnChooseCategory setTitle:@"Select category" forState:UIControlStateNormal];

@@ -363,6 +363,7 @@
 #pragma mark - Private Methods
 - (void)resetData {
   [self.txfTitle setText:@""];
+  [self.txfTitle resignFirstResponder];
   [self.todoTable.data removeAllObjects];
   [self.todoTable reloadData];
 }
