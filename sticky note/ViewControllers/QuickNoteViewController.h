@@ -3,7 +3,7 @@
 
 @class DrawingControl;
 @class NoteModel;
-@interface QuickNoteViewController : UIViewController <ImagePickerViewDelegate>
+@interface QuickNoteViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *btnChooseCategory;
 @property (weak, nonatomic) IBOutlet UITextField *txfTitle;
@@ -14,6 +14,10 @@
 
 @property (weak, nonatomic) IBOutlet UIView *customTextView;
 @property (weak, nonatomic) IBOutlet UITextField *txfTags;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnSelectImage;
+@property (weak, nonatomic) IBOutlet UIImageView *imgNoteImage;
+@property (weak, nonatomic) IBOutlet UIView *viewImageRefreshView;
 
 @property (nonatomic, strong) NoteModel *note;
 @property (nonatomic, assign) BOOL willResetData;
@@ -26,5 +30,8 @@
 - (IBAction)onChangeInputMode:(id)sender;
 - (IBAction)onDelete:(id)sender;
 - (IBAction)onCancel:(id)sender;
+
+- (IBAction)selectImage:(id)sender;
+- (IBAction)replaceImage:(id)sender;
 
 @end

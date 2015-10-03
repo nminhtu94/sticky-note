@@ -59,11 +59,6 @@
   [self.tblCategory reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark <CategoryCollectionDelegate>
 - (void)CategoryCollection:(CategoryCollectionView *)collection
 			onItemSelected:(CategoryModel *)categoryItem {

@@ -173,6 +173,12 @@
   [self.view addSubview:inputView];
 }
 
+#pragma mark - <UITextFieldDelegate>
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  return YES;
+}
+
 #pragma mark <UIPickerViewDelegate>
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
@@ -303,7 +309,7 @@
 }
 
 - (IBAction)onDelete:(id)sender {
-  if (self.willResetData) {
+  if (self.todoItem == nil) {
     [self resetData];
   } else {
     UIAlertView *deleteAlert =
@@ -352,7 +358,7 @@
 }
 
 - (IBAction)onCancel:(id)sender {
-  if (self.willResetData) {
+  if (self.todoItem == nil) {
     [self resetData];
   } else {
     [self.navigationController popViewControllerAnimated:YES];

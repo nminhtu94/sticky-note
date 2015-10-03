@@ -9,11 +9,12 @@
 #import "AlarmViewController.h"
 
 @interface QuickNoteViewController () <UIPickerViewDelegate,
-									   UIPickerViewDataSource,
-									   DrawingControlDelegate,
-									   UITextFieldDelegate,
-                     UIAlertViewDelegate,
-									   NEOColorPickerViewControllerDelegate>
+                                       UIPickerViewDataSource,
+                                       DrawingControlDelegate,
+                                       UITextFieldDelegate,
+                                       UIAlertViewDelegate,
+                                       ImagePickerHelperDelegate,
+                                       NEOColorPickerViewControllerDelegate>
 
 @property (nonatomic) UIPickerView *pickerViewCategory;
 @property (nonatomic, assign, getter=isPickerViewTogged) BOOL pickerViewTogged;
@@ -59,6 +60,7 @@
               pickerWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary]
                          animated:YES
                        completion:nil];
+      [[ImagePickerHelper sharedInstance] setDelegate:self];
       self.willResetData = NO;
     }];
     UIAlertAction* camera = [UIAlertAction actionWithTitle:@"Camera"
@@ -71,6 +73,7 @@
               pickerWithSourceType:UIImagePickerControllerSourceTypeCamera]
                          animated:YES
                        completion:nil];
+      [[ImagePickerHelper sharedInstance] setDelegate:self];
     }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel"
                                                      style:UIAlertActionStyleDefault
@@ -126,12 +129,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-	
-	[self.imagePicker setDelegate:self];
-	
 	if (self.willResetData) {
 		[self resetData];
+    self.willResetData = NO;
 	}
+  
 	[self.view setBackgroundColor:THEME_COLOR_DARKER];
 	
 	[self.txfTitle setBackgroundColor:THEME_COLOR_DARKER];
@@ -153,6 +155,12 @@
     self.txDate.hidden = NO;
   }
   
+  [self.btnSelectImage setHidden:NO];
+  [self.imgNoteImage setHidden:YES];
+  [self.viewImageRefreshView setHidden:YES];
+  [self.txfTags setDelegate:self];
+  [self.txfTags setReturnKeyType:UIReturnKeyDone];
+  
   if (self.note != nil) {
     self.willResetData = NO;
     [self.drawingControlView.drawingView setSketchImage:
@@ -162,8 +170,12 @@
     [self.txfTitle setText:self.note.title];
     
     if (self.note.image != nil) {
-      [self.imagePicker setImage:[UIImage imageWithData:self.note.image]];
+      [self.imgNoteImage setImage:[UIImage imageWithData:self.note.image]];
+      [self.btnChooseCategory setHidden:YES];
+      [self.imgNoteImage setHidden:NO];
+      [self.viewImageRefreshView setHidden:NO];
     }
+    
     [self.drawingControlView.drawingView setNeedsDisplay];
     [self.txfTags setText:[AppUtil generateStrings:self.note.tags]];
     
@@ -212,11 +224,6 @@
   self.alarmDate = nil;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)createInputView {
   CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
   CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
@@ -227,13 +234,13 @@
   
   NSMutableArray *barItems = [[NSMutableArray alloc] init];
   UIBarButtonItem *flexibleSpace =
-  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                target:nil
-                                                action:nil];
+      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                    target:nil
+                                                    action:nil];
   UIBarButtonItem *doneBtn =
-  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                target:self
-                                                action:@selector(pickerDoneTapped)];
+      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                    target:self
+                                                    action:@selector(pickerDoneTapped)];
   [doneBtn setTintColor:[UIColor whiteColor]];
   
   [toolbar setBarTintColor:THEME_COLOR];
@@ -254,11 +261,11 @@
   [_pickerViewCategory setShowsSelectionIndicator:YES];
   
   inputView =
-  [[UIView alloc] initWithFrame:CGRectMake(0,
-                                           screenHeight,
-                                           screenWidth,
-                                           toolbar.frame.size.height +
-                                           _pickerViewCategory.frame.size.height)];
+      [[UIView alloc] initWithFrame:CGRectMake(0,
+                                               screenHeight,
+                                               screenWidth,
+                                               toolbar.frame.size.height +
+                                               _pickerViewCategory.frame.size.height)];
   inputView.backgroundColor = [UIColor clearColor];
   [inputView addSubview:_pickerViewCategory];
   [inputView addSubview:toolbar];
@@ -269,14 +276,14 @@
 #pragma mark <UITextFieldDelegate>
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[textField resignFirstResponder];
-    [self.txfTags resignFirstResponder];
+  [self.txfTags resignFirstResponder];
 	return YES;
 }
 
 #pragma mark <UIPickerViewDelegate>
 - (void)pickerView:(UIPickerView *)pickerView
-	  didSelectRow:(NSInteger)row
-	   inComponent:(NSInteger)component {
+      didSelectRow:(NSInteger)row
+       inComponent:(NSInteger)component {
   if (row == 0) {
     [self.btnChooseCategory setTitle:@"Select category" forState:UIControlStateNormal];
     return;
@@ -290,7 +297,7 @@
 
 #pragma mark <UIPickerViewDataSource>
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView
-			 attributedTitleForRow:(NSInteger)row
+             attributedTitleForRow:(NSInteger)row
 					  forComponent:(NSInteger)component {
   if (row == 0) {
     return [[NSAttributedString alloc] initWithString:@"Select category"
@@ -314,15 +321,6 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return [[CategoryHelper sharedInstance] getAllCategory].count + 1;
-}
-
-#pragma mark <ImagePickerViewDelegate>
-- (void)imagePickerView:(ImagePickerView *)pickerView onReplaceImage:(id)sender {
-  [self presentViewController:_actionSheet animated:YES completion:nil];
-}
-
-- (void)imagePickerView:(ImagePickerView *)pickerView onSelectImage:(id)sender {
-	[self presentViewController:_actionSheet animated:YES completion:nil];
 }
 
 #pragma mark <DrawingControlDelegate>
@@ -398,7 +396,7 @@
 
     [[NoteHelper sharedInstance] addNote:_txfTitle.text
                                     text:_txvNotingView.textView.attributedText
-                                   image:UIImagePNGRepresentation([self.imagePicker selectedImage])
+                                   image:UIImagePNGRepresentation(self.imgNoteImage.image)
                                   sketch:UIImagePNGRepresentation(sketch)
                                     date:[NSDate date]
                                 category:_selectedCategory
@@ -407,9 +405,8 @@
 
     self.willResetData = YES;
 		[self resetData];
-//		[MainTabBar setSelectedIndex:0];
 	} else {
-    UIImage *selectedImage = [self.imagePicker selectedImage];
+    UIImage *selectedImage = self.imgNoteImage.image;
     NSDate *date = nil;
     // alarm
     if (self.txDate.text.length > 0) {
@@ -530,7 +527,7 @@
 
 #pragma mark - IBActions
 - (IBAction)onDelete:(id)sender {
-  if (self.willResetData) {
+  if (self.note == nil) {
     [self resetData];
   } else {
     UIAlertView *deleteAlert =
@@ -545,11 +542,19 @@
 }
 
 - (IBAction)onCancel:(id)sender {
-  if (self.willResetData) {
+  if (self.note == nil) {
     [self resetData];
   } else {
     [self.navigationController popViewControllerAnimated:YES];
   }
+}
+
+- (IBAction)selectImage:(id)sender {
+  [self presentViewController:_actionSheet animated:YES completion:nil];
+}
+
+- (IBAction)replaceImage:(id)sender {
+  [self presentViewController:_actionSheet animated:YES completion:nil];
 }
 
 #pragma mark - <UIAlertViewDelegate>
@@ -570,6 +575,23 @@
   }
 }
 
+#pragma mark - <ImagePickerHelperDelegate>
+- (void)onPicker:(UIImagePickerController *)picker
+    didFinishPickingImageWithInfo:(NSDictionary *)info {
+  UIImage *importedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+  
+  [self.imgNoteImage setImage:importedImage];
+  [self.imgNoteImage setNeedsDisplay];
+  [self.imgNoteImage layoutIfNeeded];
+  self.willResetData = NO;
+  
+  [picker dismissViewControllerAnimated:YES completion:^{
+    [self.btnSelectImage setHidden:YES];
+    [self.imgNoteImage setHidden:NO];
+    [self.viewImageRefreshView setHidden:NO];
+  }];
+}
+
 #pragma mark Private-Method
 - (void)resetData {
 	[_txfTitle setText:@""];
@@ -580,7 +602,6 @@
 	[_txvNotingView viewDidLoad];
 	[_txvNotingView viewWillAppear:NO];
 	[_btnChooseCategory setTitle:@"Select category" forState:UIControlStateNormal];
-	[self.imagePicker reset];
 	_selectedCategory = nil;
 	
 	[_segment setSelectedSegmentIndex:0];

@@ -2,7 +2,7 @@
 
 #import "Utility.h"
 
-@interface TodoTableViewCell()
+@interface TodoTableViewCell() <UITextFieldDelegate>
 
 @property (nonatomic, assign) STATES state_;
 
@@ -13,10 +13,12 @@
 
 - (void)awakeFromNib {
   [self.contentView setBackgroundColor:THEME_COLOR_DARKER];
+  [self.txfTitle setDelegate:self];
+  [self.txfTitle setReturnKeyType:UIReturnKeyDone];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+  [super setSelected:selected animated:animated];
 }
 
 - (void)enableEditting {
@@ -50,6 +52,12 @@
       [self.delegate removeTodoForCell:self];
     }
   }
+}
+
+#pragma mark - <UITextFieldDelegate>
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  return YES;
 }
 
 @end

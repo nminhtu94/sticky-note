@@ -12,7 +12,7 @@
 @class ImagePickerHelper;
 @protocol ImagePickerHelperDelegate
 
-- (void)onPicker: (UIImagePickerController*)picker
+- (void)onPicker:(UIImagePickerController*)picker
 	didFinishPickingImageWithInfo:(NSDictionary*)info;
 
 @end
