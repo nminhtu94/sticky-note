@@ -6,6 +6,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Main Tab Bar View Controller-->
@@ -269,18 +270,26 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Quick Note" id="fKf-Zg-0nc">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nxb-Bg-UKO">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="L49-pu-MxO">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="onCancel:" destination="GVX-vg-yE9" id="PPh-Xr-5ki"/>
+                                <action selector="onCancel:" destination="GVX-vg-yE9" id="aVZ-vb-sxY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5GU-c4-vI2">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="onSaveNote:" destination="GVX-vg-yE9" id="Ity-wn-81D"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="save" id="5GU-c4-vI2">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="onSaveNote:" destination="GVX-vg-yE9" id="Ity-wn-81D"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="delete" id="nxb-Bg-UKO">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="onDelete:" destination="GVX-vg-yE9" id="C8P-Uz-c76"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="alarm" destination="fRH-dj-eTx" id="NcV-IR-K8k"/>
@@ -400,18 +409,26 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To-Do" id="M66-cv-cIt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7t5-jy-zoA">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SUL-5x-sDP">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="onCancel:" destination="0kX-Mm-5Uq" id="eeX-F2-vTe"/>
+                                <action selector="onCancel:" destination="0kX-Mm-5Uq" id="v1I-ja-Q53"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6H4-UL-aoe">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="onSave:" destination="0kX-Mm-5Uq" id="RiH-vf-d7q"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="save" id="6H4-UL-aoe">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="onSave:" destination="0kX-Mm-5Uq" id="RiH-vf-d7q"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="delete" id="7t5-jy-zoA">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="onDelete:" destination="0kX-Mm-5Uq" id="Rui-6o-j0y"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="btnAddTodo" destination="jLH-AS-QIW" id="jW6-0a-oPa"/>
@@ -428,7 +445,7 @@
         <!--Categories-->
         <scene sceneID="OAa-qZ-wkX">
             <objects>
-                <navigationController id="dCI-0y-mNe" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="categoryNavigationController" id="dCI-0y-mNe" customClass="CategoryNavigationViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Categories" image="category" id="DVm-7t-oRz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vaQ-uh-SMU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -574,7 +591,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.13333333333333333" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="m4T-DD-gOt" firstAttribute="top" secondItem="ME3-I3-mBA" secondAttribute="top" id="Cbz-8E-pr1"/>
                                     <constraint firstAttribute="bottom" secondItem="m4T-DD-gOt" secondAttribute="bottom" id="kxg-Cq-GCd"/>
@@ -620,7 +637,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.13333333333333333" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="iMh-ib-TgY" firstAttribute="top" secondItem="rGj-hh-hfq" secondAttribute="top" id="HfK-Pd-nSG"/>
                                     <constraint firstAttribute="trailing" secondItem="iMh-ib-TgY" secondAttribute="trailing" id="TUF-ke-KcS"/>
@@ -690,10 +707,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Cps-KS-EaE">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6jI-2r-myh">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="6jI-2r-myh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="zKm-26-JhW" id="3iz-fe-tJk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="edit" id="kYk-mT-28x">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="editTapped:" destination="zKm-26-JhW" id="ZL9-kL-F3v"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -709,7 +732,7 @@
         <!--Edit category-->
         <scene sceneID="deS-wL-sze">
             <objects>
-                <viewController id="0pz-ln-KqY" customClass="EditCategoryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editCategoryViewController" id="0pz-ln-KqY" customClass="EditCategoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NZU-XD-J9N"/>
                         <viewControllerLayoutGuide type="bottom" id="FdP-S6-gDr"/>
@@ -815,16 +838,25 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Edit category" id="d5c-hl-tWI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="2n6-Os-s77">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="onSave:" destination="0pz-ln-KqY" id="kaJ-RJ-613"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="save" id="2n6-Os-s77">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="onSave:" destination="0pz-ln-KqY" id="kaJ-RJ-613"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="delete" id="eJb-Pl-CG2">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="onCancel:" destination="0pz-ln-KqY" id="aB2-cb-9wj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="btnReplaceImage" destination="Hzx-m4-ebY" id="kOo-iv-n95"/>
                         <outlet property="btnSelectImage" destination="283-OA-lBF" id="PIq-eG-L8i"/>
+                        <outlet property="cancelButton" destination="eJb-Pl-CG2" id="SaS-tX-37a"/>
                         <outlet property="imgIcon" destination="ebF-CV-l5b" id="pTz-f1-gAQ"/>
                         <outlet property="txfName" destination="xVu-cd-nQ9" id="slv-sa-TQP"/>
                         <outlet property="viewBottomLayer" destination="eUp-IT-l1u" id="NCZ-6c-3bF"/>
@@ -840,7 +872,10 @@
         <image name="add_icon_camera" width="181" height="181"/>
         <image name="category" width="30" height="30"/>
         <image name="checkbox" width="512" height="512"/>
+        <image name="delete" width="40" height="40"/>
+        <image name="edit" width="40" height="40"/>
         <image name="icon_replace" width="60" height="60"/>
+        <image name="save" width="40" height="40"/>
         <image name="search" width="30" height="30"/>
         <image name="todo" width="30" height="30"/>
     </resources>

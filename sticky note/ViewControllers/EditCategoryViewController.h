@@ -3,7 +3,8 @@
 #import "CategoryHelper.h"
 #import "ImagePickerHelper.h"
 
-@interface EditCategoryViewController : UIViewController <ImagePickerHelperDelegate, UIActionSheetDelegate>
+@interface EditCategoryViewController : UIViewController <ImagePickerHelperDelegate,
+                                                          UIActionSheetDelegate>
 
 @property (nonatomic, strong) CategoryModel *selectedCategory;
 
@@ -12,9 +13,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSelectImage;
 @property (weak, nonatomic) IBOutlet UIView *viewBottomLayer;
 @property (weak, nonatomic) IBOutlet UIButton *btnReplaceImage;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 
 - (IBAction)onSelectImage:(id)sender;
 - (IBAction)onReplaceImage:(id)sender;
 - (IBAction)onSave:(id)sender;
+- (IBAction)onCancel:(id)sender;
 
 @end

@@ -3,6 +3,7 @@
 #import "NoteViewController.h"
 #import "ToDoCollectionViewController.h"
 #import "CategoryModel.h"
+#import "EditCategoryViewController.h"
 
 @interface CategorySelectorViewController ()
 
@@ -77,6 +78,15 @@ static CategoryModel *selectedCategory;
 
 - (IBAction)cancelTapped:(id)sender {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)editTapped:(id)sender {
+  UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+  EditCategoryViewController *editCategoryVC =
+      (EditCategoryViewController *)[storyBoard
+            instantiateViewControllerWithIdentifier:@"editCategoryViewController"];
+  [editCategoryVC setSelectedCategory:selectedCategory];
+  [self.navigationController pushViewController:editCategoryVC animated:YES];
 }
 
 @end

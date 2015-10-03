@@ -40,6 +40,7 @@
 		BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFD01B1B73980049010E /* NoteHelper.m */; };
 		BE328C3B1BB665E4006A9C70 /* InAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328C3A1BB665E4006A9C70 /* InAppHelper.m */; settings = {ASSET_TAGS = (); }; };
 		BE328C3E1BB6670B006A9C70 /* NoteInAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328C3D1BB6670B006A9C70 /* NoteInAppHelper.m */; settings = {ASSET_TAGS = (); }; };
+		BE3A6C9B1BBFE406002909D8 /* CategoryNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3A6C9A1BBFE406002909D8 /* CategoryNavigationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		BE3E6BC51BAA5FF700F11A9E /* ToDoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BC41BAA5FF700F11A9E /* ToDoCollectionViewController.m */; };
 		BE3E6BCA1BAA872100F11A9E /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BC81BAA872100F11A9E /* AlarmViewController.m */; };
 		BE3E6BCB1BAA872100F11A9E /* AlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3E6BC91BAA872100F11A9E /* AlarmViewController.xib */; };
@@ -157,6 +158,8 @@
 		BE328C3A1BB665E4006A9C70 /* InAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InAppHelper.m; path = "Helper Classes/InAppHelper.m"; sourceTree = "<group>"; };
 		BE328C3C1BB6670B006A9C70 /* NoteInAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteInAppHelper.h; path = "Helper Classes/NoteInAppHelper.h"; sourceTree = "<group>"; };
 		BE328C3D1BB6670B006A9C70 /* NoteInAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteInAppHelper.m; path = "Helper Classes/NoteInAppHelper.m"; sourceTree = "<group>"; };
+		BE3A6C991BBFE406002909D8 /* CategoryNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryNavigationViewController.h; path = ViewControllers/CategoryNavigationViewController.h; sourceTree = "<group>"; };
+		BE3A6C9A1BBFE406002909D8 /* CategoryNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryNavigationViewController.m; path = ViewControllers/CategoryNavigationViewController.m; sourceTree = "<group>"; };
 		BE3E6BC31BAA5FF700F11A9E /* ToDoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoCollectionViewController.h; path = ViewControllers/ToDoCollectionViewController.h; sourceTree = "<group>"; };
 		BE3E6BC41BAA5FF700F11A9E /* ToDoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoCollectionViewController.m; path = ViewControllers/ToDoCollectionViewController.m; sourceTree = "<group>"; };
 		BE3E6BC71BAA872100F11A9E /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmViewController.h; path = ViewControllers/AlarmViewController/AlarmViewController.h; sourceTree = "<group>"; };
@@ -540,6 +543,8 @@
 				BE174A571BA859E2009E843B /* CategorySelectorViewController.m */,
 				BE3E6BC31BAA5FF700F11A9E /* ToDoCollectionViewController.h */,
 				BE3E6BC41BAA5FF700F11A9E /* ToDoCollectionViewController.m */,
+				BE3A6C991BBFE406002909D8 /* CategoryNavigationViewController.h */,
+				BE3A6C9A1BBFE406002909D8 /* CategoryNavigationViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -795,6 +800,7 @@
 				BEF05F651B6735280040B57B /* ViewNoteViewController.m in Sources */,
 				BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */,
 				BE6222E61B48667200DB7F13 /* NoteCollectionViewCell.m in Sources */,
+				BE3A6C9B1BBFE406002909D8 /* CategoryNavigationViewController.m in Sources */,
 				BE7B20321B451BBE00BFCF49 /* UIViewController+CACategory.m in Sources */,
 				BE174A581BA859E2009E843B /* CategorySelectorViewController.m in Sources */,
 				BE7B20391B451E6200BFCF49 /* UITextView+ToolBar.m in Sources */,

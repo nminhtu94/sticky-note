@@ -12,5 +12,6 @@
 
 - (IBAction)segmentControlChanged:(id)sender;
 - (IBAction)cancelTapped:(id)sender;
+- (IBAction)editTapped:(id)sender;
 
 @end

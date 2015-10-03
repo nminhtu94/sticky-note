@@ -79,7 +79,12 @@ static CategoryModel *selectedCategory;
 - (void)setup {
   [_noteCollection setNotes:[[NoteHelper sharedInstance] getNoteOfCategory:selectedCategory]];
   [_noteCollection reloadData];
-  [_imgBackground setImage:[UIImage imageWithData:selectedCategory.icon]];
+  
+  if (selectedCategory.icon) {
+    [_imgBackground setImage:[UIImage imageWithData:selectedCategory.icon]];
+  } else {
+    [_imgBackground setImage:nil];
+  }
 }
 
 #pragma mar <NoteCollectionDelegate>

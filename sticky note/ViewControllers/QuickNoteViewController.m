@@ -12,6 +12,7 @@
 									   UIPickerViewDataSource,
 									   DrawingControlDelegate,
 									   UITextFieldDelegate,
+                     UIAlertViewDelegate,
 									   NEOColorPickerViewControllerDelegate>
 
 @property (nonatomic) UIPickerView *pickerViewCategory;
@@ -39,10 +40,10 @@
   
   if (_alertView == nil) {
       _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Note"
-                      message:@""
-                       delegate:nil
-                  cancelButtonTitle:@"OK"
-                  otherButtonTitles:nil, nil];
+                                              message:@""
+                                             delegate:nil
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles:nil, nil];
   }
 
 	if (_actionSheet == nil) {
@@ -71,9 +72,16 @@
                          animated:YES
                        completion:nil];
     }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action)
+    {
+      [_actionSheet dismissViewControllerAnimated:YES completion:nil];
+    }];
     
     [_actionSheet addAction:library];
     [_actionSheet addAction:camera];
+    [_actionSheet addAction:cancel];
 	}
 	
 	[self.txfTitle setReturnKeyType:UIReturnKeyDone];
@@ -144,6 +152,32 @@
     self.txDate.text = tmp;
     self.txDate.hidden = NO;
   }
+  
+  if (self.note != nil) {
+    self.willResetData = NO;
+    [self.drawingControlView.drawingView setSketchImage:
+     [UIImage imageWithData:self.note.sketch]];
+    [self.txvNotingView.textView setAttributedText:self.note.text];
+    [self.txvNotingView setText:self.note.text];
+    [self.txfTitle setText:self.note.title];
+    
+    if (self.note.image != nil) {
+      [self.imagePicker setImage:[UIImage imageWithData:self.note.image]];
+    }
+    [self.drawingControlView.drawingView setNeedsDisplay];
+    [self.txfTags setText:[AppUtil generateStrings:self.note.tags]];
+    
+    NSLog(@"Did Appear Alarm : %@", self.txDate.text);
+    if (self.alarmDate != nil) {
+      if ([self.txDate.text length] > 0) {
+        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"]
+                                forState:UIControlStateNormal];
+      } else {
+        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"]
+                                forState:UIControlStateNormal];
+      }
+    }
+  }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -168,32 +202,6 @@
 	[self.drawingControlView.layer setBorderColor:[UIColor blackColor].CGColor];
 	[self.drawingControlView.layer setBorderWidth:1.0f];
 	[self.drawingControlView setDelegate:self];
-	
-	if (self.note != nil) {
-		self.willResetData = NO;
-		[self.drawingControlView.drawingView setSketchImage:
-		 	[UIImage imageWithData:self.note.sketch]];
-		[self.txvNotingView.textView setAttributedText:self.note.text];
-		[self.txvNotingView setText:self.note.text];
-		[self.txfTitle setText:self.note.title];
-    
-    if (self.note.image != nil) {
-      [self.imagePicker setImage:[UIImage imageWithData:self.note.image]];
-    }
-		[self.drawingControlView.drawingView setNeedsDisplay];
-		[self.txfTags setText:[AppUtil generateStrings:self.note.tags]];
-    
-    NSLog(@"Did Appear Alarm : %@", self.txDate.text);
-    if (self.alarmDate != nil) {
-      if ([self.txDate.text length] > 0) {
-        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checked_checkbox"]
-                                forState:UIControlStateNormal];
-      } else {
-        [self.cbAlarm setBackgroundImage:[UIImage imageNamed:@"checkbox"]
-                                forState:UIControlStateNormal];
-      }
-    }
-	}
 	
   [inputView setFrame:_categoryPickerFrameOriginal];
   [_pickerViewCategory reloadAllComponents];
@@ -270,6 +278,7 @@
 	  didSelectRow:(NSInteger)row
 	   inComponent:(NSInteger)component {
   if (row == 0) {
+    [self.btnChooseCategory setTitle:@"Select category" forState:UIControlStateNormal];
     return;
   }
   
@@ -447,6 +456,8 @@
     return;
   }
   
+  [self.txfTitle resignFirstResponder];
+  
   if (!_pickerViewTogged) {
     _categoryPickerFrameMoved =
         CGRectMake(0,
@@ -497,7 +508,6 @@
   }
 }
 
-#pragma mark -
 #pragma mark Alarm-Function
 - (IBAction)onCbAlarm:(id)sender {
   NSLog(@"CbAlarm : %@", self.txDate.text);
@@ -518,11 +528,45 @@
   }
 }
 
+#pragma mark - IBActions
+- (IBAction)onDelete:(id)sender {
+  if (self.willResetData) {
+    [self resetData];
+  } else {
+    UIAlertView *deleteAlert =
+        [[UIAlertView alloc] initWithTitle:@"Sticky Notes"
+                                   message:@"Do you want to delete this note?"
+                                  delegate:self
+                         cancelButtonTitle:@"No"
+                         otherButtonTitles:@"Yes", nil];
+    [deleteAlert setTag:12345];
+    [deleteAlert show];
+  }
+}
+
 - (IBAction)onCancel:(id)sender {
   if (self.willResetData) {
     [self resetData];
   } else {
     [self.navigationController popViewControllerAnimated:YES];
+  }
+}
+
+#pragma mark - <UIAlertViewDelegate>
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (alertView.tag == 12345) {
+    switch (buttonIndex) {
+      case 0: {
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        break;
+      }
+       
+      case 1: {
+        [[NoteHelper sharedInstance] deleteNote:_note.objectID];
+        [self.navigationController popViewControllerAnimated:YES];
+        break;
+      }
+    }
   }
 }
 

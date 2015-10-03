@@ -178,6 +178,7 @@
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
   if (row == 0) {
+    [self.btnCategory setTitle:@"Select category" forState:UIControlStateNormal];
     return;
   }
   NSArray *allCategory = [[CategoryHelper sharedInstance] getAllCategory];
@@ -214,15 +215,32 @@
 
 #pragma mark - <UIAlertViewDelegate>
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-  switch (buttonIndex) {
-    case 0: {
-      [alertView dismissWithClickedButtonIndex:0 animated:YES];
-      break;
+  if (alertView.tag == 55555) {
+    switch (buttonIndex) {
+      case 0: {
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        break;
+      }
+        
+      case 1: {
+        [self presentViewController:self.purchseVC animated:YES completion:nil];
+        break;
+      }
     }
+  }
+  
+  if (alertView.tag == 12345) {
+    switch (buttonIndex) {
+      case 0: {
+        [alertView dismissWithClickedButtonIndex:0 animated:YES];
+        break;
+      }
       
-    case 1: {
-      [self presentViewController:self.purchseVC animated:YES completion:nil];
-      break;
+      case 1: {
+        [[ToDoHelper sharedInstance] deleteToDo:_todoItem.objectID];
+        [self.navigationController popViewControllerAnimated:YES];
+        break;
+      }
     }
   }
 }
@@ -276,6 +294,7 @@
                      otherButtonTitles:@"Upgrade", nil];
     [alertView setDelegate:self];
     [alertView setMessage:@"You cannot create more than 2 todos in lite version. Please upgrade to premium"];
+    [alertView setTag:55555];
     [alertView show];
     return NO;
   }
@@ -283,11 +302,18 @@
   return YES;
 }
 
-- (IBAction)onCancel:(id)sender {
+- (IBAction)onDelete:(id)sender {
   if (self.willResetData) {
     [self resetData];
   } else {
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView *deleteAlert =
+        [[UIAlertView alloc] initWithTitle:@"Sticky Notes"
+                                   message:@"Do you want to delete this to-do?"
+                                  delegate:self
+                         cancelButtonTitle:@"No"
+                         otherButtonTitles:@"Yes", nil];
+    [deleteAlert setTag:12345];
+    [deleteAlert show];
   }
 }
 
@@ -297,6 +323,8 @@
     [_alertView show];
     return;
   }
+  
+  [self.txfTitle resignFirstResponder];
   
   if (!_pickerViewTogged) {
     _categoryPickerFrameMoved =
@@ -320,6 +348,14 @@
     } completion:^(BOOL finished) {
       _pickerViewTogged = NO;
     }];
+  }
+}
+
+- (IBAction)onCancel:(id)sender {
+  if (self.willResetData) {
+    [self resetData];
+  } else {
+    [self.navigationController popViewControllerAnimated:YES];
   }
 }
 

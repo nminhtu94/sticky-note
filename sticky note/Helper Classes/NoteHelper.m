@@ -103,23 +103,24 @@
 }
 
 - (NSArray *)getNoteOfCategory:(CategoryModel *)category {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category = %@", category];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"NoteModel"];
-    [fetchRequest setPredicate:predicate];
-    
-    return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category = %@", category];
+  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"NoteModel"];
+  [fetchRequest setPredicate:predicate];
+  [self save];
+  return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
 }
 
 - (BOOL)deleteNote:(NSManagedObjectID *)objectID {
-    NSError *error = nil;
-    NoteModel *note =
-		(NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
-    
-    if (note != nil) {
-        [[self managedObjectContext] deleteObject:note];
-        return YES;
-    }
-    return NO;
+  NSError *error = nil;
+  NoteModel *note =
+  (NoteModel*)[[self managedObjectContext] existingObjectWithID:objectID error:&error];
+  
+  if (note != nil) {
+      [[self managedObjectContext] deleteObject:note];
+      return YES;
+  }
+  [self save];
+  return NO;
 }
 
 - (NSArray *)searchNote:(NSString *)query {
@@ -136,7 +137,7 @@
 		}
 	}
 	
-    return result;
+  return result;
 }
 
 - (NSArray *)searchNoteByTag:(NSString *)tag {

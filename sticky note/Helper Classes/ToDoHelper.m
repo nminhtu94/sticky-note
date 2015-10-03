@@ -75,6 +75,8 @@
 		[[self managedObjectContext] deleteObject:todo];
 		return YES;
 	}
+  
+  [self save];
 	return NO;
 }
 

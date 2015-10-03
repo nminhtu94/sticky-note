@@ -4,6 +4,8 @@
 #import "UIImage+ColorImage.h"
 #import "ToDoHelper.h"
 #import "NoteInAppHelper.h"
+#import "CategoryViewController.h"
+#import "CategoryNavigationViewController.h"
 
 @interface MainTabBarViewController () <UITabBarControllerDelegate,
                                         UITabBarDelegate,
@@ -25,10 +27,6 @@ static MainTabBarViewController *sharedInstance = nil;
                                                           bundle:[NSBundle mainBundle]];
     sharedInstance =
         (MainTabBarViewController*)[storyBoard instantiateViewControllerWithIdentifier:tabName];
-    [sharedInstance.tabBar setDelegate:(id<UITabBarDelegate>)self];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(productPurchased:)
-                                                 name:IAPHelperProductPurchasedNotification object:nil];
   });
   return sharedInstance;
 }
@@ -45,6 +43,22 @@ static MainTabBarViewController *sharedInstance = nil;
 	[self.tabBar setSelectionIndicatorImage:[UIImage imageFromColor:THEME_ORANGE_COLOR
 															forSize:CGSizeMake(self.tabBar.frame.size.width / 5, self.tabBar.frame.size.height)
 												   withCornerRadius:0.0f]];
+}
+
+#pragma mark - <UITabBarControllerDelegate>
+- (void)tabBarController:(UITabBarController *)tabBarController
+    didSelectViewController:(UIViewController *)viewController {
+  NSLog(@"Selected VC");
+}
+
+#pragma mark - <UITabBarDelegate>
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+  NSUInteger itemIndex = [tabBar.items indexOfObject:item];
+  if (itemIndex == 0) {
+    CategoryNavigationViewController *shit =
+        (CategoryNavigationViewController *)[self.viewControllers objectAtIndex:itemIndex];
+    [shit popToRootViewControllerAnimated:NO];
+  }
 }
 
 @end

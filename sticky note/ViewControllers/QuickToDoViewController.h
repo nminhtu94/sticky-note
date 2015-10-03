@@ -15,7 +15,8 @@
 @property (nonatomic, strong) ToDoModel *todoItem;
 - (IBAction)onAddItem:(id)sender;
 - (IBAction)onSave:(id)sender;
-- (IBAction)onCancel:(id)sender;
+- (IBAction)onDelete:(id)sender;
 - (IBAction)selectCategoryTapped:(id)sender;
+- (IBAction)onCancel:(id)sender;
 
 @end

@@ -74,7 +74,12 @@ static NSString* cellIdentifier = @"CategoryCollectionCell";
   CategoryModel *category = [categories objectAtIndex:indexPath.row];
   [cell.lblName setText:category.name];
 	[cell.lblName setTextColor:[UIColor whiteColor]];
-  [cell.imgIcon setImage:[UIImage imageWithData:category.icon]];
+  
+  if (category.icon) {
+    [cell.imgIcon setImage:[UIImage imageWithData:category.icon]];
+  } else {
+    [cell.imgIcon setImage:[UIImage imageNamed:@"icon"]];
+  }
   return cell;
 }
 
