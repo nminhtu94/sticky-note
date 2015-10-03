@@ -145,6 +145,13 @@
 	[self.btnChooseCategory.layer setCornerRadius:5.0f];
 	[self.btnChooseCategory setClipsToBounds:YES];
   
+  if (_txvNotingView == nil) {
+    _txvNotingView = [[NotingViewController alloc] init];
+    [self addChildViewController:_txvNotingView];
+    [_txvNotingView.view setFrame:self.customTextView.bounds];
+    [self.customTextView addSubview:_txvNotingView.view];
+  }
+  
   // Alarm
   if (self.alarmDate) {
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
@@ -203,13 +210,6 @@
                                             self.view.frame.size.height,
                                             inputView.frame.size.width,
                                             inputView.frame.size.height);
-	
-	if (_txvNotingView == nil) {
-		_txvNotingView = [[NotingViewController alloc] init];
-		[self addChildViewController:_txvNotingView];
-		[_txvNotingView.view setFrame:self.customTextView.bounds];
-    [self.customTextView addSubview:_txvNotingView.view];
-	}
 	
 	[self.drawingControlView.layer setBorderColor:[UIColor blackColor].CGColor];
 	[self.drawingControlView.layer setBorderWidth:1.0f];
@@ -607,6 +607,7 @@
 	[_segment setSelectedSegmentIndex:0];
 	[self.customTextView setHidden:NO];
 	[_drawingControlView setHidden:YES];
+  [_drawingControlView.drawingView setSketchImage:nil];
 	[_imagePicker setHidden:YES];
 	
 	[self.txfTags setText:@""];
