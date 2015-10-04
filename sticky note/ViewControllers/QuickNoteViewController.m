@@ -139,6 +139,7 @@
 	[self.txfTitle setBackgroundColor:THEME_COLOR_DARKER];
 	[self.txfTitle setTextColor:[UIColor whiteColor]];
 	[self.txfTitle.layer setBorderWidth:3.0f];
+  [self.txfTitle.layer setCornerRadius:5.0f];
 	[self.txfTitle.layer setBorderColor:[UIColor whiteColor].CGColor];
 	[self.txfTitle setClipsToBounds:YES];
 	
@@ -356,15 +357,15 @@
 
 - (IBAction)onSaveNote:(id)sender {
   if ([_txfTitle.text isEqualToString:@""]) {
-      [_alertView setMessage:@"Please enter title!"];
-      [_alertView show];
-      return;
+    [_alertView setMessage:@"Please enter title!"];
+    [_alertView show];
+    return;
   }
   
   if (_selectedCategory == nil) {
-      [_alertView setMessage:@"Please select category!"];
-      [_alertView show];
-      return;
+    [_alertView setMessage:@"Please select category!"];
+    [_alertView show];
+    return;
   }
 	
 	UIImage *sketch = [_drawingControlView.drawingView sketchImage];
@@ -655,6 +656,7 @@
 										   self.view.frame.size.width,
 										   self.view.frame.size.height)];
 		}];
+    [self.inputView setHidden:YES];
 	}
 }
 
@@ -662,6 +664,7 @@
 	[UIView animateWithDuration:0.2 animations:^{
 		[self.view setFrame:self.viewOriginalFrame];
 	}];
+  [self.inputView setHidden:NO];
 }
 
 @end

@@ -1,6 +1,7 @@
 #import "NotingViewController.h"
 #import "NEOColorPickerViewController.h"
 #import "QuickNoteViewController.h"
+#import "UIImage+ColorImage.h"
 
 @interface NotingViewController () <NEOColorPickerViewControllerDelegate, UITextViewDelegate>
 
@@ -19,38 +20,38 @@
 @synthesize text = _text;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    arrFont = [UIFont familyNames];
-    arrSize = [[NSArray alloc] initWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"18", @"24", @"36", @"48", @"64", @"72", @"96", @"144", @"288", nil];
-    
-    /* init pickerView */
-    self.viewOfPickerView.hidden = YES;
-    self.pickerView.dataSource = self;
-    self.pickerView.delegate = self;
-	
-    UIBarButtonItem *pickerViewCancel =
-		[[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-										 style:UIBarButtonItemStyleDone
-										target:self
-										action:@selector(clickPickerViewCancel)];
-    
-    UIBarButtonItem *pickerViewSpace =
-		[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-													  target:nil
-													  action:nil];
-    UIBarButtonItem *pickerViewDone =
-		[[UIBarButtonItem alloc] initWithTitle:@"Done"
-										 style:UIBarButtonItemStyleDone
-										target:self
-										action:@selector(clickPickerViewDone)];
-	
-    [self.toolbar setItems:[[NSArray alloc] initWithObjects:pickerViewCancel,
-							pickerViewSpace,
-							pickerViewDone,
-							nil]];
-    [self.toolbar isUserInteractionEnabled];
+  [super viewDidLoad];
+  // Do any additional setup after loading the view from its nib.
+  
+  arrFont = [UIFont familyNames];
+  arrSize = [[NSArray alloc] initWithObjects:@"9", @"10", @"11", @"12", @"13", @"14", @"18", @"24", @"36", @"48", @"64", @"72", @"96", @"144", @"288", nil];
+  
+  /* init pickerView */
+  self.viewOfPickerView.hidden = YES;
+  self.pickerView.dataSource = self;
+  self.pickerView.delegate = self;
+
+  UIBarButtonItem *pickerViewCancel =
+  [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                   style:UIBarButtonItemStyleDone
+                  target:self
+                  action:@selector(clickPickerViewCancel)];
+  
+  UIBarButtonItem *pickerViewSpace =
+      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                              target:nil
+                              action:nil];
+  UIBarButtonItem *pickerViewDone =
+      [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                       style:UIBarButtonItemStyleDone
+                      target:self
+                      action:@selector(clickPickerViewDone)];
+
+  [self.toolbar setItems:[[NSArray alloc] initWithObjects:pickerViewCancel,
+            pickerViewSpace,
+            pickerViewDone,
+            nil]];
+  [self.toolbar isUserInteractionEnabled];
 	
 	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:
 						  CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 30)];
@@ -72,6 +73,8 @@
 	
 	[self.textView setInputAccessoryView:toolbar];
   [self.textView setDelegate:self];
+  [self.view bringSubviewToFront:self.textView];
+  [self.view bringSubviewToFront:self.viewOfPickerView];
 	
     /* set up button Done on right */
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done"
@@ -85,71 +88,77 @@
 	[self.textView resignFirstResponder];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  if (!self.colorPickerReturn) {
+    if (_text != nil) {
+      [self.btnFont setTitle:[self getFont:_text].fontName forState:UIControlStateNormal];
+      [self.btnSize setTitle:[NSString stringWithFormat:@"%0.f",
+                              [self getFont:_text].pointSize]
+                    forState:UIControlStateNormal];
+      [self.btnColor setBackgroundColor:[self getColor:_text]];
+      [self.textView setFont:[self getFont:_text]];
+      [self.textView setAttributedText:_text];
+    } else {
+      UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0];
+      [self.textView setFont:font];
+      [self.textView setTextColor:[UIColor blackColor]];
+      _text = [self.textView attributedText];
+      [self.btnFont setTitle:font.fontName forState:UIControlStateNormal];
+      [self.btnSize setTitle:[NSString stringWithFormat:@"%0.f", font.pointSize]
+                    forState:UIControlStateNormal];
+      [self.btnColor setBackgroundColor:[UIColor blackColor]];
+    }
+  } else {
+    self.colorPickerReturn = NO;
+  }
+}
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	
-	if (!self.colorPickerReturn) {
-		if (_text != nil) {
-			[self.btnFont setTitle:[self getFont:_text].fontName forState:UIControlStateNormal];
-			[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f",
-				[self getFont:_text].pointSize]
-						  forState:UIControlStateNormal];
-			[self.btnColor setBackgroundColor:[self getColor:_text]];
-			[self.textView setFont:[self getFont:_text]];
-			[self.textView setAttributedText:_text];
-		} else {
-			UIFont *font = [UIFont fontWithName:@"Helvetica" size:14.0];
-			[self.textView setFont:font];
-			[self.textView setTextColor:[UIColor blackColor]];
-			_text = [self.textView attributedText];
-			[self.btnFont setTitle:font.fontName forState:UIControlStateNormal];
-			[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f", font.pointSize]
-						  forState:UIControlStateNormal];
-			[self.btnColor setBackgroundColor:[UIColor blackColor]];
-		}
-	} else {
-		self.colorPickerReturn = NO;
-	}
 }
 
 #pragma mark PickerView
--(NSString *)pickerView:(UIPickerView *)pickerView
-			titleForRow:(NSInteger)row
-		   forComponent:(NSInteger)component{
-    if (component == 0) {
-        return [arrFont objectAtIndex:row];
-    } else {
-        return [arrSize objectAtIndex:row];
-    }
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView
+             attributedTitleForRow:(NSInteger)row
+                      forComponent:(NSInteger)component {
+  if (component == 0) {
+    return [[NSAttributedString alloc] initWithString:[arrFont objectAtIndex:row]
+                                           attributes:
+            @{NSFontAttributeName : [UIFont fontWithName:[arrFont objectAtIndex:row] size:9]}];
+  } else {
+    return [[NSAttributedString alloc] initWithString:[arrSize objectAtIndex:row]];
+  }
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 2;
+  return 2;
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    if (component == 0) {
-        return [arrFont count];
-    } else {
-        return [arrSize count];
-    }
+  if (component == 0) {
+    return [arrFont count];
+  } else {
+    return [arrSize count];
+  }
 }
 
 -(void)pickerView:(UIPickerView *)pickerView
 	 didSelectRow:(NSInteger)row
 	  inComponent:(NSInteger)component{
-    NSLog(@"Row select: %ld",(long)row );
-    NSInteger fristRow = [self.pickerView selectedRowInComponent:0];
-    NSInteger secondRow = [self.pickerView selectedRowInComponent:1];
+  NSLog(@"Row select: %ld",(long)row );
+  NSInteger fristRow = [self.pickerView selectedRowInComponent:0];
+  NSInteger secondRow = [self.pickerView selectedRowInComponent:1];
 
-    NSString *fontName = [arrFont objectAtIndex:fristRow];
-    NSString *size = [arrSize objectAtIndex:secondRow];
+  NSString *fontName = [arrFont objectAtIndex:fristRow];
+  NSString *size = [arrSize objectAtIndex:secondRow];
 	UIFont *font = [UIFont fontWithName:[NSString stringWithFormat:@"%@", fontName]
 								   size:[size floatValue]];
 	[self.btnFont setTitle:font.fontName forState:UIControlStateNormal];
 	[self.btnSize setTitle:[NSString stringWithFormat:@"%0.f", font.pointSize]
-				  forState:UIControlStateNormal];
-    [self.textView setFont:font];
+                forState:UIControlStateNormal];
+  [self.textView setFont:font];
 }
 
 -(void) clickPickerViewDone{
@@ -196,8 +205,8 @@
 
 #pragma mark
 -(void) clickDone{
-    [self.textView resignFirstResponder];
-    self.pickerView.hidden = YES;
+  [self.textView resignFirstResponder];
+  self.pickerView.hidden = YES;
 }
 
 - (IBAction)actionFont:(id)sender {
@@ -224,7 +233,7 @@
 	}
 }
 - (IBAction)actionSize:(id)sender {
-    self.viewOfPickerView.hidden = !self.viewOfPickerView.hidden;
+  self.viewOfPickerView.hidden = !self.viewOfPickerView.hidden;
 	
 	if (![self.viewOfPickerView isHidden]) {
 		NSUInteger index = 0;

@@ -80,11 +80,15 @@
   [self.txfTitle setBackgroundColor:THEME_COLOR_DARKER];
   [self.txfTitle setTextColor:[UIColor whiteColor]];
   [self.txfTitle.layer setBorderWidth:3.0f];
+  [self.txfTitle.layer setCornerRadius:5.0f];
   [self.txfTitle.layer setBorderColor:[UIColor whiteColor].CGColor];
   [self.txfTitle setClipsToBounds:YES];
   
   [self.btnCategory.layer setCornerRadius:5.0f];
   [self.btnCategory setClipsToBounds:YES];
+  
+  [self.btnAddTodo.layer setCornerRadius:5.0f];
+  [self.btnAddTodo setClipsToBounds:YES];
   
   [self.viewTodoTable setBackgroundColor:[UIColor clearColor]];
   [self.controlView setBackgroundColor:[UIColor clearColor]];
