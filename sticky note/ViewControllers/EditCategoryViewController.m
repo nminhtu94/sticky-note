@@ -1,7 +1,7 @@
 #import "EditCategoryViewController.h"
 #import "Utility.h"
 
-@interface EditCategoryViewController () <UIAlertViewDelegate>
+@interface EditCategoryViewController () <UIAlertViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UIAlertController *actionSheet;
 @property (nonatomic, assign) BOOL willResetData;
@@ -69,11 +69,20 @@
                               action:@selector(backButtonTapped)];
 	[backButton setTintColor:[UIColor whiteColor]];
 	[self.navigationItem setLeftBarButtonItem:backButton];
+  
+  [self.txfName setReturnKeyType:UIReturnKeyDone];
+  [self.txfName setDelegate:self];
+  
   self.willResetData = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  
+  [self.imgIcon.layer setBorderWidth:3.0f];
+  [self.imgIcon.layer setBorderColor:[UIColor whiteColor].CGColor];
+  [self.imgIcon.layer setCornerRadius:5.0f];
+  [self.imgIcon setContentMode:UIViewContentModeScaleAspectFit];
   
   if (self.willResetData) {
     if (selectedCategory == nil) {
@@ -99,6 +108,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - <UITextFieldDelegate>
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  return YES;
 }
 
 #pragma mark ImagePickerHelperDelegate

@@ -9,34 +9,30 @@
 static NSString* const cellIdentifier = @"NoteCollectionCell";
 
 - (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
-    self = [super initWithFrame:frame collectionViewLayout:layout];
-    
-    if (self) {
-        // Initialization code
-        NSArray *arrayOfViews =
-			[[NSBundle mainBundle] loadNibNamed:@"NoteCollectionView" owner:self options:nil];
-        
-        if ([arrayOfViews count] < 1) {
-            return nil;
-        }
-        
-        if (![[arrayOfViews objectAtIndex:0] isKindOfClass:[NoteCollectionView class]]) {
-            return nil;
-        }
-        
-        self = [arrayOfViews objectAtIndex:0];
-        
-        [self setFrame:frame];
+  self = [super initWithFrame:frame collectionViewLayout:layout];
+  if (self) {
+    // Initialization code
+    NSArray *arrayOfViews =
+        [[NSBundle mainBundle] loadNibNamed:@"NoteCollectionView" owner:self options:nil];
+      
+    if ([arrayOfViews count] < 1) {
+        return nil;
     }
-    
-    return self;
+    if (![[arrayOfViews objectAtIndex:0] isKindOfClass:[NoteCollectionView class]]) {
+        return nil;
+    }
+    self = [arrayOfViews objectAtIndex:0];
+    [self setFrame:frame];
+  }
+  
+  return self;
 }
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    [self setup];
-    [self setDelegate:self];
-    [self setDataSource:self];
+  [super awakeFromNib];
+  [self setup];
+  [self setDelegate:self];
+  [self setDataSource:self];
 }
 
 - (void)setup {
@@ -55,7 +51,7 @@ static NSString* const cellIdentifier = @"NoteCollectionCell";
 #pragma mark <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView *)collectionView
 	 numberOfItemsInSection:(NSInteger)section {
-    return notes.count;
+  return notes.count;
 }
 
 #pragma mark <UICollectionViewDelegate>

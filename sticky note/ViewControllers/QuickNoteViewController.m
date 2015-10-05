@@ -142,6 +142,10 @@
   [self.txfTitle.layer setCornerRadius:5.0f];
 	[self.txfTitle.layer setBorderColor:[UIColor whiteColor].CGColor];
 	[self.txfTitle setClipsToBounds:YES];
+  [self.txfTitle setAttributedPlaceholder:
+      [[NSAttributedString alloc] initWithString:@"Enter title"
+                                      attributes:
+          @{NSForegroundColorAttributeName : [UIColor lightGrayColor]}]];
 	
 	[self.btnChooseCategory.layer setCornerRadius:5.0f];
 	[self.btnChooseCategory setClipsToBounds:YES];

@@ -43,7 +43,7 @@ static CategoryModel *selectedCategory;
     flowLayout.itemSize = CGSizeMake(75, 75);
     _noteCollection =
         [[NoteCollectionView alloc] initWithFrame:_viewNoteCollectionHolder.bounds
-                   collectionViewLayout:flowLayout];
+                             collectionViewLayout:flowLayout];
     [_noteCollection setBackgroundColor:[UIColor clearColor]];
     [_viewNoteCollectionHolder addSubview:_noteCollection];
     [_viewNoteCollectionHolder bringSubviewToFront:_noteCollection];
