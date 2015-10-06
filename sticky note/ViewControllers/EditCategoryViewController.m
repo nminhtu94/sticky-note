@@ -134,11 +134,17 @@
 
 - (IBAction)onSelectImage:(id)sender {
   [self.txfName resignFirstResponder];
+  actionSheet.popoverPresentationController.sourceView = self.view;
+  actionSheet.popoverPresentationController.sourceRect =
+      CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0);
   [self.navigationController presentViewController:actionSheet animated:YES completion:nil];
 }
 
 - (IBAction)onReplaceImage:(id)sender {
   [self.txfName resignFirstResponder];
+  actionSheet.popoverPresentationController.sourceView = self.view;
+  actionSheet.popoverPresentationController.sourceRect =
+      CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0);
   [self.navigationController presentViewController:actionSheet animated:YES completion:nil];
 }
 

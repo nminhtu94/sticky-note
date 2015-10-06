@@ -207,6 +207,9 @@
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   
+  [self.view setNeedsDisplay];
+  [self.view layoutIfNeeded];
+  
   if (inputView == nil) {
     [self createInputView];
   }
@@ -555,10 +558,16 @@
 }
 
 - (IBAction)selectImage:(id)sender {
+  _actionSheet.popoverPresentationController.sourceView = self.view;
+  _actionSheet.popoverPresentationController.sourceRect =
+      CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0);
   [self presentViewController:_actionSheet animated:YES completion:nil];
 }
 
 - (IBAction)replaceImage:(id)sender {
+  _actionSheet.popoverPresentationController.sourceView = self.view;
+  _actionSheet.popoverPresentationController.sourceRect =
+      CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0);
   [self presentViewController:_actionSheet animated:YES completion:nil];
 }
 
