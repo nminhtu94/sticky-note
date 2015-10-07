@@ -15,8 +15,7 @@
   [self.btnRestore.layer setCornerRadius:5.0f];
   
   if ([PurchaseUtil isLiteVersion]) {
-    [self.btnBuy setTitle:[NSString stringWithFormat:@"Buy premium for $%0.2f",
-                           [PurchaseUtil product].price.doubleValue]
+    [self.btnBuy setTitle:[NSString stringWithFormat:@"Buy premium for $1.99"]
                  forState:UIControlStateNormal];
     [self.btnBuy setHidden:NO];
     [self.btnRestore setHidden:NO];
@@ -62,8 +61,7 @@
         [self dismissViewControllerAnimated:YES completion:nil];
       } else {
         [AppUtil showAlert:@"Error" message:@"No purchases were found for this account"];
-        [self.btnBuy setTitle:[NSString stringWithFormat:@"Buy premium for $%0.2f",
-                               [PurchaseUtil product].price.doubleValue]
+        [self.btnBuy setTitle:[NSString stringWithFormat:@"Buy premium for $1.99"]
                      forState:UIControlStateNormal];
         [self.btnBuy setHidden:NO];
         [self.btnRestore setHidden:NO];
