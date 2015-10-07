@@ -445,6 +445,12 @@
                                     <action selector="onDelete:" destination="0kX-Mm-5Uq" id="Rui-6o-j0y"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem image="restore" id="v5F-vP-0Qk">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="onRestore:" destination="0kX-Mm-5Uq" id="VBM-Zd-U1q"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -920,6 +926,7 @@
         <image name="delete" width="40" height="40"/>
         <image name="edit" width="40" height="40"/>
         <image name="icon_replace" width="60" height="60"/>
+        <image name="restore" width="40" height="40"/>
         <image name="save" width="40" height="40"/>
         <image name="search" width="30" height="30"/>
         <image name="todo" width="30" height="30"/>

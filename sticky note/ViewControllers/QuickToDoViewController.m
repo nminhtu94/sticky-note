@@ -373,6 +373,10 @@
   }
 }
 
+- (IBAction)onRestore:(id)sender {
+  [self presentViewController:self.purchseVC animated:YES completion:nil];
+}
+
 
 #pragma mark - Private Methods
 - (void)resetData {

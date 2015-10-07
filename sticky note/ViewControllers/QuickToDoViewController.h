@@ -18,5 +18,6 @@
 - (IBAction)onDelete:(id)sender;
 - (IBAction)selectCategoryTapped:(id)sender;
 - (IBAction)onCancel:(id)sender;
+- (IBAction)onRestore:(id)sender;
 
 @end
