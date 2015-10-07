@@ -37,7 +37,7 @@
   // Do any additional setup after loading the view.
   
   if (_alertView == nil) {
-    _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Note"
+    _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Notes"
                                             message:@""
                                            delegate:nil
                                   cancelButtonTitle:@"OK"
@@ -301,7 +301,7 @@
 - (BOOL)checkPremium {
   if ([[ToDoHelper sharedInstance] getAllTodo].count == 2 && [PurchaseUtil isLiteVersion]) {
     UIAlertView *alertView =
-    [[UIAlertView alloc] initWithTitle:@"Sticky Note"
+    [[UIAlertView alloc] initWithTitle:@"Sticky Notes"
                                message:@""
                               delegate:self
                      cancelButtonTitle:@"Cancel"

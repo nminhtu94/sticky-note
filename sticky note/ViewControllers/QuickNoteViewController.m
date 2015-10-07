@@ -40,7 +40,7 @@
   // Do any additional setup after loading the view.
   
   if (_alertView == nil) {
-      _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Note"
+      _alertView = [[UIAlertView alloc] initWithTitle:@"Sticky Notes"
                                               message:@""
                                              delegate:nil
                                     cancelButtonTitle:@"OK"
@@ -100,7 +100,7 @@
 	// ^-Use UITextAlignmentCenter for older SDKs.
 	label.textColor = [UIColor whiteColor]; // change this color
 	self.navigationItem.titleView = label;
-	label.text = NSLocalizedString(@"Sticky Note", @"");
+	label.text = NSLocalizedString(@"Sticky Notes", @"");
 	[label sizeToFit];
 	
 	[self.navigationController.navigationBar setTranslucent:NO];

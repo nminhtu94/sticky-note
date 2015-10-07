@@ -26,7 +26,7 @@
 	// ^-Use UITextAlignmentCenter for older SDKs.
 	label.textColor = [UIColor whiteColor]; // change this color
 	self.navigationItem.titleView = label;
-	label.text = NSLocalizedString(@"Sticky Note", @"");
+	label.text = NSLocalizedString(@"Sticky Notes", @"");
 	[label sizeToFit];
 	
 	[self.navigationController.navigationBar setTranslucent:NO];
