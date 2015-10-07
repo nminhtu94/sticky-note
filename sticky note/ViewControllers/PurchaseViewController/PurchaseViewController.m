@@ -38,7 +38,7 @@
 
 - (void)productPurchased:(NSNotification *)notification {
   [AppUtil showAlert:@"Congratulations!"
-             message:@"You have purchased Sticky Notes premiu, thank you for choosing us"];
+             message:@"You have purchased Sticky Notes premium, thank you for choosing us"];
   [self.btnBuy setHidden:YES];
   [self.btnRestore setHidden:YES];
   [self.lblStatus setText:@"You are using Sticky Notes premium"];
