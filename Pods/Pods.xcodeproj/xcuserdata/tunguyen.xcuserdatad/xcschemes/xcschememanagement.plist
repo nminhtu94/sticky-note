@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-JTCalendar.xcscheme</key>
+		<key>JTCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -16,17 +16,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>320B8AD5AA69A89CAFCFF4AA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F4DA5D7A9DDD0A2DD3373C78</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
