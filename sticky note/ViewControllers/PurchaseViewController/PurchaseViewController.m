@@ -18,12 +18,12 @@
     [self.btnBuy setTitle:[NSString stringWithFormat:@"Buy premium for $%0.2f",
                            [PurchaseUtil product].price.doubleValue]
                  forState:UIControlStateNormal];
-    [self.btnBuy setEnabled:YES];
-    [self.btnRestore setEnabled:YES];
+    [self.btnBuy setHidden:NO];
+    [self.btnRestore setHidden:NO];
     [self.lblStatus setText:@"You are using Sticky Notes lite"];
   } else {
-    [self.btnBuy setEnabled:NO];
-    [self.btnRestore setEnabled:NO];
+    [self.btnBuy setHidden:YES];
+    [self.btnRestore setHidden:YES];
     [self.lblStatus setText:@"You are using Sticky Notes premium"];
   }
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:)
@@ -39,9 +39,10 @@
 - (void)productPurchased:(NSNotification *)notification {
   [AppUtil showAlert:@"Congratulations!"
              message:@"You have purchased Sticky Notes premiu, thank you for choosing us"];
-  [self.btnBuy setEnabled:NO];
-  [self.btnRestore setEnabled:NO];
+  [self.btnBuy setHidden:YES];
+  [self.btnRestore setHidden:YES];
   [self.lblStatus setText:@"You are using Sticky Notes premium"];
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)buyTapped:(id)sender {
@@ -55,16 +56,17 @@
     if (success) {
       if ([PurchaseUtil productPurchased:ProductBundleID]) {
         [AppUtil showAlert:@"Restore successful" message:@"Your purchase has been restored!"];
-        [self.btnBuy setEnabled:NO];
-        [self.btnRestore setEnabled:NO];
+        [self.btnBuy setHidden:YES];
+        [self.btnRestore setHidden:YES];
         [self.lblStatus setText:@"You are using Sticky Notes premium"];
+        [self dismissViewControllerAnimated:YES completion:nil];
       } else {
         [AppUtil showAlert:@"Error" message:@"No purchases were found for this account"];
         [self.btnBuy setTitle:[NSString stringWithFormat:@"Buy premium for $%0.2f",
                                [PurchaseUtil product].price.doubleValue]
                      forState:UIControlStateNormal];
-        [self.btnBuy setEnabled:YES];
-        [self.btnRestore setEnabled:YES];
+        [self.btnBuy setHidden:NO];
+        [self.btnRestore setHidden:NO];
         [self.lblStatus setText:@"You are using Sticky Notes lite"];
       }
     }
