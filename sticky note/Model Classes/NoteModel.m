@@ -21,4 +21,8 @@
 @dynamic alarm;
 @dynamic category;
 
+- (NSString *)spotlightText {
+    return self.text.string;
+}
+
 @end

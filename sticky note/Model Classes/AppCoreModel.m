@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSPersistentContainer *persistentContainer;
 - (NSURL *)applicationDocumentsDirectory;
 @end
 
@@ -31,6 +32,21 @@
         return singletonInstance;
     }
 }
+
+//- (instancetype)init {
+//    self = [super init];
+//    if (self) {
+//        _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"AppCoreModel"
+//                                                        managedObjectModel:self.managedObjectModel];
+//        [_persistentContainer loadPersistentStoresWithCompletionHandler:^(
+//            NSPersistentStoreDescription * _Nonnull store, NSError * _Nullable error) {
+//            NSCoreDataCoreSpotlightDelegate *cdcs =
+//                [[NSCoreDataCoreSpotlightDelegate alloc] initForStoreWithDescription:store
+//                                                                               model:self.managedObjectModel];
+//        }];
+//    }
+//    return self;
+//}
 
 // Function for deleting and reset the entire database
 -(void) deleteDatabase{
@@ -68,13 +84,14 @@
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
-    
+
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
         _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator: coordinator];
     }
     return _managedObjectContext;
+//    return self.persistentContainer.viewContext;
 }
 
 
@@ -103,17 +120,29 @@
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"AppCoreDataModel.sqlite"];
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     
+    NSPersistentStoreDescription *desc = [[NSPersistentStoreDescription alloc] initWithURL:storeURL];
+    desc.type = NSSQLiteStoreType;
+    
+    NSCoreDataCoreSpotlightDelegate *cdcs =
+        [[NSCoreDataCoreSpotlightDelegate alloc] initForStoreWithDescription:desc model:self.managedObjectModel];
+    
     // For data migration
-    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @YES,NSInferMappingModelAutomaticallyOption : @YES};
-    NSError *error=nil;
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
-        // Current store version is not compatible with the application therfore handle it appropriately.
-        //CADLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        //abort();
-        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
-        _persistentStoreCoordinator = nil;
-        return [self persistentStoreCoordinator];
-    }
+    [desc setOption:@YES forKey:NSMigratePersistentStoresAutomaticallyOption];
+    [desc setOption:@YES forKey:NSInferMappingModelAutomaticallyOption];
+    
+    // Spotlight integration
+    [desc setOption:cdcs forKey:NSCoreDataCoreSpotlightExporter];
+    
+    // Persistent History Tracking
+    [desc setOption:@YES forKey:NSPersistentHistoryTrackingKey];
+
+    [_persistentStoreCoordinator addPersistentStoreWithDescription:desc completionHandler:^(
+        NSPersistentStoreDescription * _Nonnull desc, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Failed to create persistent store");
+        }
+    }];
+
     return _persistentStoreCoordinator;
 }
 

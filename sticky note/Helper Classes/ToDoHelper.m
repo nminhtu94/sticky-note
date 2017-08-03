@@ -33,7 +33,7 @@
 	[todo setTitle:title];
 	[todo setDate:date];
 	[todo setToDoList:todos];
-  [todo setValue:[self.managedObjectContext objectWithID:[category objectID]]
+    [todo setValue:[self.managedObjectContext objectWithID:[category objectID]]
           forKey:@"category"];
 	[self save];
 	return YES;

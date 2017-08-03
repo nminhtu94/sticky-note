@@ -38,9 +38,9 @@
 		BE2CBFBF1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFBD1B1B4B5E0049010E /* AppCoreDataModel.xcdatamodeld */; };
 		BE2CBFCB1B1B52BC0049010E /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFCA1B1B52BC0049010E /* CategoryModel.m */; };
 		BE2CBFD11B1B73980049010E /* NoteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CBFD01B1B73980049010E /* NoteHelper.m */; };
-		BE328C3B1BB665E4006A9C70 /* InAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328C3A1BB665E4006A9C70 /* InAppHelper.m */; settings = {ASSET_TAGS = (); }; };
-		BE328C3E1BB6670B006A9C70 /* NoteInAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328C3D1BB6670B006A9C70 /* NoteInAppHelper.m */; settings = {ASSET_TAGS = (); }; };
-		BE3A6C9B1BBFE406002909D8 /* CategoryNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3A6C9A1BBFE406002909D8 /* CategoryNavigationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		BE328C3B1BB665E4006A9C70 /* InAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328C3A1BB665E4006A9C70 /* InAppHelper.m */; };
+		BE328C3E1BB6670B006A9C70 /* NoteInAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328C3D1BB6670B006A9C70 /* NoteInAppHelper.m */; };
+		BE3A6C9B1BBFE406002909D8 /* CategoryNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3A6C9A1BBFE406002909D8 /* CategoryNavigationViewController.m */; };
 		BE3E6BC51BAA5FF700F11A9E /* ToDoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BC41BAA5FF700F11A9E /* ToDoCollectionViewController.m */; };
 		BE3E6BCA1BAA872100F11A9E /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3E6BC81BAA872100F11A9E /* AlarmViewController.m */; };
 		BE3E6BCB1BAA872100F11A9E /* AlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3E6BC91BAA872100F11A9E /* AlarmViewController.xib */; };
@@ -55,8 +55,8 @@
 		BE43D3701B1B9A0500BA7794 /* CAImageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D36F1B1B9A0500BA7794 /* CAImageCollectionLayout.m */; };
 		BE43D3771B1BA62400BA7794 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE43D3751B1BA62400BA7794 /* CategoryCollectionViewCell.m */; };
 		BE43D3781B1BA62400BA7794 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE43D3761B1BA62400BA7794 /* CategoryCollectionViewCell.xib */; };
-		BE44896B1BBE2F500034363E /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4489691BBE2F500034363E /* PurchaseViewController.m */; settings = {ASSET_TAGS = (); }; };
-		BE44896C1BBE2F500034363E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE44896A1BBE2F500034363E /* PurchaseViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		BE44896B1BBE2F500034363E /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4489691BBE2F500034363E /* PurchaseViewController.m */; };
+		BE44896C1BBE2F500034363E /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE44896A1BBE2F500034363E /* PurchaseViewController.xib */; };
 		BE465DA91B89ABB9008493E4 /* TodoTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE465DA81B89ABB9008493E4 /* TodoTableView.xib */; };
 		BE6222E01B48640100DB7F13 /* NoteCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6222DF1B48640100DB7F13 /* NoteCollectionView.m */; };
 		BE6222E21B48652000DB7F13 /* NoteCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6222E11B48652000DB7F13 /* NoteCollectionView.xib */; };
@@ -78,6 +78,7 @@
 		BE91463B1B08A2F40084D0FA /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463A1B08A2F40084D0FA /* CategoryViewController.m */; };
 		BE91463F1B08A3100084D0FA /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE91463E1B08A3100084D0FA /* SearchViewController.m */; };
 		BE9146481B08A6E80084D0FA /* QuickNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */; };
+		BED5F0001F33797400114FB0 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED5EFFF1F33797300114FB0 /* CoreSpotlight.framework */; };
 		BEDCC9821B899D4600BF3D43 /* QuickToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9811B899D4600BF3D43 /* QuickToDoViewController.m */; };
 		BEDCC9851B899E3500BF3D43 /* ToDoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9841B899E3500BF3D43 /* ToDoHelper.m */; };
 		BEDCC9891B89A59300BF3D43 /* TodoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDCC9881B89A59300BF3D43 /* TodoTableView.m */; };
@@ -225,6 +226,7 @@
 		BE91463E1B08A3100084D0FA /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/SearchViewController.m; sourceTree = "<group>"; };
 		BE9146461B08A6E80084D0FA /* QuickNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickNoteViewController.h; path = ViewControllers/QuickNoteViewController.h; sourceTree = "<group>"; };
 		BE9146471B08A6E80084D0FA /* QuickNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickNoteViewController.m; path = ViewControllers/QuickNoteViewController.m; sourceTree = "<group>"; };
+		BED5EFFF1F33797300114FB0 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		BEDCC9801B899D4600BF3D43 /* QuickToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuickToDoViewController.h; path = ViewControllers/QuickToDoViewController.h; sourceTree = "<group>"; };
 		BEDCC9811B899D4600BF3D43 /* QuickToDoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuickToDoViewController.m; path = ViewControllers/QuickToDoViewController.m; sourceTree = "<group>"; };
 		BEDCC9831B899E3500BF3D43 /* ToDoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoHelper.h; path = "Helper Classes/ToDoHelper.h"; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BED5F0001F33797400114FB0 /* CoreSpotlight.framework in Frameworks */,
 				C0905058B1811EF77F66A5BA /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,6 +606,7 @@
 		C71C8C318E63AE6361140E26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BED5EFFF1F33797300114FB0 /* CoreSpotlight.framework */,
 				FA275E72B25B738B8AA53EBB /* libPods.a */,
 			);
 			name = Frameworks;
@@ -659,9 +663,11 @@
 				TargetAttributes = {
 					BE91460C1B0893C70084D0FA = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 7U72EPF82F;
 					};
 					BE9146281B0893C70084D0FA = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 7U72EPF82F;
 						TestTargetID = BE91460C1B0893C70084D0FA;
 					};
 				};
@@ -947,9 +953,11 @@
 			baseConfigurationReference = 79B8A5F187B2AB03D0C54067 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7U72EPF82F;
 				INFOPLIST_FILE = "sticky note/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appsfellow.stickyNotesLite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appsfellow.stickyNotes;
 				PRODUCT_NAME = "Sticky Notes";
 			};
 			name = Debug;
@@ -959,9 +967,11 @@
 			baseConfigurationReference = 859DB6F47B79097D7ACA0145 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7U72EPF82F;
 				INFOPLIST_FILE = "sticky note/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appsfellow.stickyNotesLite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appsfellow.stickyNotes;
 				PRODUCT_NAME = "Sticky Notes";
 			};
 			name = Release;
@@ -970,6 +980,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7U72EPF82F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -989,6 +1000,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7U72EPF82F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

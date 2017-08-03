@@ -22,4 +22,6 @@
 @property (nonatomic, retain) NSDate *alarm;
 @property (nonatomic, retain) CategoryModel *category;
 
+@property (nonatomic, readonly) NSString *spotlightText;
+
 @end
