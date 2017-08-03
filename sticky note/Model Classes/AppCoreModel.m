@@ -9,11 +9,13 @@
 #import "AppCoreModel.h"
 
 @interface AppCoreModel ()
+
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, strong) NSPersistentContainer *persistentContainer;
+
 - (NSURL *)applicationDocumentsDirectory;
+
 @end
 
 @implementation AppCoreModel
@@ -32,21 +34,6 @@
         return singletonInstance;
     }
 }
-
-//- (instancetype)init {
-//    self = [super init];
-//    if (self) {
-//        _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"AppCoreModel"
-//                                                        managedObjectModel:self.managedObjectModel];
-//        [_persistentContainer loadPersistentStoresWithCompletionHandler:^(
-//            NSPersistentStoreDescription * _Nonnull store, NSError * _Nullable error) {
-//            NSCoreDataCoreSpotlightDelegate *cdcs =
-//                [[NSCoreDataCoreSpotlightDelegate alloc] initForStoreWithDescription:store
-//                                                                               model:self.managedObjectModel];
-//        }];
-//    }
-//    return self;
-//}
 
 // Function for deleting and reset the entire database
 -(void) deleteDatabase{
@@ -90,6 +77,7 @@
         _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator: coordinator];
     }
+
     return _managedObjectContext;
 //    return self.persistentContainer.viewContext;
 }
